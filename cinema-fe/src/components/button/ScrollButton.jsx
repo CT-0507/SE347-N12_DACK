@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import Button from 'react-bootstrap/Button';
 
-const ScrollButton = () => {
+const ScrollButton = memo(() => {
 
   const [visible, setVisible] = useState(false)
 
@@ -31,6 +31,6 @@ const ScrollButton = () => {
       <i className="fa fa-arrow-up" aria-hidden="true"></i>
     </Button>
   );
-}
+})
 
 export default ScrollButton;

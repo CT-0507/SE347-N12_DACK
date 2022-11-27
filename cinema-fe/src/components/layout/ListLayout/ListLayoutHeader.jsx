@@ -1,11 +1,9 @@
-import React from 'react'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from 'react-bootstrap/Navbar'
-// import Container from 'react-bootstrap/esm/Container'
 import { useLocation } from 'react-router-dom';
 import useWindowDimensions from '../../../hook/useWindowDimensions';
 import './listLayout.css'
-const ListLayoutHeader = () => {
+const ListLayoutHeader = memo(() => {
     const { width, height } = useWindowDimensions();
     const isMobile = width <= 765
     const isTablet = width < 995 && width > 766
@@ -32,6 +30,6 @@ const ListLayoutHeader = () => {
             </div>
         </>
     )
-}
+})
 
 export default ListLayoutHeader

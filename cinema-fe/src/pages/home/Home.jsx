@@ -1,13 +1,12 @@
 
-import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, memo } from 'react'
 
-const Home = () => {
+const Home = memo(() => {
     useEffect(() => {
     }, [])
     return (
         <div>Home</div>
     )
-}
+})
 
 export default Home

@@ -5,8 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import './layout.css';
 import useWindowDimensions from '../../../hook/useWindowDimensions';
 import logo from '../../../img/logo.png'
-import { useState } from 'react'
-const LayoutHeader = () => {
+import { useState, memo } from 'react'
+const LayoutHeader = memo(() => {
     const { height, width } = useWindowDimensions();
     const isMobile = width <= 765
     const isTablet = width < 995 && width > 766
@@ -198,6 +198,6 @@ const LayoutHeader = () => {
             }
         </>
     )
-}
+})
 
 export default LayoutHeader

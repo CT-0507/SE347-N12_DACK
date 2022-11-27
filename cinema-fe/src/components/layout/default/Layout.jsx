@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom'
 
-import React from 'react'
+import { memo } from 'react'
 import LayoutHeader from './LayoutHeader'
 import Container from 'react-bootstrap/esm/Container'
 import LayoutFooter from './LayoutFooter'
 import ScrollButton from '../../button/ScrollButton'
 
-const Layout = () => {
+const Layout = memo(() => {
     return (
         <>
             <LayoutHeader />
@@ -15,6 +15,6 @@ const Layout = () => {
             <ScrollButton />
         </>
     )
-}
+})
 
 export default Layout

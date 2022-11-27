@@ -1,12 +1,12 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { useState, useRef } from 'react'
+import { useState, useRef, memo } from 'react'
 import Spinner from 'react-bootstrap/esm/Spinner'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Login = () => {
+const Login = memo(() => {
     const [isLoading, setIsLoading] = useState(false)
     const [isValid, setIsValid] = useState(true)
     const [isValidUsername, setIsValidUsername] = useState(true)
@@ -66,6 +66,6 @@ const Login = () => {
             </Form>
         </>
     )
-}
+})
 
 export default Login

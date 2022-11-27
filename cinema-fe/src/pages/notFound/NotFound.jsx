@@ -1,7 +1,7 @@
-import React from 'react'
+import { memo } from 'react'
 import './NotFound.css'
 import { Link, useNavigate } from 'react-router-dom'
-const NotFound = () => {
+const NotFound = memo(() => {
     const navigate = useNavigate()
     const onGoHomeClick = () => {
         navigate('/')
@@ -15,6 +15,6 @@ const NotFound = () => {
             </div>
         </section>
     )
-}
+})
 
 export default NotFound

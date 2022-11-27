@@ -1,7 +1,7 @@
-import React from 'react'
+import { memo } from 'react'
 
 const currentPath = "ĐIỀU KHOẢN CHUNG"
-const Term = () => {
+const Term = memo(() => {
     document.title = "ĐIỀU KHOẢN CHUNG | CGV"
     return (
         <>
@@ -49,6 +49,6 @@ const Term = () => {
             </p>
         </>
     )
-}
+})
 
 export default Term

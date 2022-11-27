@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Link } from 'react-router-dom'
 import { useNavigate, useLocation } from "react-router-dom"
-const AccountLayoutHeader = () => {
+const AccountLayoutHeader = memo(() => {
     const { pathname } = useLocation()
     // const p
     const [currentPath, setCurrentPath] = useState()
@@ -19,6 +19,6 @@ const AccountLayoutHeader = () => {
             </Navbar>
         </>
     )
-}
+})
 
 export default AccountLayoutHeader
