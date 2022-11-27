@@ -1,0 +1,22 @@
+{
+  "name": "cinema-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CT-0507/SE347-N12_DACK.git"
+  },
+  "author": "TranQuocCuong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CT-0507/SE347-N12_DACK/issues"
+  },
+  "homepage": "https://github.com/CT-0507/SE347-N12_DACK#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
