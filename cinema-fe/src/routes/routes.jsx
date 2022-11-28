@@ -6,7 +6,7 @@ import ErrorBoundary from "../components/errorHandler/ErrorBoundary"
 import { lazy, Suspense } from "react"
 import Spinner from "react-bootstrap/Spinner"
 import About from "../pages/about/About"
-import Term from "../pages/term/term"
+import Term from "../pages/term/Term"
 import ListLayout from "../components/layout/ListLayout/ListLayout"
 const Login = lazy(() => new Promise(resolve => resolve(import('../pages/account/Login'))))
 const SignUp = lazy(() => new Promise(resolve => resolve(import('../pages/account/SignUp'))))
