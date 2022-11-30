@@ -6,10 +6,13 @@
     border-left: 20px solid antiquewhite;
 }
 .w-30 {
-    width: 30%!important;
+    /* width: 30%!important; */
 }
 .list-layout-nav:hover, 
 .list-layout-nav:active {
     background-color: rgba(var(--bs-danger-rgb),var(--bs-bg-opacity))!important;
     color: black!important;
+}
+.list-layout-nav {
+    min-width: 280px;
 }

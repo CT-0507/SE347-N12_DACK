@@ -13,10 +13,10 @@ const ListLayout = memo(() => {
 
     return (
         <Container fluid="sm" className={((isTablet || isMobile) ? ' flex-column ' : ' flex-row ').concat(" d-flex")}>
-            <div className={((isTablet || isMobile) ? "w-100" : "w-30").concat(" d-flex flex-column")}>
+            <div className={((isTablet || isMobile) ? " w-100 " : " w-30 ").concat(" d-flex flex-column")}>
                 <ListLayoutHeader />
             </div>
-            <div className="main-content flex-fill my-2">
+            <div className="main-content flex-fill my-2 p-2">
                 <Outlet />
             </div>
 
