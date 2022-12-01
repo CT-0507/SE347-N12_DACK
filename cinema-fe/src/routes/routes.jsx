@@ -7,6 +7,7 @@ import { lazy, Suspense } from "react"
 import Spinner from "react-bootstrap/Spinner"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
+import Contact from "../pages/contact/Contact"
 import ListLayout from "../components/layout/ListLayout/ListLayout"
 const Login = lazy(() => new Promise(resolve => resolve(import('../pages/account/Login'))))
 const SignUp = lazy(() => new Promise(resolve => resolve(import('../pages/account/SignUp'))))
@@ -26,6 +27,7 @@ const AppRoute = () => {
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />
                             <Route path='about' element={<About />} />
+                            <Route path='contact' element={<Contact />} />
                             <Route path='terms-conditions' element={<Term />} />
                         </Route>
                         <Route path='*' element={<NotFound />} />
