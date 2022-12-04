@@ -19,14 +19,14 @@ const ListLayoutHeader = memo(() => {
             <div className={(pathname.includes('terms-conditions') ? " bg-danger " : " ").concat(" d-flex align-items-center bg-secondary my-2 list-layout-nav")}>
                 <div className="arrow-right"></div><Link to='terms-conditions' className='d-block flex-fill nav-link text-white fs-5 ms-2'>ĐIỀU KHOẢN CHUNG</Link>
             </div>
-            <div className="d-flex align-items-center bg-secondary my-2 list-layout-nav">
-                <div className="arrow-right"></div><Link className='d-block flex-fill nav-link text-white fs-5 ms-2'>ĐIỀU KHOẢN GIAO DỊCH</Link>
+            <div className={(pathname.includes('terms-use') ? " bg-danger " : " ").concat(" d-flex align-items-center bg-secondary my-2 list-layout-nav")}>
+                <div className="arrow-right"></div><Link to='terms-use' className='d-block flex-fill nav-link text-white fs-5 ms-2'>ĐIỀU KHOẢN GIAO DỊCH</Link>
             </div>
-            <div className="d-flex align-items-center bg-secondary my-2 list-layout-nav">
-                <div className="arrow-right"></div><Link className='d-block flex-fill nav-link text-white fs-5 ms-2'>CHÍNH SÁCH THANH TOÁN</Link>
+            <div className={(pathname.includes('payment-policy') ? " bg-danger " : " ").concat(" d-flex align-items-center bg-secondary my-2 list-layout-nav")}>
+                <div className="arrow-right"></div><Link to='payment-policy' className='d-block flex-fill nav-link text-white fs-5 ms-2'>CHÍNH SÁCH THANH TOÁN</Link>
             </div>
-            <div className="d-flex align-items-center bg-secondary my-2 list-layout-nav">
-                <div className="arrow-right"></div><Link className='d-block flex-fill nav-link text-white fs-5 ms-2'>CÂU HỎI THƯỜNG GẶP</Link>
+            <div className={(pathname.includes('faq') ? " bg-danger " : " ").concat(" d-flex align-items-center bg-secondary my-2 list-layout-nav")}>
+                <div className="arrow-right"></div><Link to='faq' className='d-block flex-fill nav-link text-white fs-5 ms-2'>CÂU HỎI THƯỜNG GẶP</Link>
             </div>
         </>
     )

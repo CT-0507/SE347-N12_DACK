@@ -2,13 +2,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+const currentPath = "Giới thiệu Rạp phim"
 import { memo } from 'react'
-
+document.title = "Giới thiệu Rạp phim | CGV"
 const About = memo(() => {
     return (
         <Container>
             <Row>
-                <h1>Giới thiệu Rạp phim</h1>
+            <h1 className="text-danger fw-bolder">{currentPath}</h1>
             </Row>
             <Row>   
             <iframe width="560" height="315" src="https://www.youtube.com/embed/e1ZSLVTZ47M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
