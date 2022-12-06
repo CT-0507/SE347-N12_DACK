@@ -1,6 +1,9 @@
-.home-tile{
+.home-tile {
     margin:auto;
-    height: 60px;
     text-align: center;
     width: 100%;
+    position: relative;
+}
+.slide-show{
+    background-color: blue;
 }

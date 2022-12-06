@@ -4,17 +4,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import React from "react";
+import Slider from "react-slick";
 
 import carousel from '../../img/980wx448h_18.jpg'
 import carousel1 from '../../img/cgv_980x488.png'
 import carousel2 from '../../img/banner_980x448.jpg'
 import poster from '../../img/poster_adam_4_1.jpg'
 
+import Slick from './Slick'
 import './home.css'
 
 import { useEffect, memo } from 'react'
-
 const Home = memo(() => {
+
+
     useEffect(() => {
     }, [])
     return (
@@ -66,68 +70,19 @@ const Home = memo(() => {
           </div>
         </Row>
         <Row>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={poster}/>
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={poster} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={poster} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                
-              
-              </Card.Body>
-            </Card>
-          </Col>
+          <Slick/>
         </Row>
         <Row>
           <div className="home-tile">
-            <h2>event</h2>
+            <h2>Event</h2>
           </div>
         </Row>
         <Row>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={poster}/>
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={poster} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={poster} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+          <Slick/>
+        </Row> 
+        
+      
+        
       </Container>
     
     )
