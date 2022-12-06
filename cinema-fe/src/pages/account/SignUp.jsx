@@ -114,9 +114,9 @@ const SignUp = memo(() => {
                     {isLoading ? <Spinner /> : 'Đăng ký'}
                 </Button>
             </Form>
-        :''}
+        :null}
         {isPC ?   
-            <Form className='p-1'>
+            <Form className='w-pc'>
                 <ToastContainer />
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Tên<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></Form.Label>
@@ -188,7 +188,7 @@ const SignUp = memo(() => {
                     {isLoading ? <Spinner /> : 'Đăng ký'}
                 </Button>
             </Form>
-        :'PC Response'}
+        :null}
         </>
     )
 })
