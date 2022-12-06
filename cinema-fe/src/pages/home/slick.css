@@ -4,13 +4,14 @@
     color:red;
 }
 .item{
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
-.poster{
+.card-film{
     margin:auto;
     
 }
-h3{
-    text-align: center;
+h4{
+    margin:auto;
+    text-align: center;  
 }
