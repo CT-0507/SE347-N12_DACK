@@ -66,7 +66,7 @@ const Home = memo(() => {
         </Row>
         <Row>
           <div className="home-tile">
-            <h2>movie selection</h2>
+            <h2>Movie selection</h2>
           </div>
         </Row>
         <Row>

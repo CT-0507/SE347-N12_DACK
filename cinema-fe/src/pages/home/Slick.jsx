@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import poster from '../../img/poster_adam_4_1.jpg'
-
+import './slick.css'
 function Slick()
 {
     let settings = {
@@ -19,29 +19,29 @@ function Slick()
     return ( 
         
             <Slider {...settings}>
-                <div>
-                    <img src={poster}></img>
-                    1
+                <div className="item">
+                    <img className="poster" src={poster}></img>
+                    <h3>Black Adam</h3>
                 </div>
-                <div>
-                <img src={poster}></img>
-                2
+                <div className="item">
+                    <img className="poster"src={poster}></img>
+                    <h3>Black Adam</h3>
                 </div>
-                <div>
-                <img src={poster}></img>
-                3
+                <div className="item">
+                    <img className="poster"src={poster}></img>
+                    <h3>Black Adam</h3>
                 </div>
-                <div>
-                <img src={poster}></img>
-                4
+                <div className="item">
+                    <img className="poster"src={poster}></img>
+                    <h3>Black Adam</h3>
                 </div>
-                <div>
-                <img src={poster}></img>
-                5
+                <div className="item">
+                    <img className="poster"src={poster}></img>
+                    <h3>Black Adam</h3>
                 </div>
-                <div>
-                <img src={poster}></img>
-                6
+                <div className="item">
+                    <img className="poster"src={poster}></img>
+                    <h3>Black Adam</h3>
                 </div>
             </Slider>     
      );
