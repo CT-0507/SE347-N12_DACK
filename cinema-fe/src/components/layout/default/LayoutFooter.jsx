@@ -34,25 +34,27 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="default/about">Tiện Ích Online</Nav.Link></li>
                                     <li><Nav.Link as={Link} to="default/about">Thẻ Quà Tặng</Nav.Link></li>
                                     <li><Nav.Link as={Link} to="default/about">Tuyển Dụng</Nav.Link></li>
-                                    <li><Nav.Link as={Link} to="default/about">Liên Hệ Quảng Cáo</Nav.Link></li>
+                                    <li><Nav.Link as={Link} to="default/contact">Liên Hệ Quảng Cáo</Nav.Link></li>
                                 </ul>
                             </Col>
                             <Col className="py-3">
                                 <h5>Điều khoản sử dụng</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
-                                    <li><Nav.Link as={Link} to="about">Điều Khoảng Chung</Nav.Link></li>
-                                    <li><Nav.Link as={Link} to="about">Điều Khoản Giao Dịch</Nav.Link></li>
-                                    <li><Nav.Link as={Link} to="about">Chính Sách Thanh Toán</Nav.Link></li>
-                                    <li><Nav.Link as={Link} to="about">Chính Sách Bảo Mật</Nav.Link></li>
-                                    <li><Nav.Link as={Link} to="about">Câu Hỏi Thường Gặp</Nav.Link></li>
+                                    <li><Nav.Link as={Link} to="default/terms-conditions">Điều Khoảng Chung</Nav.Link></li>
+                                    <li><Nav.Link as={Link} to="default/terms-use">Điều Khoản Giao Dịch</Nav.Link></li>
+                                    <li><Nav.Link as={Link} to="default/payment-policy">Chính Sách Thanh Toán</Nav.Link></li>
+                                    <li><Nav.Link as={Link} to="default/faq">Chính Sách Bảo Mật</Nav.Link></li>
+                                    <li><Nav.Link as={Link} to="default/faq">Câu Hỏi Thường Gặp</Nav.Link></li>
                                 </ul>
                             </Col>
                             <Col className="py-3">
                                 <h5>Kết nối với chúng tôi</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li>
-                                        <Nav.Link as={Link} to="about">
-                                            <i className="fa fa-facebook-official p-3" aria-hidden="true"></i>
+                                        <Nav.Link as={Link} >
+                                            <i className="fa fa-facebook-official p-3" aria-hidden="true">
+                                                
+                                            </i>
                                             <i className="fa fa-youtube-square p-3" aria-hidden="true"></i>
                                             <i className="fa fa-instagram p-3" aria-hidden="true"></i>
                                         </Nav.Link>
