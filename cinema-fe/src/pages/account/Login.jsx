@@ -68,9 +68,9 @@ const Login = memo(() => {
                     </Button>
                     <Link to=''>Quên mật khẩu</Link>
                 </Form>
-                :''}
+                :null}
             {isPC ?
-                <Form className='p-1'>
+                <Form className='w-pc'>
                 <ToastContainer />
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email hoặc số điện thoại</Form.Label>
@@ -102,7 +102,7 @@ const Login = memo(() => {
                 </Button>
                 <Link to=''>Quên mật khẩu</Link>
             </Form>
-            :''}
+            :null}
         </>
     )
 })

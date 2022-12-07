@@ -15,7 +15,9 @@ import FAQ  from '../pages/faq/FAQ'
 import ListLayout from "../components/layout/ListLayout/ListLayout"
 const Login = lazy(() => new Promise(resolve => resolve(import('../pages/account/Login'))))
 const SignUp = lazy(() => new Promise(resolve => resolve(import('../pages/account/SignUp'))))
+const Admin = lazy(() => new Promise(resolve => resolve(import('../pages/admin/Admin'))))
 const AccountLayout = lazy(() => new Promise(resolve => resolve(import('../components/layout/accountLayout/AccountLayout'))))
+const AdminLayout = lazy(() => new Promise(resolve => resolve(import('../components/layout/adminLayout/adminLayout'))))
 const AppRoute = () => {
     return (
         <ErrorBoundary>
@@ -28,6 +30,7 @@ const AppRoute = () => {
                             <Route path='login' element={<Login />} />
                             <Route path='register' element={<SignUp />} />
                         </Route>
+                        <Route path='admin' element={<Admin/>}/>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />
                             <Route path='about' element={<About />} />
