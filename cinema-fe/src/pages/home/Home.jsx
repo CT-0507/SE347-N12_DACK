@@ -12,7 +12,7 @@ import carousel1 from '../../img/cgv_980x488.png'
 import carousel2 from '../../img/banner_980x448.jpg'
 import poster from '../../img/poster_adam_4_1.jpg'
 
-import Slick from './Slick'
+import Slick from './slick/Slick'
 import './home.css'
 
 import { useEffect, memo } from 'react'

@@ -8,10 +8,10 @@ import Col from 'react-bootstrap/Col';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import poster from '../../img/poster_adam_4_1.jpg'
-import poster1 from '../../img/violent_night-700x1000px_1_.jpg'
-import poster2 from '../../img/hpm_poster_2x3_1_.jpg'
-import poster3 from '../../img/late_shift_-_700x1000.jpg'
+import poster from '../../../img/poster_adam_4_1.jpg'
+import poster1 from '../../../img/violent_night-700x1000px_1_.jpg'
+import poster2 from '../../../img/hpm_poster_2x3_1_.jpg'
+import poster3 from '../../../img/late_shift_-_700x1000.jpg'
 import './slick.css'
 function Slick()
 {
