@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import carousel from '../../../img/980wx448h_18.jpg'
 import carousel1 from '../../../img/cgv_980x488.png'
 import carousel2 from '../../../img/banner_980x448.jpg'
+import './carousel.css' 
 
 function Carousels() {
     return ( 

@@ -6,13 +6,7 @@
     position: relative;
     background: url('../../img/bg_h3_line.jpg') repeat-x scroll left center rgba(0, 0, 0, 0);
 }
-.carousel-inner{
-    max-height: 592px;
-}
-.carousel-control-next-icon, .carousel-control-prev-icon{
-    width: 4rem!important;
-    height: 4rem !important;
-}
+
 h2{ 
     width:fit-content;
     margin:auto;

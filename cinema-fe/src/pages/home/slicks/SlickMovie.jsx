@@ -13,7 +13,7 @@ import poster1 from '../../../img/violent_night-700x1000px_1_.jpg'
 import poster2 from '../../../img/hpm_poster_2x3_1_.jpg'
 import poster3 from '../../../img/late_shift_-_700x1000.jpg'
 import './slick.css'
-function Slick()
+function SlickMovie()
 {
     let settings = {
         dots: false,
@@ -127,4 +127,4 @@ function Slick()
      );
 }
 
-export default Slick;
+export default SlickMovie;
