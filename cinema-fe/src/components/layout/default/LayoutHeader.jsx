@@ -77,7 +77,7 @@ const LayoutHeader = memo(() => {
                     <Link to="/"><img src={logo} alt="" /></Link>
                     {!isTablet && <Navbar>
                         <Nav>
-                            <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Phim</Nav.Link>
+                            <Nav.Link as={Link} to='movies' className="text-bolder fs-2 fw-bolder px-4">Phim</Nav.Link>
                             <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Rạp Phim</Nav.Link>
                             <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Thành viên</Nav.Link>
                             <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Cultureplex</Nav.Link>
