@@ -2,6 +2,7 @@
 .slick-prev:before, .slick-next:before {
     font-size:40px;
     color:red;
+
 }
 .item{
     /* border: 1px solid black; */
@@ -15,3 +16,14 @@ h4{
     margin:auto;
     text-align: center;  
 }
+@media only screen and (max-width: 600px) {
+    .slick-prev{
+        left: 40px!important;
+        position: absolute!important;
+        z-index: 2!important;
+    
+    }
+    .slick-next {
+        right:50px !important;
+    }
+  }
