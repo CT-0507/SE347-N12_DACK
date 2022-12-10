@@ -1,0 +1,2 @@
+Nhấn vào GIới thiệu ở footer thì lên đầu trang.
+Nav cố định ở đầu trang.

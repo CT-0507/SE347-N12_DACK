@@ -18,16 +18,20 @@ const LayoutFooter = memo(() => {
         <>
             <footer style={{ overflow: 'hidden' }}>
                 {!isMobile ?
-                    <Container fluid className='p-0'>
-                        <Row className='text-center  border-bottom border-top p-2  border-dark'>
+                    
+                    <Container fluid className='p-0 test'>
+                        
+                        <Row className='text-center border-bottom border-top border-white  p-2  '>
+
                             <Col><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-thumbs-up p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-camera p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-bullhorn p-2" aria-hidden="true"></i></Col>
+
                         </Row>
-                        <Row className=' border-bottom border-dark'>
-                            <Col className="py-3">
+                        <Row className=''>
+                            <Col className="m-3">
                                 <h5>PopCorn Couch</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li><Nav.Link as={Link} to="default/about">Giới Thiệu</Nav.Link></li>
@@ -37,7 +41,7 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="default/contact">Liên Hệ Quảng Cáo</Nav.Link></li>
                                 </ul>
                             </Col>
-                            <Col className="py-3">
+                            <Col className="p-3">
                                 <h5>Điều khoản sử dụng</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li><Nav.Link as={Link} to="default/terms-conditions">Điều Khoảng Chung</Nav.Link></li>
@@ -47,7 +51,7 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="default/faq">Câu Hỏi Thường Gặp</Nav.Link></li>
                                 </ul>
                             </Col>
-                            <Col className="py-3">
+                            <Col className="p-3">
                                 <h5>Kết nối với chúng tôi</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li>
@@ -72,7 +76,7 @@ const LayoutFooter = memo(() => {
                             </Col>}
                         </Row>
                         {isTablet &&
-                            <Row className=' border-bottom py-2 border-dark'>
+                            <Row className='  py-2 '>
                                 <div className='p-2 text-center bg-secondary rounded-pill'>
                                     <h5>Chăm sóc khách hàng</h5>
                                     <ul className="ul-nav m-0 p-0 py-3">
@@ -83,7 +87,7 @@ const LayoutFooter = memo(() => {
                                 </div>
                             </Row>
                         }
-
+                        
                     </Container>
                     :
                     <Container fluid className="p-0" style={{ overflowY: 'hidden' }}>
@@ -160,7 +164,8 @@ const LayoutFooter = memo(() => {
 
                     </Container>
                 }
-                <Row className={(isTablet || isMobile ? ' flex-column text-center' : ' ').concat('py-3 justify-content-center align-items-center  border-dark border-top')}>
+                <div className='break-bar'></div>
+                <Row className={(isTablet || isMobile ? ' flex-column text-center' : ' ').concat('py-3 justify-content-center align-items-center test')}>
                     <Col sm="1" xs="1" md="1" className='m-auto'>
                         <Link to="/"><img src={logo} width="64px" height="64px" alt="" /></Link>
                     </Col>

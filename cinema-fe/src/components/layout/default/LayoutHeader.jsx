@@ -71,6 +71,7 @@ const LayoutHeader = memo(() => {
                     </Navbar>
                 </Container>
             </header>}
+            <div className='break-bar'></div>
             {!isMobile ?
                 <div className='header-banner'>
                     {/* <a href="https://www.flaticon.com/free-icons/cinema" title="cinema icons">Cinema icons created by photo3idea_studio - Flaticon</a> */}

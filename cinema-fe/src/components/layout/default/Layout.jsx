@@ -10,7 +10,7 @@ const Layout = memo(() => {
     return (
         <>
             <LayoutHeader />
-            <Outlet />
+            { <Outlet /> }
             <LayoutFooter />
             <ScrollButton />
         </>
