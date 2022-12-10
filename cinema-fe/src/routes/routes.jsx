@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import Layout from "../components/layout/default/Layout"
 import Home from "../pages/home/Home"
+import Movies from "../pages/movies/Movies"
 import NotFound from "../pages/NotFound/NotFound"
 import ErrorBoundary from "../components/errorHandler/ErrorBoundary"
 import { lazy, Suspense } from "react"
@@ -30,6 +31,11 @@ const AppRoute = () => {
                             <Route path='login' element={<Login />} />
                             <Route path='register' element={<SignUp />} />
                         </Route>
+
+                        <Route path='movies' element={<Movies />} >
+
+                        </Route>
+
                         <Route path='admin' element={<Admin/>}/>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />

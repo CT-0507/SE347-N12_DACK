@@ -57,7 +57,7 @@ const LayoutFooter = memo(() => {
                                     <li>
                                         <Nav.Link as={Link} >
                                             <i className="fa fa-facebook-official p-3" aria-hidden="true">
-                                                
+
                                             </i>
                                             <i className="fa fa-youtube-square p-3" aria-hidden="true"></i>
                                             <i className="fa fa-instagram p-3" aria-hidden="true"></i>
