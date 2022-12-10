@@ -8,6 +8,10 @@ import About from "../pages/about/About"
 import Term from "../pages/term/Term"
 import TermsUse from "../pages/termsUse/TermsUse"
 import Contact from "../pages/contact/Contact"
+const UserMenu = lazy(() => new Promise(resolve => resolve(import('../pages/admin/User'))))
+const AccountLayout = lazy(() => new Promise(resolve => resolve(import('../components/layout/accountLayout/AccountLayout'))))
+const AdminLayout = lazy(() => new Promise(resolve => resolve(import('../components/layout/adminLayout/adminLayout'))))
+import FilmMenu from "../pages/admin/Film"
 import PaymentPolicy from '../pages/paymentPolicy/PaymentPolicy'
 import FAQ from '../pages/faq/FAQ'
 
@@ -32,7 +36,10 @@ const AppRoute = () => {
 
                 </Route>
 
-                {/* <Route path='admin' element={<Admin />} /> */}
+                <Route path='admin' element={<AdminLayout/>}>
+                    <Route path='user' element={<UserMenu/>} />
+                    <Route path='film' element={<FilmMenu/>} />
+                </Route> 
                 <Route path='default' element={<ListLayout />}>
                     <Route index element={<About />} />
                     <Route path='about' element={<About />} />
@@ -46,6 +53,7 @@ const AppRoute = () => {
             </Route>
             <Route path='*' element={<NotFound />} />
         </Routes>
+
 
     )
 }
