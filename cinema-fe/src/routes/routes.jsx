@@ -11,11 +11,11 @@ import TermsUse from "../pages/termsUse/TermsUse"
 import Contact from "../pages/contact/Contact"
 import PaymentPolicy  from '../pages/paymentPolicy/PaymentPolicy'
 import FAQ  from '../pages/faq/FAQ'
-
+import FilmMenu from "../pages/admin/Film"
 import ListLayout from "../components/layout/ListLayout/ListLayout"
 const Login = lazy(() => new Promise(resolve => resolve(import('../pages/account/Login'))))
 const SignUp = lazy(() => new Promise(resolve => resolve(import('../pages/account/SignUp'))))
-const Admin = lazy(() => new Promise(resolve => resolve(import('../pages/admin/Admin'))))
+const UserMenu = lazy(() => new Promise(resolve => resolve(import('../pages/admin/User'))))
 const AccountLayout = lazy(() => new Promise(resolve => resolve(import('../components/layout/accountLayout/AccountLayout'))))
 const AdminLayout = lazy(() => new Promise(resolve => resolve(import('../components/layout/adminLayout/adminLayout'))))
 const AppRoute = () => {
@@ -23,14 +23,17 @@ const AppRoute = () => {
         <ErrorBoundary>
             <Suspense fallback={<Spinner />} revealOrder="forward">
                 <Routes>
-                    <Route path='/' element={<Layout />}>
-                        <Route index element={<Home />} />
+                <Route path='admin' element={<AdminLayout/>}>
+                    <Route path='user' element={<UserMenu/>} />
+                    <Route path='film' element={<FilmMenu/>} />
+                </Route> 
+                    <Route path='/' element={<Layout/>}>
+                        <Route index element={<Home/>} />
                         <Route path='account' element={<AccountLayout />}>
                             <Route index element={<Login />} />
                             <Route path='login' element={<Login />} />
                             <Route path='register' element={<SignUp />} />
                         </Route>
-                        <Route path='admin' element={<Admin/>}/>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />
                             <Route path='about' element={<About />} />
