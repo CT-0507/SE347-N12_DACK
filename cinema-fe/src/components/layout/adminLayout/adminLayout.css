@@ -40,7 +40,7 @@ hr{
 .nav-link{
     color: aliceblue;
     border-radius: 8px;
-    text-align: left;
+    text-align: left!important;
 }
 .active {
     margin: 5px;
