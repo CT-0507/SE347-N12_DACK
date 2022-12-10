@@ -76,3 +76,5 @@
 20221210	19:11:13	4a33776d-dc9e-4972-b6d2-60de49c23c6f	POST	/	http://localhost:5173
 20221210	19:12:02	9cf01bd3-8e56-4abd-9009-134ddf1e345b	OPTIONS	/users	http://localhost:5173
 20221210	19:12:02	e2eb03fd-638d-4e01-afd9-ded6741fef04	POST	/users	http://localhost:5173
+20221210	21:27:28	6ed4aee2-46ab-43e4-97e0-63e5ea08f6dd	OPTIONS	/auth	http://localhost:5173
+20221210	21:27:28	5f590889-9f8d-4c21-8f4f-97c3c94497d7	POST	/auth	http://localhost:5173
