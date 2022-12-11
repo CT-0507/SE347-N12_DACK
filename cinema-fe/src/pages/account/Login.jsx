@@ -71,6 +71,7 @@ const Login = () => {
                             ref={usernameInput}
                             type="text"
                             placeholder="Email hoặc số điện thoại"
+                            autoComplete='false'
                             onBlur={e => { setIsValidUsername(true); if (e.target.value === '') setIsValidUsername(false) }}
                             onChange={handleUserInput}
                         />
@@ -82,6 +83,7 @@ const Login = () => {
                         <Form.Control
                             ref={passwordInput}
                             type="password"
+                            autoComplete='false'
                             placeholder="Mật khẩu"
                             onChange={handlePwdInput}
                             onBlur={e => { setIsValidPassword(true); if (e.target.value === '') setIsValidPassword(false) }}
@@ -107,6 +109,7 @@ const Login = () => {
                         <Form.Control
                             ref={usernameInput}
                             type="text"
+                            autoComplete='false'
                             placeholder="Email hoặc số điện thoại"
                             onBlur={e => { setIsValidUsername(true); if (e.target.value === '') setIsValidUsername(false) }}
                             onChange={handleUserInput}
@@ -120,6 +123,7 @@ const Login = () => {
                             ref={passwordInput}
                             type="password"
                             placeholder="Mật khẩu"
+                            autoComplete='false'
                             onChange={handlePwdInput}
                             onBlur={e => { setIsValidPassword(true); if (e.target.value === '') setIsValidPassword(false) }}
                         />
