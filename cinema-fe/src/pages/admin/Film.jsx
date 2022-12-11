@@ -11,7 +11,7 @@ import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Modal from 'react-bootstrap/Modal';
 const FilmMenu = memo(() => {
-    const [show, setShow] = useState(false);    
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -23,15 +23,15 @@ const FilmMenu = memo(() => {
                         Danh sách phim
                     </FormLabel>
                     <Button className='btn-create' onClick={handleShow}>
-                        <i class="fa fa-plus-square-o" style={{margin:'5px'}}></i>
+                        <i className="fa fa-plus-square-o" style={{ margin: '5px' }}></i>
                         Thêm phim
                     </Button>
                 </FormGroup>
-                <FormGroup  className='table-main'>
+                <FormGroup className='table-main'>
                     <Form className='search-user'>
                         <InputGroup className="mb-3">
                             <Button variant="primary" id="button-addon1">
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                                <i className="fa fa-search" aria-hidden="true"></i>
                             </Button>
                             <Form.Control
                                 aria-label="Example text with button addon"
@@ -42,14 +42,14 @@ const FilmMenu = memo(() => {
                     <Table className='user-table' striped bordered hover size="sm">
                         <thead>
                             <tr>
-                                <th style={{width:'3%'}}>STT</th>
-                                <th style={{width:'15%'}}>Tên phim</th>
-                                <th style={{width:'10%'}}>Đạo diễn</th>
-                                <th style={{width:'25%'}}>Diễn viên</th>
-                                <th style={{width:'16%'}}>Thể loại</th>
-                                <th style={{width:'8%'}}>Khởi chiếu</th>
-                                <th style={{width:'8%'}}>Trạng thái</th>
-                                <th style={{width:'15%'}}>Hành động</th>
+                                <th style={{ width: '3%' }}>STT</th>
+                                <th style={{ width: '15%' }}>Tên phim</th>
+                                <th style={{ width: '10%' }}>Đạo diễn</th>
+                                <th style={{ width: '25%' }}>Diễn viên</th>
+                                <th style={{ width: '16%' }}>Thể loại</th>
+                                <th style={{ width: '8%' }}>Khởi chiếu</th>
+                                <th style={{ width: '8%' }}>Trạng thái</th>
+                                <th style={{ width: '15%' }}>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,8 +63,8 @@ const FilmMenu = memo(() => {
                                 <td><FormCheckInput checked='true'></FormCheckInput></td>
                                 <td>
                                     <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i class="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i class="fa fa-trash"></i>Xóa</Button>
+                                        <Button variant="secondary"><i className="fa fa-pencil"></i>Sửa</Button>
+                                        <Button variant="danger"><i className="fa fa-trash"></i>Xóa</Button>
                                     </FormGroup>
                                 </td>
                             </tr>
@@ -78,8 +78,8 @@ const FilmMenu = memo(() => {
                                 <td><FormCheckInput checked='true'></FormCheckInput></td>
                                 <td>
                                     <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i class="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i class="fa fa-trash"></i>Xóa</Button>
+                                        <Button variant="secondary"><i className="fa fa-pencil"></i>Sửa</Button>
+                                        <Button variant="danger"><i className="fa fa-trash"></i>Xóa</Button>
                                     </FormGroup>
                                 </td>
                             </tr>
@@ -88,7 +88,7 @@ const FilmMenu = memo(() => {
                     </Table>
                     <FormGroup>
                         <Button variant="secondary"><i class="fa fa-refresh"></i></Button>
-                        <Form.Label style={{margin:'10px'}}>1-2 of 2 items</Form.Label>
+                        <Form.Label style={{ margin: '10px' }}>1-2 of 2 items</Form.Label>
                     </FormGroup>
                 </FormGroup>
             </Form>
@@ -97,39 +97,39 @@ const FilmMenu = memo(() => {
                     <Modal.Title>Thêm phim</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputFilmName" class="col-sm-2 col-form-label">Tên phim<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputFilmName"/>
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} for="inputFilmName" className="col-sm-2 col-form-label">Tên phim<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
+                            <input type="text" className="form-control" id="inputFilmName" />
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputDirector" class="col-sm-2 col-form-label">Đạo diễn</label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputDirector"/>
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} for="inputDirector" className="col-sm-2 col-form-label">Đạo diễn</label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
+                            <input type="text" className="form-control" id="inputDirector" />
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputActor" class="col-sm-2 col-form-label">Diễn viên</label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputActor"/>
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} for="inputActor" className="col-sm-2 col-form-label">Diễn viên</label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
+                            <input type="text" className="form-control" id="inputActor" />
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputTypeFilm" class="col-sm-2 col-form-label">Thể loại</label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputTypeFilm"/>
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} for="inputTypeFilm" className="col-sm-2 col-form-label">Thể loại</label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
+                            <input type="text" className="form-control" id="inputTypeFilm" />
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputPremere" class="col-sm-2 col-form-label">Ngày công chiếu<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPremere"/>
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} for="inputPremere" className="col-sm-2 col-form-label">Ngày công chiếu<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
+                            <input type="text" className="form-control" id="inputPremere" />
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputStatus" class="col-sm-2 col-form-label">Trạng thái kích hoạt</label>
-                        <div style={{width:'70%'}} class="col-sm-10">
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} for="inputStatus" className="col-sm-2 col-form-label">Trạng thái kích hoạt</label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
                             <FormCheckInput checked='true'></FormCheckInput>
                         </div>
                     </div>
@@ -138,7 +138,7 @@ const FilmMenu = memo(() => {
                     <Button variant="secondary" onClick={handleClose}>
                         Đóng
                     </Button>
-                    <Button  variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleClose}>
                         Lưu người dùng
                     </Button>
                 </Modal.Footer>
