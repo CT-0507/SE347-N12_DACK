@@ -6,12 +6,15 @@ import Spinner from 'react-bootstrap/esm/Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useWindowDimensions from '../../hook/useWindowDimensions';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 import "./layout.css"
 import { useEffect } from 'react'
 import { useLoginMutation } from './authApiSlice'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
+import { useLocation } from 'react-router-dom'
+import usePersist from '../../hooks/usePersist'
+
 const Login = () => {
     const [isValid, setIsValid] = useState(true)
     const [isValidUsername, setIsValidUsername] = useState(true)
@@ -21,9 +24,11 @@ const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
+    const [persist, setPersist] = usePersist()
     const { width, height } = useWindowDimensions();
     const dispatch = useDispatch()
     const isPC = width > 995
+    const { pathname } = useLocation()
     useEffect(() => {
         setErrMsg('')
     }, [username, password])
@@ -33,6 +38,7 @@ const Login = () => {
     const [login, { isLoading }] = useLoginMutation()
     const handleUserInput = (e) => setUsername(e.target.value)
     const handlePwdInput = (e) => setPassword(e.target.value)
+    const handleToggle = () => setPersist(prev => !prev)
     const canLogin = [username, password].every(value => value !== "")
     const navigate = useNavigate()
     const handleLogin = async (e) => {
@@ -43,7 +49,8 @@ const Login = () => {
                 dispatch(setCredentials({ accessToken }))
                 setUsername('')
                 setPassword('')
-                navigate('/')
+                if (pathname.includes('admin')) navigate('user')
+                else navigate('/')
                 toast("Wow so easy!")
             } catch (err) {
                 console.log(err)
@@ -91,13 +98,20 @@ const Login = () => {
                         {!isValidPassword && <Form.Text className="text-danger ms-2">Vui lòng điền Mật khẩu</Form.Text>}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Lưu đăng nhập" />
+                        <Form.Check
+                            type="checkbox"
+                            id="persist"
+                            onChange={handleToggle}
+                            label="Save login"
+                            checked={persist}
+                        />
                     </Form.Group>
                     {!isValid && <p className="text-danger ms-2">Mật khẩu hoặc tài khoản không đúng</p>}
                     <Form.Text hidden={Boolean(!errMsg)}>{errMsg}</Form.Text>
                     <Button className="w-100" variant="primary" type="submit" disabled={!canLogin}>
                         {isLoading ? <Spinner /> : 'Đăng nhập'}
                     </Button>
+
                     <Link to=''>Quên mật khẩu</Link>
                 </Form>
                 : null}
@@ -130,7 +144,13 @@ const Login = () => {
                         {!isValidPassword && <Form.Text className="text-danger ms-2">Vui lòng điền Mật khẩu</Form.Text>}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Lưu đăng nhập" />
+                        <Form.Check
+                            type="checkbox"
+                            id="persist"
+                            onChange={handleToggle}
+                            label="Save login"
+                            checked={persist}
+                        />
                     </Form.Group>
                     {!isValid && <p className="text-danger ms-2">Mật khẩu hoặc tài khoản không đúng</p>}
                     <Form.Text hidden={Boolean(!errMsg)}>{errMsg}</Form.Text>

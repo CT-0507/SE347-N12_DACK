@@ -9,6 +9,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    name: {
+        type: String,
+        require: true,
+    },
+    email: {
+        type: String,
+        require: true,
+    },
     roles: [{
         type: String,
         default: "User"
