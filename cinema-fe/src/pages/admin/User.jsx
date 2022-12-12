@@ -23,10 +23,11 @@ const UserMenu = memo(() => {
         data: users,
         isSuccess,
         isLoading,
+        refetch,
         isError,
         error
     } = useGetUsersQuery("usersList", {
-        pollingInterval: 15000,
+        pollingInterval: 60000,
         refetchOnFocus: true,
 
     })
@@ -88,42 +89,12 @@ const UserMenu = memo(() => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* <tr>
-                                <td>1</td>
-                                <td>admin</td>
-                                <td>Trần Quốc Cường</td>
-                                <td>19521302@gm.uit.edu.vn</td>
-                                <td>
-                                    <FormCheckInput checked={true}></FormCheckInput>
-                                </td>
-                                <td>
-                                    <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i className="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i className="fa fa-trash"></i>Xóa</Button>
-                                    </FormGroup>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>tuanhd</td>
-                                <td>Hồ Đình Tuấn</td>
-                                <td>19522464@gm.uit.edu.vn</td>
-                                <td>
-                                    <FormCheckInput checked={true}></FormCheckInput>
-                                </td>
-                                <td>
-                                    <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i className="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i className="fa fa-trash"></i>Xóa</Button>
-                                    </FormGroup>
-                                </td>
-                            </tr> */}
                         {content}
                     </tbody>
 
                 </Table>
                 <FormGroup>
-                    <Button variant="secondary"><i className="fa fa-refresh"></i></Button>
+                    <Button variant="secondary" onClick={e => refetch('User')} disabled={isLoading}>{isLoading ? <Spinner /> : <i className="fa fa-refresh"></i>}</Button>
                     <Form.Label style={{ margin: '10px' }}>1-2 of {items} items</Form.Label>
                 </FormGroup>
             </FormGroup>

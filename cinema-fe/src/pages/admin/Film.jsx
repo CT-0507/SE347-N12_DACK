@@ -87,7 +87,7 @@ const FilmMenu = memo(() => {
 
                     </Table>
                     <FormGroup>
-                        <Button variant="secondary"><i class="fa fa-refresh"></i></Button>
+                        <Button variant="secondary"><i className="fa fa-refresh"></i></Button>
                         <Form.Label style={{ margin: '10px' }}>1-2 of 2 items</Form.Label>
                     </FormGroup>
                 </FormGroup>
