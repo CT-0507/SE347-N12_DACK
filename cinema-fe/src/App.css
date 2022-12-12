@@ -5,7 +5,9 @@
 }
 body {
   font-size: 14px;
-  background-color: antiquewhite!important;
+  /* background-color: antiquewhite!important; */
+  /* background-color: white!important; */
+  background: linear-gradient(250deg, rgba(166,65,120,0.8) 0%, rgba(31,191,191,1) 100%);
 }
 .w-100p {
   width: 100px;

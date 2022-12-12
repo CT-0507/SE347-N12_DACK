@@ -1,15 +1,19 @@
 .home-tile {
     display: inline-block;
+    height: fit-content;
     margin:auto;
     text-align: center;
     width: 100%;
     position: relative;
-    background: url('../../img/bg_h3_line.jpg') repeat-x scroll left center rgba(0, 0, 0, 0);
+    background: url('../../img/bg_h3_line.jpg') repeat-x scroll left center rgba(0, 0, 0, 0); 
+    /* background:  linear-gradient(to right, #FF0000, #FE006C,#A505C7,#4510CC,#216C70,#00B100,#FFFF00); */
 }
 
 h2{ 
     width:fit-content;
     margin:auto;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+
+    
 }
 

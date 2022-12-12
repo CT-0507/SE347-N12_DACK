@@ -21,7 +21,7 @@ const LayoutFooter = memo(() => {
                     
                     <Container fluid className='p-0 test'>
                         
-                        <Row className='text-center border-bottom border-top border-white  p-2  '>
+                        <Row className='text-center border-bottom border-top border-white border-5  p-2  '>
 
                             <Col><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>

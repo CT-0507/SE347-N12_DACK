@@ -21,12 +21,12 @@ const Home = memo(() => {
       <Row>
         <Carousels />
       </Row>
-      <Row>
+      <Row className='test'>
         <div className="home-tile">
           <h2>Movie selection</h2>
         </div>
       </Row>
-      <Row>
+      <Row >
         <SlickMovie />
       </Row>
       <Row>
