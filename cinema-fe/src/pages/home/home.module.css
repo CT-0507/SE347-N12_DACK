@@ -6,6 +6,11 @@
     position: relative;
     background: url('../../img/bg_h3_line.jpg') repeat-x scroll left center rgba(0, 0, 0, 0);
 }
+#NoContainer{
+    opacity: 0.1;
+    
+
+}
 
 h2{ 
     width:fit-content;

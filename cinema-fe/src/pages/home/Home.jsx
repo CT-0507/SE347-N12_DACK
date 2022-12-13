@@ -4,16 +4,20 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import React from "react";
 import Button from 'react-bootstrap/esm/Button';
+import classNames from 'classnames/bind'
 
 
 import SlickMovie from './slicks/SlickMovie'
 import SlickEvent from './slicks/SlickEvent'
 import Carousels from './carousel/Carousel'
-import './home.css'
+
+import styles from './home.module.css'
 
 import homePoster from '../../img/u22_homepage.jpg'
 
 import { useEffect, memo } from 'react'
+
+const cx = classNames.bind(styles);
 const Home = memo(() => {
 
 
@@ -27,7 +31,7 @@ const Home = memo(() => {
             <Carousels />
           </Row>
           <Row className="my-2">
-            <div className="home-tile">
+            <div className={cx('home-tile')}>
               <h2 >MOVIE SELECTION</h2>
               
             </div>
@@ -36,7 +40,7 @@ const Home = memo(() => {
             <SlickMovie />
           </Row>
           <Row className="my-2">
-            <div className="home-tile">
+            <div className={cx('home-tile')}>
               <h2>EVENT</h2>
             </div>
           </Row>
@@ -44,7 +48,7 @@ const Home = memo(() => {
             <SlickEvent />
           </Row>
           <Row className="my-2">
-            <div className="home-tile">
+            <div className={cx('home-tile')}>
               <br />
             </div>
           </Row>

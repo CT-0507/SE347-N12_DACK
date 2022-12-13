@@ -26,8 +26,8 @@ const LayoutFooter = memo(() => {
                             <Col><i className="fa fa-camera p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-bullhorn p-2" aria-hidden="true"></i></Col>
                         </Row>
-                        <Row className=' border-bottom border-dark'>
-                            <Col className="py-3">
+                        <Row className=' border-bottom border-dark '>
+                            <Col className="py-3 ">
                                 <h5>PopCorn Couch</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li><Nav.Link as={Link} to="default/about">Giới Thiệu</Nav.Link></li>
@@ -37,7 +37,7 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="default/contact">Liên Hệ Quảng Cáo</Nav.Link></li>
                                 </ul>
                             </Col>
-                            <Col className="py-3">
+                            <Col className="py-3 ">
                                 <h5>Điều khoản sử dụng</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li><Nav.Link as={Link} to="default/terms-conditions">Điều Khoảng Chung</Nav.Link></li>
@@ -72,7 +72,7 @@ const LayoutFooter = memo(() => {
                             </Col>}
                         </Row>
                         {isTablet &&
-                            <Row className=' border-bottom py-2 border-dark'>
+                            <Row className=' border-bottom py-2 border-dark '>
                                 <div className='p-2 text-center bg-secondary rounded-pill'>
                                     <h5>Chăm sóc khách hàng</h5>
                                     <ul className="ul-nav m-0 p-0 py-3">
