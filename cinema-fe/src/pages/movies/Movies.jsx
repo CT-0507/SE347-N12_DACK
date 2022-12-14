@@ -25,7 +25,7 @@ const Movies = memo(() => {
             {Array.from({ length: 8 }).map((_, idx) => (
                 <Col>
                 <Card>
-                    <Link to='#'> <Card.Img variant="top" src={filmPoster} /></Link>
+                    <Link to='/movie-description'> <Card.Img variant="top" src={filmPoster} /></Link>
                     <Card.Body>
                     <Card.Title>CHÚ NGUYỀN TÁI SINH</Card.Title>
                     <Card.Text>

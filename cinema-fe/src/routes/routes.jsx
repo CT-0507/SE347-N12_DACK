@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import Layout from "../components/layout/default/Layout"
 import Home from "../pages/home/Home"
 import Movies from "../pages/movies/Movies"
+import MovieDescription from "../pages/movies/movieDescription/MovieDescription/"
 import NotFound from "../pages/NotFound/NotFound"
 import Spinner from "react-bootstrap/Spinner"
 import About from "../pages/about/About"
@@ -34,8 +35,9 @@ const AppRoute = () => {
                     <Route path='register' element={<SignUp />} />
                 </Route>
 
-                <Route path='movies' element={<Movies />} >
-
+                <Route path='movies' element={<Movies />} >    
+                </Route>
+                <Route path='movie-description' element={<MovieDescription />} >
                 </Route>
                 <Route path='default' element={<ListLayout />}>
                     <Route index element={<About />} />
