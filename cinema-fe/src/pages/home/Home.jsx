@@ -11,7 +11,7 @@ import SlickMovie from './slicks/SlickMovie'
 import SlickEvent from './slicks/SlickEvent'
 import Carousels from './carousel/Carousel'
 
-import styles from './home.module.css'
+import styles from './home.module.scss'
 
 import homePoster from '../../img/u22_homepage.jpg'
 

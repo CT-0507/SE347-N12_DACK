@@ -1,7 +1,7 @@
 
 .slick-prev:before, .slick-next:before {
-    font-size:40px;
-    color:red;
+    font-size:40px !important;
+    color:red !important;
 
 }
 .item{
@@ -12,10 +12,10 @@
     margin:auto;
     
 }
-h4{
+/* h4{
     margin:auto;
     text-align: center;  
-}
+} */
 @media only screen and (max-width: 600px) {
     .slick-prev{
         left: 40px!important;

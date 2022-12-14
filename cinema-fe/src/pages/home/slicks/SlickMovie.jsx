@@ -12,7 +12,12 @@ import poster from '../../../img/poster_adam_4_1.jpg'
 import poster1 from '../../../img/violent_night-700x1000px_1_.jpg'
 import poster2 from '../../../img/hpm_poster_2x3_1_.jpg'
 import poster3 from '../../../img/late_shift_-_700x1000.jpg'
-import './slick.css'
+import styles from './slick.module.css'
+import classNames from 'classNames/bind'
+
+import {useState} from 'react';
+
+const cx = classNames.bind(styles)
 function SlickMovie() {
     let settings = {
         dots: false,
@@ -48,13 +53,18 @@ function SlickMovie() {
             }
         ]
     };
+    // const [isClick , setIsClick] = useState(false);
 
+    // const toggleIsClick =()=>{
+    //   setIsClick(current=>!current)
+    // }
+  
 
     return (
-
-        <Slider {...settings}>
-            <div className="item">
-                <Card style={{ width: '18rem' }} className="card-film">
+        // <div id ={isClick ?'NoContainer':'container'}>
+        <Slider {...settings} >
+            <div className={cx('item')}>
+                <Card style={{ width: '18rem' }} className={cx('card-film')}>
                     <Card.Img variant="top" src={poster3} />
                     <Card.Body>
                         <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
@@ -63,14 +73,14 @@ function SlickMovie() {
                             bulk of the card's content.
                             </Card.Text> */}
                         <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
+                            <Col><Button variant="primary" >Xem trailer</Button></Col>
                             <Col><Button variant="primary">Đặt vé</Button></Col>
                         </Row>
                     </Card.Body>
                 </Card>
             </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
+            <div className={cx('item')}>
+                <Card style={{ width: '18rem' }} className={cx('card-film')}>
                     <Card.Img variant="top" src={poster1} />
                     <Card.Body>
                         <Card.Title>Đêm Hung Tàn</Card.Title>
@@ -86,8 +96,8 @@ function SlickMovie() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
+            <div className={cx('item')}>
+                <Card style={{ width: '18rem' }} className={cx('card-film')}>
                     <Card.Img variant="top" src={poster3} />
                     <Card.Body>
                         <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
@@ -102,8 +112,8 @@ function SlickMovie() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
+            <div className={cx('item')}>
+                <Card style={{ width: '18rem' }} className={cx('card-film')}>
                     <Card.Img variant="top" src={poster1} />
                     <Card.Body>
                         <Card.Title>Đêm Hung Tàn</Card.Title>
@@ -118,8 +128,8 @@ function SlickMovie() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
+            <div className={cx('item')}>
+                <Card style={{ width: '18rem' }} className={cx('card-film')}>
                     <Card.Img variant="top" src={poster3} />
                     <Card.Body>
                         <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
@@ -134,8 +144,8 @@ function SlickMovie() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
+            <div className={cx('item')}>
+                <Card style={{ width: '18rem' }} className={cx('card-film')}>
                     <Card.Img variant="top" src={poster1} />
                     <Card.Body>
                         <Card.Title>Đêm Hung Tàn</Card.Title>
@@ -151,6 +161,7 @@ function SlickMovie() {
                 </Card>
             </div>
         </Slider>
+        // </div>
     );
 }
 

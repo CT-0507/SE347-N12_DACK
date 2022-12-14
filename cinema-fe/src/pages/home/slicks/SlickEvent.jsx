@@ -12,7 +12,10 @@ import poster from '../../../img/birthday_popcorn_box_240x201.png'
 import poster1 from '../../../img/happywednesday240x201_1.jpg'
 import poster2 from '../../../img/culture-240_1.jpg'
 
-import './slick.css'
+import styles from './slick.module.css'
+import classNames from 'classNames/bind'
+
+const cx = classNames.bind(styles)
 function SlickEvent()
 {
     let settings = {
@@ -52,37 +55,37 @@ function SlickEvent()
     return ( 
         
             <Slider {...settings}>
-                <div className="item">
+                <div className={cx('item')}>
                     <Card style={{ width: '18rem' }} className="card-film">
                         <Card.Img variant="top" src={poster} />
                         
                     </Card>
                 </div>
-                <div className="item">
+                <div className={cx('item')}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={poster1} />
                         
                     </Card>
                 </div>
-                <div className="item">
+                <div className={cx('item')}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={poster2} />
                         
                     </Card>
                 </div>
-                <div className="item">
+                <div className={cx('item')}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={poster1} />
                        
                     </Card>
                 </div>
-                <div className="item">
+                <div className={cx('item')}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={poster} />
                         
                     </Card>
                 </div>
-                <div className="item">
+                <div className={cx('item')}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={poster1} />
                         
