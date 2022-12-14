@@ -12,7 +12,7 @@ import poster from '../../../img/birthday_popcorn_box_240x201.png'
 import poster1 from '../../../img/happywednesday240x201_1.jpg'
 import poster2 from '../../../img/culture-240_1.jpg'
 
-import styles from './slick.module.css'
+import styles from './slick.css'
 import classNames from 'classNames/bind'
 
 const cx = classNames.bind(styles)
@@ -23,6 +23,7 @@ function SlickEvent()
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
+        
         responsive: [
             {
               breakpoint: 1024,
@@ -56,37 +57,37 @@ function SlickEvent()
         
             <Slider {...settings}>
                 <div className={cx('item')}>
-                    <Card style={{ width: '18rem' }} className="card-film">
-                        <Card.Img variant="top" src={poster} />
+                    <Card style={{ width: '18rem' }} className={cx('card-film')}>
+                        <Card.Img variant="top" src={poster}  />
                         
                     </Card>
                 </div>
                 <div className={cx('item')}>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className={cx('card-film')}>
                         <Card.Img variant="top" src={poster1} />
                         
                     </Card>
                 </div>
                 <div className={cx('item')}>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className={cx('card-film')}>
                         <Card.Img variant="top" src={poster2} />
                         
                     </Card>
                 </div>
                 <div className={cx('item')}>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className={cx('card-film')}>
                         <Card.Img variant="top" src={poster1} />
                        
                     </Card>
                 </div>
                 <div className={cx('item')}>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className={cx('card-film')}>
                         <Card.Img variant="top" src={poster} />
                         
                     </Card>
                 </div>
                 <div className={cx('item')}>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className={cx('card-film')}>
                         <Card.Img variant="top" src={poster1} />
                         
                     </Card>

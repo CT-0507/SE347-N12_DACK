@@ -8,16 +8,18 @@ import { Link } from 'react-router-dom';
 
 import filmPoster from '../../img/rasuk_poster_-1080x1350_1_.jpg'
 
-import './movies.css'
+import styles from'./movies.module.scss'
+import classNames from 'classnames/bind'
 
+const cx = classNames.bind(styles);
 import { useEffect, memo } from 'react'
 const Movies = memo(() => {
     useEffect(() => {
     }, [])
     return (
-      <Container className="container-movies">
+      <Container >
         <header>
-            <h1 className='tile-movies'>Phim đang chiếu</h1>
+            <h1 className={cx('tile-movies')}>Phim đang chiếu</h1>
         </header>
         <Row xs={2} md={4} className="g-4">
             {Array.from({ length: 8 }).map((_, idx) => (

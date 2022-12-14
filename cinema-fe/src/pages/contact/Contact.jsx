@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import styles  from './contact.module.css'
+import styles  from './contact.module.scss'
 import { memo } from 'react'
 const currentPath = "LIÊN HỆ VỚI CHÚNG TÔI"
 const Contact = memo(() => {

@@ -14,10 +14,10 @@ const FAQ = memo(() => {
         <div className="container-faq">
             <Container  >
                 <Row >
-                    <h4 className="text-danger fw-bolder ">Phim</h4>
+                    <h4 className="text-danger">Phim</h4>
                     <Accordion defaultActiveKey="0">
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header   >Phân loại phim P, C13, C16, C18 là gì?</Accordion.Header>
+                            <Accordion.Header className='a'>Phân loại phim P, C13, C16, C18 là gì?</Accordion.Header>
                             <Accordion.Body>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

@@ -29,7 +29,8 @@
     "react-toastify": "^9.1.1",
     "react-youtube": "^10.1.0",
     "sass": "^1.56.2",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
