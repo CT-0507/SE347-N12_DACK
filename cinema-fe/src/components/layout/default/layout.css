@@ -27,11 +27,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 .header-banner a img:hover,
 .header-banner__mobile a img:hover {
     background-color: gray;
 }
+.box{
+    
+    background:grey;
+    border: 2px solid black;
+    
+}
+.text-nav{
+    color:white;
+    font-weight:bold;   
+    padding:10px;
+    border: 1px;
+   
+}
+.text-nav:hover{
+    color:rgb(94, 5, 5);
+    border:1px solid black;
+}
+
+
 .navbar .subnav:hover,
 .navbar .subnav:active {
     background-color: gray;
