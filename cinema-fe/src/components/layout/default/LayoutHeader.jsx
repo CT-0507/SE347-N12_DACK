@@ -8,9 +8,12 @@ import React from 'react';
 import Tippy from '@tippyjs/react/headless';
 
 import './layout.css';
-import useWindowDimensions from '../../../hook/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import logo from '../../../img/logo.png'
 import { useState, memo } from 'react'
+import useAuth from '../../../hooks/useAuth';
+import { useSendLogoutMutation } from '../../../pages/account/authApiSlice'
+import Spinner from 'react-bootstrap/Spinner';
 const LayoutHeader = memo(() => {
     const { height, width } = useWindowDimensions();
     const isMobile = width <= 765
@@ -25,13 +28,28 @@ const LayoutHeader = memo(() => {
     const onOpenMenu = () => {
         setMobileNavbar(prev => !prev)
     }
-    const onNaviate = () => {
+    const { username, name } = useAuth()
+    const onNavigate = () => {
         setMobileNavbar(false)
         setOpenFilmNav(false)
         setOpenTheater(false)
         setOpenMember(false)
         setOpenCulteplex(false)
     }
+
+    // Log out
+    const [sendLogout, {
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useSendLogoutMutation()
+
+    if (isError) {
+        console.log(error)
+        alert(error?.data?.message)
+    }
+
     return (
         <>
             {!isMobile && <header className='cusNavbar'>
@@ -57,13 +75,26 @@ const LayoutHeader = memo(() => {
                             null
                         }
                         <Nav className='ms-auto'>
-                            <Nav.Link as={Link} style={{ paddingLeft: 0, paddingRight: 0 }} to="account/login">
-                                <i className="fa fa-user" aria-hidden="true"></i>
-                                ĐĂNG NHẬP /
-                            </Nav.Link>
-                            <Nav.Link as={Link} to="account/register">
-                                ĐĂNG KÝ
-                            </Nav.Link>
+                            {name
+                                ? <>
+                                    <Nav.Link as={Link} style={{ paddingLeft: 0, paddingRight: 0 }} className="me-2" to="account/login">
+                                        <i className="fa fa-user" aria-hidden="true"></i>
+                                        {name}
+                                    </Nav.Link>
+                                    <Nav.Link disabled={isLoading} style={{ paddingLeft: 0, paddingRight: 0 }} onClick={sendLogout}>
+                                        {isLoading ? <Spinner /> : <i className="fa fa-sign-out" aria-hidden="true" />}
+                                    </Nav.Link>
+                                </>
+                                : <>
+                                    <Nav.Link as={Link} style={{ paddingLeft: 0, paddingRight: 0 }} to="account/login">
+                                        <i className="fa fa-user" aria-hidden="true"></i>
+                                        ĐĂNG NHẬP /
+                                    </Nav.Link>
+                                    <Nav.Link as={Link} to="account/register">
+                                        ĐĂNG KÝ
+                                    </Nav.Link>
+                                </>
+                            }
                         </Nav>
                         <div className="languageToggle d-none">
                             <button>
@@ -165,10 +196,10 @@ const LayoutHeader = memo(() => {
                         </Nav>
                         {openFilmNav &&
                             <>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Phim Đang Chiếu
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Phim Sắp Chiếu
                                 </Nav.Link>
                             </>
@@ -182,13 +213,13 @@ const LayoutHeader = memo(() => {
                         </Nav>
                         {openTheater &&
                             <>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Tất Cả Các Rạp
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Rạp Đặt Biệt
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Rạp 3D
                                 </Nav.Link>
                             </>
@@ -202,10 +233,10 @@ const LayoutHeader = memo(() => {
                         </Nav>
                         {openMember &&
                             <>
-                                <Nav.Link as={Link} to='/account/login' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/account/login' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Tài Khoản CGV
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Quyền Lợi
                                 </Nav.Link>
                             </>
@@ -218,16 +249,16 @@ const LayoutHeader = memo(() => {
                         </Nav>
                         {openCulteplex &&
                             <>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Quầy Online
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Thuê Rạp & Vé Nhóm
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     e-CGV
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNaviate}>
+                                <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Thẻ Quà Tặng
                                 </Nav.Link>
                             </>

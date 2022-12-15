@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Container from 'react-bootstrap/esm/Container'
 import ListLayoutHeader from './ListLayoutHeader'
 import './listLayout.css'
-import useWindowDimensions from '../../../hook/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { useNavigate, useLocation } from "react-router-dom"
 const ListLayout = memo(() => {
     const { width, height } = useWindowDimensions();

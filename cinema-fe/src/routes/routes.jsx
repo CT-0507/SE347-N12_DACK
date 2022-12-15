@@ -20,24 +20,38 @@ import SignUp from '../pages/account/SignUp'
 // import Admin from '../pages/admin/Admin'
 import AccountLayout from '../components/layout/accountLayout/AccountLayout'
 import AdminLayout from '../components/layout/adminLayout/adminLayout'
+import AdminPrefetch from "../pages/admin/adminPrefetch"
+import PersistLogin from "../pages/account/PersistLogin"
+import useAuth from "../hooks/useAuth"
+import AdminHeader from "../components/layout/adminLayout/adminLayoutHeader"
+// import AdminLogin from "../pages/admin/AdminLogin"
 const AppRoute = () => {
+    const { status } = useAuth()
     return (
         <Routes>
-            <Route path='/admin' element={<AdminLayout/>}>
-                    <Route path='user' element={<UserMenu/>} />
-                    <Route path='film' element={<FilmMenu/>} />
+            <Route path='/admin'>
+                <Route index element={<Login />} />
+                <Route path='login' element={<Login />} />
+                <Route element={<PersistLogin />} >
+                    <Route element={<AdminPrefetch />}>
+                        <Route element={<AdminLayout />}>
+                            <Route path='user' element={<UserMenu />} />
+                            <Route path='film' element={<FilmMenu />} />
+                        </Route>
+                    </Route>
                 </Route>
+            </Route>
             <Route path='/' element={<Layout />}>
+
                 <Route index element={<Home />} />
                 <Route path='account' element={<AccountLayout />}>
                     <Route index element={<Login />} />
                     <Route path='login' element={<Login />} />
                     <Route path='register' element={<SignUp />} />
                 </Route>
-
-                <Route path='movies' element={<Movies />} >    
-                </Route>
-                <Route path='movie-description' element={<MovieDescription />} >
+                <Route element={<PersistLogin />}>
+                    <Route path='movies' element={<Movies />} />
+                    <Route path='movie-description' element={<MovieDescription />} />
                 </Route>
                 <Route path='default' element={<ListLayout />}>
                     <Route index element={<About />} />
@@ -48,7 +62,6 @@ const AppRoute = () => {
                     <Route path='payment-policy' element={<PaymentPolicy />} />
                     <Route path='faq' element={<FAQ />} />
                 </Route>
-                <Route path='*' element={<NotFound />} />
             </Route>
             <Route path='*' element={<NotFound />} />
         </Routes>
