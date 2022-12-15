@@ -87,7 +87,7 @@ const LayoutHeader = memo(() => {
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
                                             <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Phim Đang Chiếu</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Phim sắp Chiếu</div></Link>   
+                                            <Link as={Link} to='a' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Phim sắp Chiếu</div></Link>   
                                     </div>
                                   )}
                             >
