@@ -70,7 +70,7 @@ function SlickMovie() {
                 </Card>
             </div>
             <div className="item">
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} className="card-film">
                     <Card.Img variant="top" src={poster1} />
                     <Card.Body>
                         <Card.Title>Đêm Hung Tàn</Card.Title>
@@ -87,7 +87,7 @@ function SlickMovie() {
                 </Card>
             </div>
             <div className="item">
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} className="card-film">
                     <Card.Img variant="top" src={poster3} />
                     <Card.Body>
                         <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
@@ -103,7 +103,7 @@ function SlickMovie() {
                 </Card>
             </div>
             <div className="item">
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} className="card-film">
                     <Card.Img variant="top" src={poster1} />
                     <Card.Body>
                         <Card.Title>Đêm Hung Tàn</Card.Title>
@@ -119,7 +119,7 @@ function SlickMovie() {
                 </Card>
             </div>
             <div className="item">
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} className="card-film">
                     <Card.Img variant="top" src={poster3} />
                     <Card.Body>
                         <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
@@ -135,7 +135,7 @@ function SlickMovie() {
                 </Card>
             </div>
             <div className="item">
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} className="card-film">
                     <Card.Img variant="top" src={poster1} />
                     <Card.Body>
                         <Card.Title>Đêm Hung Tàn</Card.Title>

@@ -59,31 +59,31 @@ function SlickEvent()
                     </Card>
                 </div>
                 <div className="item">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="card-film">
                         <Card.Img variant="top" src={poster1} />
                         
                     </Card>
                 </div>
                 <div className="item">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="card-film">
                         <Card.Img variant="top" src={poster2} />
                         
                     </Card>
                 </div>
                 <div className="item">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="card-film">
                         <Card.Img variant="top" src={poster1} />
                        
                     </Card>
                 </div>
                 <div className="item">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="card-film">
                         <Card.Img variant="top" src={poster} />
                         
                     </Card>
                 </div>
                 <div className="item">
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="card-film">
                         <Card.Img variant="top" src={poster1} />
                         
                     </Card>
