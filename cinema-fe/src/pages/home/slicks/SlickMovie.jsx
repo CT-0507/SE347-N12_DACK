@@ -106,6 +106,7 @@ const FilmItem = ({ filmId }) => {
             <div className="item">
                 <Card style={{ width: '18rem' }} className="card-film">
                     <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+
                     <Card.Body>
                         <Card.Title style={{ textOverflow: "ellipsis", overflow: "hidden", wordWrap: "break-word", whiteSpace: "nowrap", }}>{film.filmName}</Card.Title>
                         {/* <Card.Text>

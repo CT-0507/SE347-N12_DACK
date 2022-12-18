@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import Layout from "../components/layout/default/Layout"
 import Home from "../pages/home/Home"
 import Movies from "../pages/movies/Movies"
+import MovieDescription from "../pages/movieDescription/MovieDescription"
 import NotFound from "../pages/NotFound/NotFound"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
@@ -46,7 +47,7 @@ const AppRoute = () => {
                     </Route>
                     <Route element={<PersistLogin />}>
                         <Route path='movies' element={<Movies />} >
-
+                          <Route path='movie-description' element={<MovieDescription />} ></Route>
                         </Route>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />

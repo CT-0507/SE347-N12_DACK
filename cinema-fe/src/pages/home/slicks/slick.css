@@ -12,10 +12,7 @@
     margin:auto;
     
 }
-h4{
-    margin:auto;
-    text-align: center;  
-}
+
 @media only screen and (max-width: 600px) {
     .slick-prev{
         left: 40px!important;

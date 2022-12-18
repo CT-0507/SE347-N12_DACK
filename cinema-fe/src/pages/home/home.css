@@ -7,7 +7,7 @@
     background: url('../../img/bg_h3_line.jpg') repeat-x scroll left center rgba(0, 0, 0, 0);
 }
 
-h2{ 
+.home-tile h2{ 
     width:fit-content;
     margin:auto;
     background-color: antiquewhite;

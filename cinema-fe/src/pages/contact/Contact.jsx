@@ -10,7 +10,7 @@ const currentPath = "LIÊN HỆ VỚI CHÚNG TÔI"
 const Contact = memo(() => {
     document.title = "LIÊN HỆ VỚI CHÚNG TÔI | CGV"
     return (
-        <Container>
+        <Container className="contact-container">
             <Row>
                 <h1 className="text-danger fw-bolder">{currentPath}</h1>
             </Row>
