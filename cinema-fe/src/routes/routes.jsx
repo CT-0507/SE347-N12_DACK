@@ -3,7 +3,6 @@ import Layout from "../components/layout/default/Layout"
 import Home from "../pages/home/Home"
 import Movies from "../pages/movies/Movies"
 import NotFound from "../pages/NotFound/NotFound"
-import Spinner from "react-bootstrap/Spinner"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
 import TermsUse from "../pages/termsUse/TermsUse"
@@ -21,12 +20,8 @@ import AccountLayout from '../components/layout/accountLayout/AccountLayout'
 import AdminLayout from '../components/layout/adminLayout/adminLayout'
 import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
-import useAuth from "../hooks/useAuth"
-import AdminHeader from "../components/layout/adminLayout/adminLayoutHeader"
 import UserPrefetch from "../components/userPrefetch/UserPrefetch"
-// import AdminLogin from "../pages/admin/AdminLogin"
 const AppRoute = () => {
-    const { status } = useAuth()
     return (
         <Routes>
             <Route path='/admin'>

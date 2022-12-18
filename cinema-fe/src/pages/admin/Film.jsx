@@ -11,7 +11,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import FormCheckInput from 'react-bootstrap/FormCheckInput';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FilmForm from './filmsApi/Film/FilmForm';
-import { useGetFilmsQuery, useUpdateFilmMutation, useDeleteFilmMutation, useAddNewFilmMutation } from './filmsApi/filmsApiSlice';
+import { useGetFilmsQuery, useDeleteFilmMutation } from './filmsApi/filmsApiSlice';
 import { selectFilmById } from "./filmsApi/filmsApiSlice"
 import { useSelector } from 'react-redux';
 const FilmMenu = memo(() => {

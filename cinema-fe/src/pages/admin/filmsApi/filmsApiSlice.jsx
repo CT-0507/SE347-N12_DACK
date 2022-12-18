@@ -4,7 +4,9 @@ import {
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../../../app/api/apiSlice"
 
-const filmsAdapter = createEntityAdapter({})
+const filmsAdapter = createEntityAdapter({
+    sortComparer: (a, b) => b.updatedAt.localeCompare(a.updatedAt)
+})
 
 const initialState = filmsAdapter.getInitialState()
 

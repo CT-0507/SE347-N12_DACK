@@ -1,10 +1,8 @@
 const Film = require('../models/Film')
-const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const formidable = require('formidable')
 const fs = require('fs');
 const path = require('path');
-const { exit } = require('process');
 const { randomUUID } = require('crypto');
 // @desc Get all films
 // @route GET /films
@@ -16,7 +14,7 @@ const getAllFilms = asyncHandler(async (req, res) => {
     }
     res.json(films)
 })
-// @desc Create all films
+// @desc Create new films
 // @route POST /films
 // @access Private
 const createNewFilm = asyncHandler(async (req, res, next) => {
