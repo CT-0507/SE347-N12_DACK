@@ -3,11 +3,11 @@ import Form from 'react-bootstrap/Form'
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useRef, memo } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
-import FormLabel from 'react-bootstrap/esm/FormLabel';
-import FormGroup from 'react-bootstrap/esm/FormGroup';
+import FormLabel from 'react-bootstrap/FormLabel';
+import FormGroup from 'react-bootstrap/FormGroup';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/esm/Button';
-import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
+import Button from 'react-bootstrap/Button';
+import FormCheckInput from 'react-bootstrap/FormCheckInput';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 import { selectUserById, useDeleteUserMutation, useGetUsersQuery } from './usersApi/usersApiSlice';
@@ -39,7 +39,6 @@ const UserMenu = memo(() => {
     if (isError) content = <tr><td colSpan={100}>{error?.data?.message}</td></tr>
     let items = 0
     if (isSuccess) {
-        console.log(users)
         const { ids } = users
         items = ids?.length
         content = ids?.length

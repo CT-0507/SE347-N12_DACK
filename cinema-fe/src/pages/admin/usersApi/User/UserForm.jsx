@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
-import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
+import FormCheckInput from 'react-bootstrap/FormCheckInput';
 import Button from "react-bootstrap/Button"
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUserById, useUpdateUserMutation, useAddNewUserMutation } from '../usersApiSlice';
 import { ROLES } from '../../../../config/roles';
-import Spinner from 'react-bootstrap/esm/Spinner';
+import Spinner from 'react-bootstrap/Spinner';
 const UserForm = ({ userId, handleClose }) => {
     let user
     if (userId) {
@@ -38,8 +37,6 @@ const UserForm = ({ userId, handleClose }) => {
         isError: isUpdateError,
         error: updateError
     }] = useUpdateUserMutation()
-    useEffect(() => {
-    }, [username, password, passwordRe, email, name, active])
     const handleConfirm = userId
         ? async (userId) => {
             if (password) {

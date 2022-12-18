@@ -22,6 +22,30 @@ const filmSchema = new mongoose.Schema(
             type: String,
             require: true,
         },
+        poster: {
+            type: String,
+            require: true,
+        },
+        description: {
+            type: String,
+            require: true,
+        },
+        rated: {
+            type: String,
+            require: true,
+        },
+        trailerLink: {
+            type: String,
+            require: true,
+        },
+        time: {
+            type: String,
+            require: true,
+        },
+        language: {
+            type: String,
+            require: true,
+        }
     },
     {
         timestamps: true,

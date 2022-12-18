@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -13,6 +13,9 @@ import poster1 from '../../../img/violent_night-700x1000px_1_.jpg'
 import poster2 from '../../../img/hpm_poster_2x3_1_.jpg'
 import poster3 from '../../../img/late_shift_-_700x1000.jpg'
 import './slick.css'
+import { selectFilmById, useGetFilmsQuery } from "../../admin/filmsApi/filmsApiSlice";
+import Spinner from "react-bootstrap/Spinner";
+import { useSelector } from "react-redux";
 function SlickMovie() {
     let settings = {
         dots: false,
@@ -48,8 +51,27 @@ function SlickMovie() {
             }
         ]
     };
-
-
+    const {
+        data: films,
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    } = useGetFilmsQuery("filmsList", {
+        pollingInterval: 60000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    })
+    let content
+    if (isLoading) content = <div className="w-100 h-100"><Spinner /></div>
+    if (isError) content = <div className="w-100 h-100">{error?.data?.message}</div>
+    if (isSuccess) {
+        const { ids } = films
+        console.log(films)
+        content = ids?.length
+            ? ids.map(filmId => <FilmItem key={filmId} filmId={filmId} />)
+            : null
+    }
     return (
 
         <Slider {...settings}>
@@ -69,89 +91,34 @@ function SlickMovie() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={poster1} />
-                    <Card.Body>
-                        <Card.Title>Đêm Hung Tàn</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                            </Card.Text> */}
-
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={poster3} />
-                    <Card.Body>
-                        <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                            </Card.Text> */}
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={poster1} />
-                    <Card.Body>
-                        <Card.Title>Đêm Hung Tàn</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                            </Card.Text> */}
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={poster3} />
-                    <Card.Body>
-                        <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                            </Card.Text> */}
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
-            <div className="item">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={poster1} />
-                    <Card.Body>
-                        <Card.Title>Đêm Hung Tàn</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                            </Card.Text> */}
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
+            {content}
         </Slider>
     );
 }
 
 export default SlickMovie;
+
+const FilmItem = ({ filmId }) => {
+    const film = useSelector(state => selectFilmById(state, filmId))
+    console.log(film)
+    if (film) {
+        return (
+            <div className="item">
+                <Card style={{ width: '18rem' }} className="card-film">
+                    <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+                    <Card.Body>
+                        <Card.Title style={{ textOverflow: "ellipsis", overflow: "hidden", wordWrap: "break-word", whiteSpace: "nowrap", }}>{film.filmName}</Card.Title>
+                        {/* <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                                </Card.Text> */}
+                        <Row>
+                            <Col><Button variant="primary">Xem trailer</Button></Col>
+                            <Col><Button variant="primary">Đặt vé</Button></Col>
+                        </Row>
+                    </Card.Body>
+                </Card>
+            </div >
+        )
+    } else return null
+}

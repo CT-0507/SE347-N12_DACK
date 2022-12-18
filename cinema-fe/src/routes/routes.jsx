@@ -23,6 +23,7 @@ import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
 import useAuth from "../hooks/useAuth"
 import AdminHeader from "../components/layout/adminLayout/adminLayoutHeader"
+import UserPrefetch from "../components/userPrefetch/UserPrefetch"
 // import AdminLogin from "../pages/admin/AdminLogin"
 const AppRoute = () => {
     const { status } = useAuth()
@@ -41,27 +42,28 @@ const AppRoute = () => {
                 </Route>
             </Route>
             <Route path='/' element={<Layout />}>
-
-                <Route index element={<Home />} />
-                <Route path='account' element={<AccountLayout />}>
-                    <Route index element={<Login />} />
-                    <Route path='login' element={<Login />} />
-                    <Route path='register' element={<SignUp />} />
-                </Route>
-                <Route element={<PersistLogin />}>
-                    <Route path='movies' element={<Movies />} >
-
+                <Route element={<UserPrefetch />}>
+                    <Route index element={<Home />} />
+                    <Route path='account' element={<AccountLayout />}>
+                        <Route index element={<Login />} />
+                        <Route path='login' element={<Login />} />
+                        <Route path='register' element={<SignUp />} />
                     </Route>
-                    <Route path='default' element={<ListLayout />}>
-                        <Route index element={<About />} />
-                        <Route path='about' element={<About />} />
-                        <Route path='contact' element={<Contact />} />
-                        <Route path='terms-conditions' element={<Term />} />
-                        <Route path='terms-use' element={<TermsUse />} />
-                        <Route path='payment-policy' element={<PaymentPolicy />} />
-                        <Route path='faq' element={<FAQ />} />
+                    <Route element={<PersistLogin />}>
+                        <Route path='movies' element={<Movies />} >
+
+                        </Route>
+                        <Route path='default' element={<ListLayout />}>
+                            <Route index element={<About />} />
+                            <Route path='about' element={<About />} />
+                            <Route path='contact' element={<Contact />} />
+                            <Route path='terms-conditions' element={<Term />} />
+                            <Route path='terms-use' element={<TermsUse />} />
+                            <Route path='payment-policy' element={<PaymentPolicy />} />
+                            <Route path='faq' element={<FAQ />} />
+                        </Route>
+                        <Route path='*' element={<NotFound />} />
                     </Route>
-                    <Route path='*' element={<NotFound />} />
                 </Route>
             </Route>
             <Route path='*' element={<NotFound />} />
