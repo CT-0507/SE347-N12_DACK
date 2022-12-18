@@ -1,147 +1,144 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import Form from 'react-bootstrap/Form'
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useRef, memo } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
-import FormLabel from 'react-bootstrap/esm/FormLabel';
-import FormGroup from 'react-bootstrap/esm/FormGroup';
+import FormLabel from 'react-bootstrap/FormLabel';
+import FormGroup from 'react-bootstrap/FormGroup';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/esm/Button';
-import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
+import Button from 'react-bootstrap/Button';
+import FormCheckInput from 'react-bootstrap/FormCheckInput';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Modal from 'react-bootstrap/Modal';
-const UserMenu = memo(() => {
-    const [show, setShow] = useState(false);    
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
+import { selectUserById, useDeleteUserMutation, useGetUsersQuery } from './usersApi/usersApiSlice';
+import Spinner from 'react-bootstrap/Spinner';
+import { useSelector } from 'react-redux';
+import UserForm from './usersApi/User/UserForm';
+const UserMenu = memo(() => {
+    const [show, setShow] = useState(false);
+    const [showEdit, setShowEdit] = useState(false)
+    const handleShow = () => setShow(true);
+    const [editUserId, setEditUserId] = useState()
+    const {
+        data: users,
+        isSuccess,
+        isLoading,
+        refetch,
+        isError,
+        error
+    } = useGetUsersQuery("usersList", {
+        pollingInterval: 60000,
+        refetchOnFocus: true,
+
+    })
+    const handleShowEdit = useCallback(() => {
+        setShowEdit(true)
+    }, [setShowEdit])
+    let content
+    if (isLoading) content = <tr><td colSpan={100}><Spinner /></td></tr>
+    if (isError) content = <tr><td colSpan={100}>{error?.data?.message}</td></tr>
+    let items = 0
+    if (isSuccess) {
+        const { ids } = users
+        items = ids?.length
+        content = ids?.length
+            ? ids.map((userId, index) => <User key={userId} counter={index + 1} userId={userId} handleShowEdit={handleShowEdit} setEditUserId={setEditUserId} />)
+            : null
+    }
+
+    const handleClose = useCallback(() => {
+        setShow(false)
+    }, [setShow])
+    const handleCloseEdit = useCallback(() => {
+        setShowEdit(false)
+    }, [setShowEdit])
     return (
         <>
-            <Form>
-                <FormGroup className='top-main'>
-                    <FormLabel className='main-name'>
-                        Danh sách người dùng
-                    </FormLabel>
-                    <Button className='btn-create' onClick={handleShow}>
-                        <i class="fa fa-plus-square-o" style={{margin:'5px'}}></i>
-                        Thêm
-                    </Button>
-                </FormGroup>
-                <FormGroup  className='table-main'>
-                    <Form className='search-user'>
-                        <InputGroup className="mb-3">
-                            <Button variant="primary" id="button-addon1">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            </Button>
-                            <Form.Control
-                                aria-label="Example text with button addon"
-                                aria-describedby="basic-addon1"
-                            />
-                        </InputGroup>
-                    </Form>
-                    <Table className='user-table' striped bordered hover size="sm">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên đăng nhập</th>
-                                <th>Tên người dùng</th>
-                                <th>Email</th>
-                                <th>Trạng thái kích hoạt</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>admin</td>
-                                <td>Trần Quốc Cường</td>
-                                <td>19521302@gm.uit.edu.vn</td>
-                                <td>
-                                    <FormCheckInput checked='true'></FormCheckInput>
-                                </td>
-                                <td>
-                                    <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i class="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i class="fa fa-trash"></i>Xóa</Button>
-                                    </FormGroup>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>tuanhd</td>
-                                <td>Hồ Đình Tuấn</td>
-                                <td>19522464@gm.uit.edu.vn</td>
-                                <td>
-                                    <FormCheckInput checked='true'></FormCheckInput>
-                                </td>
-                                <td>
-                                    <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i class="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i class="fa fa-trash"></i>Xóa</Button>
-                                    </FormGroup>
-                                </td>
-                            </tr>
-                        </tbody>
+            <FormGroup className='top-main'>
+                <FormLabel className='main-name'>
+                    Danh sách người dùng
+                </FormLabel>
+                <Button className='btn-create' onClick={handleShow}>
+                    <i className="fa fa-plus-square-o" style={{ margin: '5px' }}></i>
+                    Thêm
+                </Button>
+            </FormGroup>
+            <FormGroup className='table-main'>
+                <Form className='search-user'>
+                    <InputGroup className="mb-3">
+                        <Button variant="primary" id="button-addon1">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                        </Button>
+                        <Form.Control
+                            aria-label="Example text with button addon"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                </Form>
+                <Table className='user-table' striped bordered hover size="sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Tên người dùng</th>
+                            <th>Email</th>
+                            <th>Vai trò</th>
+                            <th>Trạng thái kích hoạt</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {content}
+                    </tbody>
 
-                    </Table>
-                    <FormGroup>
-                        <Button variant="secondary"><i class="fa fa-refresh"></i></Button>
-                        <Form.Label style={{margin:'10px'}}>1-2 of 2 items</Form.Label>
-                    </FormGroup>
+                </Table>
+                <FormGroup>
+                    <Button variant="secondary" onClick={e => refetch('User')} disabled={isLoading}>{isLoading ? <Spinner /> : <i className="fa fa-refresh"></i>}</Button>
+                    <Form.Label style={{ margin: '10px' }}>1-2 of {items} items</Form.Label>
                 </FormGroup>
-            </Form>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Thêm người dùng</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputUserName" class="col-sm-2 col-form-label">Tên đăng nhập<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputUserName"/>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputFullName" class="col-sm-2 col-form-label">Tên người dùng<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputFullName"/>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputEmail" class="col-sm-2 col-form-label">Email<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail"/>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword"/>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputConfirmPassword" class="col-sm-2 col-form-label">Xác nhận mật khẩu<span className='text-danger' style={{position: "relative", top:"-5px"}}>&#8903;</span></label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                        <input type="password" class="form-control" id="inputConfirmPassword"/>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label style={{width:'30%'}} for="inputStatus" class="col-sm-2 col-form-label">Trạng thái kích hoạt</label>
-                        <div style={{width:'70%'}} class="col-sm-10">
-                            <FormCheckInput checked='true'></FormCheckInput>
-                        </div>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Đóng
-                    </Button>
-                    <Button  variant="primary" onClick={handleClose}>
-                        Lưu người dùng
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            </FormGroup>
+            {show && <UserForm handleClose={handleClose} />}
+            {showEdit && <UserForm handleClose={handleCloseEdit} userId={editUserId} />}
         </>
     )
 })
 export default UserMenu
+
+const User = ({ counter, userId, handleShowEdit, setEditUserId }) => {
+    const user = useSelector(state => selectUserById(state, userId))
+    const handleEidt = () => {
+        handleShowEdit()
+        setEditUserId(userId)
+    }
+    const [deleteUser, {
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useDeleteUserMutation()
+    const handleDelete = async () => {
+        try {
+            await deleteUser({ id: user.id })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    return (
+        <tr>
+            <td>{counter}</td>
+            <td>{user?.name}</td>
+            <td>{user?.username}</td>
+            <td>{user?.email}</td>
+            <td>{user?.roles.toString().replaceAll(',', ', ')}</td>
+            <td>
+                <FormCheckInput defaultChecked={user?.active} disabled={true}></FormCheckInput>
+            </td>
+            <td>
+                <FormGroup className='btn-action'>
+                    <Button variant="secondary" onClick={handleEidt}><i className="fa fa-pencil"></i>Sửa</Button>
+                    <Button variant="danger" onClick={handleDelete}><i className="fa fa-trash"></i>Xóa</Button>
+                </FormGroup>
+            </td>
+        </tr>
+    )
+}

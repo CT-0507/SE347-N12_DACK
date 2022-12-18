@@ -6,6 +6,6 @@ router.route('/')
     .get(verifyJWT, usersController.getAllUsers)
     .post(usersController.createNewUser)
     .patch(usersController.updateUser)
-    .delete(usersController.deleteUser)
+    .delete(verifyJWT, usersController.deleteUser)
 
 module.exports = router
