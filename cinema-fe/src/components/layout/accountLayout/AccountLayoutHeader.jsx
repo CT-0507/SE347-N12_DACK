@@ -9,12 +9,12 @@ const AccountLayoutHeader = memo(() => {
     const [currentPath, setCurrentPath] = useState()
     return (
         <>
-            <Navbar className='account-header-nav p-0'>
-                <Nav className="w-50 text-center p-3 py-0">
-                    <Nav.Link className='text-white w-100 ' style={pathname.includes('login') ? { borderBottom: '4px solid #fff' } : null} as={Link} to='login'>ĐĂNG NHẬP</Nav.Link>
+            <Navbar className='account-header-nav p-0 m-auto w-50'>
+                <Nav className="w-50 p-0 m-0">
+                    <Nav.Link className='w-100 text-white text-center py-2 p-0 m-0 w-100 nav-itemL' style={pathname.includes('login') ? { borderBottom: '3px solid #7F0000', background:'#7F0000'} : null} as={Link} to='login'>ĐĂNG NHẬP</Nav.Link>
                 </Nav>
-                <Nav className="w-50 text-center p-3 py-0">
-                    <Nav.Link className='text-white w-100 p-2' style={pathname.includes('register') ? { borderBottom: '1px solid #fff' } : null} as={Link} to='register'>ĐĂNG KÝ</Nav.Link>
+                <Nav className="w-50 p-0 m-0">
+                    <Nav.Link className='w-100 text-white text-center py-2 p-0 m-0 w-100 nav-itemR' style={pathname.includes('register') ? { borderBottom: '3px solid #7F0000',  background:'#7F0000' } : null} as={Link} to='register'>ĐĂNG KÝ</Nav.Link>
                 </Nav>
             </Navbar>
         </>

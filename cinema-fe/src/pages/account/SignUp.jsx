@@ -79,7 +79,7 @@ const SignUp = memo(() => {
     }
     return (
         <>
-            {errMsg && <p className='text-danger'>{errMsg}</p>}
+            {/* {errMsg && <p className='text-danger'>{errMsg}</p>} */}
             {!isPC ?
                 <Form className='p-2'>
                     <ToastContainer />
@@ -163,7 +163,7 @@ const SignUp = memo(() => {
                 </Form>
                 : null}
             {isPC ?
-                <Form className='w-pc'>
+                <Form className='w-pc my-3'>
                     <ToastContainer />
                     <Form.Group className="mb-3" controlId="formName">
                         <Form.Label>Họ và tên<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
