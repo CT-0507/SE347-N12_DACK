@@ -19,24 +19,24 @@ const Movies = memo(() => {
         <header>
             <h1 className='tile-movies'>Phim đang chiếu</h1>
         </header>
-        <Row xs={2} md={4} className="g-4">
-            {Array.from({ length: 8 }).map((_, idx) => (
-                <Col>
-                <Card>
-                    <Link to='/movie-description'> <Card.Img variant="top" src={filmPoster} /></Link>
-                    <Card.Body>
-                    <Card.Title>CHÚ NGUYỀN TÁI SINH</Card.Title>
-                    <Card.Text>
-                        Thể lại: kinh dị
-                        <br/> Thời lượng: 95 phút
-                        <br/> Khởi chiếu: 9-12-2022
-                    </Card.Text>
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="danger">Đặt vé</Button></Col>  
-                        </Row>
-                    </Card.Body>
-                </Card>
+        <Row xs={2} md={4} className="g-4" >
+            {['1','2','3'].map((listFilm) => (
+                <Col key={listFilm} >
+                    <Card >
+                        <Link to='/movie-description'> <Card.Img variant="top" src={filmPoster} /></Link>
+                        <Card.Body>
+                        <Card.Title>CHÚ NGUYỀN TÁI SINH</Card.Title>
+                        <Card.Text>
+                            Thể lại: kinh dị
+                            <br/> Thời lượng: 95 phút
+                            <br/> Khởi chiếu: 9-12-2022
+                        </Card.Text>
+                            <Row>
+                                <Col><Button variant="primary">Xem trailer</Button></Col>
+                                <Col><Button variant="danger">Đặt vé</Button></Col>  
+                            </Row>
+                        </Card.Body>
+                    </Card>
                 </Col>
             ))}
         </Row>

@@ -34,7 +34,7 @@ const LayoutHeader = memo(() => {
         <>
             {!isMobile && <header className='cusNavbar'>
                 <Container>
-                    <Navbar className='w-75 m-auto'>
+                    <Navbar className='w-75 m-auto py-0'>
                         {!isTablet && !isMobile ?
                             <Nav
                                 className='me-auto'>
@@ -81,7 +81,7 @@ const LayoutHeader = memo(() => {
                     {!isTablet && <Navbar>
                         <Nav>
                         <Tippy
-                                interactive
+                                // interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
                                             <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Phim Đang Chiếu</div></Link>
@@ -92,7 +92,7 @@ const LayoutHeader = memo(() => {
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Phim</Nav.Link>
                             </Tippy>
                             <Tippy
-                                interactive
+                                // interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
                                             <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
@@ -104,7 +104,7 @@ const LayoutHeader = memo(() => {
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Rạp Phim</Nav.Link>
                             </Tippy>
                             <Tippy
-                                interactive
+                                // interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
                                             <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản CGV</div></Link>
@@ -115,7 +115,7 @@ const LayoutHeader = memo(() => {
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Thành viên</Nav.Link>
                             </Tippy>
                             <Tippy
-                                interactive
+                                // interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
                                             <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Quầy Online</div></Link>
