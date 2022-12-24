@@ -132,7 +132,7 @@ const Login = () => {
                 </Form>
                 : null}
             {isPC ?
-                <Form className='w-pc' onSubmit={handleLogin}>
+                <Form className='w-pc my-3' onSubmit={handleLogin}>
                     <ToastContainer />
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email hoặc số điện thoại</Form.Label>

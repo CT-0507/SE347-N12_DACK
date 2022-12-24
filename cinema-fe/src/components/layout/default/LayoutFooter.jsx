@@ -18,7 +18,7 @@ const LayoutFooter = memo(() => {
         <>
             <footer style={{ overflow: 'hidden' }}>
                 {!isMobile ?
-                    <Container fluid className='p-0'>
+                    <Container fluid className='p-0 px-4'>
                         <Row className='text-center  border-bottom border-top p-2  border-dark'>
                             <Col><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
                             <Col><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>

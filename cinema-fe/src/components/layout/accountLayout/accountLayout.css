@@ -1,5 +1,17 @@
 .account-header-nav {
-    background-color: red;
+    background-color: antiquewhite;
     color: #fff!important;
     font-weight: 900;
+}
+.nav-itemL{
+    background-color: #FF4646;
+    border-radius: 0px !important;
+    border-bottom-left-radius: 3px !important;
+}
+.nav-itemR{
+    background-color: #FF4646;
+    border-radius: 0px !important;
+    /* border-bottom-left-radius: 3px !important; */
+    border-bottom-right-radius: 3px !important;
+    border-bottom-left-radius: 0px !important;
 }

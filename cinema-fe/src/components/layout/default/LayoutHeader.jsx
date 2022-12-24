@@ -52,7 +52,7 @@ const LayoutHeader = memo(() => {
         <>
             {!isMobile && <header className='cusNavbar'>
                 <Container>
-                    <Navbar className='w-75 m-auto'>
+                    <Navbar className='w-75 m-auto py-0'>
                         {!isTablet && !isMobile ?
                             <Nav
                                 className='me-auto'>
