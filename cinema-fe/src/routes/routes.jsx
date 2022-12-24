@@ -3,6 +3,7 @@ import Layout from "../components/layout/default/Layout"
 import Home from "../pages/home/Home"
 import Movies from "../pages/movies/Movies"
 import MovieDescription from "../pages/movieDescription/MovieDescription"
+import ShowTimes from "../pages/showTimes/ShowTimes"
 import NotFound from "../pages/NotFound/NotFound"
 import Spinner from "react-bootstrap/Spinner"
 import About from "../pages/about/About"
@@ -39,6 +40,9 @@ const AppRoute = () => {
 
                 </Route>
                 <Route path='movie-description' element={<MovieDescription />} >
+
+                </Route>
+                <Route path='show-times' element={<ShowTimes/>} >
 
                 </Route>
                 <Route path='default' element={<ListLayout />}>
