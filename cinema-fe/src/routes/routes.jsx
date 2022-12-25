@@ -46,9 +46,9 @@ const AppRoute = () => {
                         <Route path='register' element={<SignUp />} />
                     </Route>
                     <Route element={<PersistLogin />}>
-                        <Route path='movies' element={<Movies />} >
-                          <Route path='movie-description' element={<MovieDescription />} ></Route>
-                        </Route>
+                        <Route path='movies' element={<Movies />} />
+
+                        <Route path='movie-description' element={<MovieDescription />} />
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />
                             <Route path='about' element={<About />} />

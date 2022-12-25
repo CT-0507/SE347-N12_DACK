@@ -75,22 +75,6 @@ function SlickMovie() {
     return (
 
         <Slider {...settings}>
-            <div className="item">
-                <Card style={{ width: '18rem' }} className="card-film">
-                    <Card.Img variant="top" src={poster3} />
-                    <Card.Body>
-                        <Card.Title>Phi Vụ Nửa Đêm</Card.Title>
-                        {/* <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                            </Card.Text> */}
-                        <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
             {content}
         </Slider>
     );
