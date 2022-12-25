@@ -21,10 +21,11 @@ const FilmForm = memo(({ filmId, handleClose }) => {
     const [tags, setTags] = useState(film ? film.tags.join(", ") : "")
     const [description, setDescription] = useState(film ? film.description : "")
     const [rated, setRated] = useState(film ? film.rated : "")
-    const [trailerLink, setTrailerLink] = useState(film ? film.rated : "")
+    const [trailerLink, setTrailerLink] = useState(film ? film.trailerLink : "")
     const [time, setTime] = useState(film ? film.time : "")
     const [language, setLanguage] = useState(film ? film.language : "")
     const [readFile, setReadFile] = useState(film ? true : false)
+    const [filmStatus, setFilmStatus] = useState(film ? film.filmStatus : "")
     const canSave = [filmName, directors, actors, premiereDay, tags, trailerLink, rated, time, language].every(item => item !== "") && readFile
     const firstInput = useRef()
     const posterInput = useRef()
@@ -59,6 +60,7 @@ const FilmForm = memo(({ filmId, handleClose }) => {
             formData.append('trailerLink', trailerLink)
             formData.append('time', time)
             formData.append('language', language)
+            formData.append('filmStatus', filmStatus)
             formData.append('poster', posterInput.current.files[0])
             await updateFilm(formData)
             if (isUpdateError) console.log(updateError)
@@ -79,6 +81,7 @@ const FilmForm = memo(({ filmId, handleClose }) => {
                     formData.append('trailerLink', trailerLink)
                     formData.append('time', time)
                     formData.append('language', language)
+                    formData.append('filmStatus', filmStatus)
                     formData.append('poster', posterInput.current.files[0])
                     await addNewFilm(formData)
                 }
@@ -154,6 +157,12 @@ const FilmForm = memo(({ filmId, handleClose }) => {
                         <label style={{ width: '30%' }} htmlFor="inputLinkTrailer" className="col-sm-2 col-form-label">Link Trailer<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
                         <div style={{ width: '70%' }} className="col-sm-10">
                             <input type="text" className="form-control" id="inputLinkTrailer" value={trailerLink} onChange={e => setTrailerLink(e.target.value)} />
+                        </div>
+                    </div>
+                    <div className="mb-3 row">
+                        <label style={{ width: '30%' }} htmlFor="inputFilmStatus" className="col-sm-2 col-form-label">Trạng thái phim<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
+                        <div style={{ width: '70%' }} className="col-sm-10">
+                            <input type="text" className="form-control" id="inputFilmStatus" value={filmStatus} onChange={e => setFilmStatus(e.target.value)} />
                         </div>
                     </div>
                     <div className="mb-3 row">

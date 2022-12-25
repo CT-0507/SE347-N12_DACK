@@ -45,6 +45,10 @@ const filmSchema = new mongoose.Schema(
         language: {
             type: String,
             require: true,
+        },
+        filmStatus: {
+            type: String,
+            require: true,
         }
     },
     {

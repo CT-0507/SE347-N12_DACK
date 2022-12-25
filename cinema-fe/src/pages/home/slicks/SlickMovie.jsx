@@ -7,11 +7,7 @@ import Col from 'react-bootstrap/Col';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import poster from '../../../img/poster_adam_4_1.jpg'
-import poster1 from '../../../img/violent_night-700x1000px_1_.jpg'
-import poster2 from '../../../img/hpm_poster_2x3_1_.jpg'
-import poster3 from '../../../img/late_shift_-_700x1000.jpg'
+import { Link } from "react-router-dom";
 import './slick.css'
 import { selectFilmById, useGetFilmsQuery } from "../../admin/filmsApi/filmsApiSlice";
 import Spinner from "react-bootstrap/Spinner";
@@ -84,12 +80,14 @@ export default SlickMovie;
 
 const FilmItem = ({ filmId }) => {
     const film = useSelector(state => selectFilmById(state, filmId))
-    console.log(film)
     if (film) {
         return (
             <div className="item">
                 <Card style={{ width: '18rem' }} className="card-film">
-                    <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+                    <Link to={`/movie-description/${film.id}`}>
+                        <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+                    </Link>
+
 
                     <Card.Body>
                         <Card.Title style={{ textOverflow: "ellipsis", overflow: "hidden", wordWrap: "break-word", whiteSpace: "nowrap", }}>{film.filmName}</Card.Title>

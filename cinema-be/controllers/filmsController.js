@@ -31,9 +31,9 @@ const createNewFilm = asyncHandler(async (req, res, next) => {
         var fileName = `poster-${randomUUID()}.${fileEx}`
         var newpath = path.join(__dirname, "..", "public", fileName)
         var saveFileErr
-        const { directors, actors, tags, premiereDay, filmName, description, rated, trailerLink, language, time } = fields
+        const { directors, actors, tags, premiereDay, filmName, description, rated, trailerLink, language, time, filmStatus } = fields
         console.log(fields, files)
-        if (!directors || !actors || !tags || !premiereDay || !filmName || !description || !rated || !trailerLink || !time || !language) {
+        if (!directors || !actors || !tags || !premiereDay || !filmName || !description || !rated || !trailerLink || !time || !language || !filmStatus) {
             saveFileErr = "All field are required "
             return res.status(400).json({ message: 'All field are required' })
         }
@@ -51,7 +51,7 @@ const createNewFilm = asyncHandler(async (req, res, next) => {
             }
         });
         if (saveFileErr) return;
-        const filmObject = { filmName, directors: directorsList, actors: actorsList, tags: tagsList, premiereDay, poster: fileName, description, rated, trailerLink, language, time }
+        const filmObject = { filmName, directors: directorsList, actors: actorsList, tags: tagsList, premiereDay, poster: fileName, description, rated, trailerLink, language, time, filmStatus: filmStatus }
         const film = await Film.create(filmObject)
         if (film) {
             res.status(201).json({ message: `New Film ${film.filmName} created` })
@@ -72,8 +72,8 @@ const updateFilm = asyncHandler(async (req, res) => {
             next(err)
             return;
         }
-        const { filmId, directors, actors, tags, premiereDay, filmName, description, time, language } = fields
-        if (!filmId || !directors || !actors || !tags || !premiereDay || !filmName || !description || !rated || !trailerLink || !language || !time) {
+        const { filmId, directors, actors, tags, premiereDay, filmName, description, time, language, filmStatus } = fields
+        if (!filmId || !directors || !actors || !tags || !premiereDay || !filmName || !description || !rated || !trailerLink || !language || !time || !filmStatus) {
             saveFileErr = "All field are required "
             return res.status(400).json({ message: 'All field are required' })
         }
@@ -125,6 +125,7 @@ const updateFilm = asyncHandler(async (req, res) => {
         film.trailerLink = trailerLink
         film.language = language
         film.time = time
+        film.filmStatus = filmStatus
         const updatedFilm = await film.save()
         if (updatedFilm) {
             res.status(201).json({ message: `${film.filmName} updated` })

@@ -3,6 +3,7 @@ import {
     createEntityAdapter
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../../../app/api/apiSlice"
+import { useSelector } from 'react-redux';
 
 const filmsAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.updatedAt.localeCompare(a.updatedAt)
@@ -86,6 +87,24 @@ const selectfilmsData = createSelector(
 export const {
     selectAll: selectAllfilms,
     selectById: selectFilmById,
-    selectIds: selectFilmIds
+    selectIds: selectFilmIds,
     // Pass in a selector that returns the films slice of state
 } = filmsAdapter.getSelectors(state => selectfilmsData(state) ?? initialState)
+const selectActive = (state, option) => option
+export const selectActiveFilm = createSelector(
+    [selectfilmsResult, selectActive],
+    (filmsResult, option) => {
+        const { ids } = filmsResult.data
+        let result = []
+        ids.forEach(id => {
+            const film = useSelector(state => selectFilmById(state, id))
+
+            if (film.filmStatus === option) result.push(film)
+        });
+        return result
+    }
+)
+
+
+
+

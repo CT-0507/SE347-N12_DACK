@@ -3,3 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* { textOverflow: "ellipsis", overflow: "hidden", wordWrap: "break-word", whiteSpace: "nowrap", } */
+.word-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
