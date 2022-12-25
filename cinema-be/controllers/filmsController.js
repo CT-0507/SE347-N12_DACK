@@ -4,6 +4,7 @@ const formidable = require('formidable')
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
+const mongoose = require("mongoose")
 // @desc Get all films
 // @route GET /films
 // @access Public
@@ -151,7 +152,22 @@ const deleteFilm = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'User not found' })
     }
 
+
+
     const result = await film.deleteOne()
+    const filePath = path.join(__dirname, "..", "public", film.poster)
+    fs.stat(filePath, function (err, stats) {
+        console.log(stats);//here we got all information of file in stats variable
+
+        if (err) {
+            return console.error(err);
+        }
+
+        fs.unlink(filePath, function (err) {
+            if (err) return console.log(err);
+            console.log('file deleted successfully');
+        });
+    });
 
     const reply = `Username ${result.filmName} with ID ${result._id} deleted`
 

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
+const slug = require('mongoose-slug-generator')
 
+mongoose.plugin(slug)
 const filmSchema = new mongoose.Schema(
     {
         filmName: {
@@ -49,7 +51,8 @@ const filmSchema = new mongoose.Schema(
         filmStatus: {
             type: String,
             require: true,
-        }
+        },
+        slug: { type: String, slug: "filmName" }
     },
     {
         timestamps: true,
