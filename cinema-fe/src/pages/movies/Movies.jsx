@@ -20,8 +20,8 @@ const Movies = memo(() => {
             <h1 className='tile-movies'>Phim đang chiếu</h1>
         </header>
         <Row xs={2} md={4} className="g-4">
-            {Array.from({ length: 8 }).map((_, idx) => (
-                <Col>
+            {['1','2','3'].map((listFilm) => (
+                <Col key={listFilm}>
                 <Card>
                     <Link to='/movie-description'> <Card.Img variant="top" src={filmPoster} /></Link>
                     <Card.Body>
