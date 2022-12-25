@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -89,7 +90,7 @@ const FilmItem = ({ filmId }) => {
         return (
             <div className="item">
                 <Card style={{ width: '18rem' }} className="card-film">
-                    <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+                    <Link to='movie-description'><Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} /></Link>
 
                     <Card.Body>
                         <Card.Title style={{ textOverflow: "ellipsis", overflow: "hidden", wordWrap: "break-word", whiteSpace: "nowrap", }}>{film.filmName}</Card.Title>
@@ -98,8 +99,8 @@ const FilmItem = ({ filmId }) => {
                                 bulk of the card's content.
                                 </Card.Text> */}
                         <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
+                            <Col><Link to='movie-description'><Button variant="primary">Xem trailer</Button></Link></Col>
+                            <Col><Link to='movie-description'><Button variant="primary">Đặt vé</Button></Link></Col>
                         </Row>
                     </Card.Body>
                 </Card>
