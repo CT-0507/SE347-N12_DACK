@@ -1,5 +1,0 @@
-20221208	22:35:16	5243fffb-7fbd-4c2d-99a9-6f3be3f03bf2	Error: secretOrPrivateKey must have a value	POST	/auth/	undefined
-20221208	23:54:27	f4d54957-59b8-4071-a5c7-07961e719d3d	Error: Not allowed by CORS	OPTIONS	/auth	http://localhost:5173
-20221208	23:55:51	d540e4e9-0261-4704-ba05-ef613f399c9b	Error: Not allowed by CORS	OPTIONS	/auth	http://localhost:5173
-20221208	23:58:11	8833e54f-27f8-405c-8a97-4efb12b8f403	Error: Not allowed by CORS	OPTIONS	/auth	http://localhost:5173
-20221209	00:01:09	ba982449-f2bf-4a91-94d7-b08df34f480c	Error: Not allowed by CORS	OPTIONS	/auth	http://localhost:5173

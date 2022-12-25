@@ -18,7 +18,7 @@ const login = asyncHandler(async (req, res) => {
     if (!foundUser || !foundUser.active) {
         return res.status(401).json({ message: 'Unauthorized' })
     }
-
+    console.log(foundUser)
     const match = await bcrypt.compare(password, foundUser.password)
 
     if (!match) return res.status(401).json({ message: 'Unauthorized' })
@@ -27,7 +27,8 @@ const login = asyncHandler(async (req, res) => {
         {
             "UserInfo": {
                 "username": foundUser.username,
-                "roles": foundUser.roles
+                "roles": foundUser.roles,
+                "name": foundUser.name
             }
         },
         process.env.ACCESS_TOKEN_SECRET,
@@ -35,7 +36,7 @@ const login = asyncHandler(async (req, res) => {
     )
 
     const refreshToken = jwt.sign(
-        { "username": foundUser.username },
+        { "username": foundUser.username, "name": foundUser.name },
         process.env.REFRESH_TOKEN_SECRET,
         { expiresIn: '7d' }
     )
@@ -76,7 +77,8 @@ const refresh = (req, res) => {
                 {
                     "UserInfo": {
                         "username": foundUser.username,
-                        "roles": foundUser.roles
+                        "roles": foundUser.roles,
+                        "name": foundUser.name,
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,

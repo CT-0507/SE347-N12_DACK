@@ -1,35 +1,35 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema(
+const cinemaSchema = new mongoose.Schema(
     {
-        username: {
-            type: String,
-            required: true
-        },
-        password: {
-            type: String,
-            required: true
-        },
-        name: {
+        cinemaName: {
             type: String,
             require: true,
         },
-        email: {
+        location: {
             type: String,
             require: true,
         },
-        roles: [{
+        description: {
             type: String,
-            default: "User"
+            require: true,
+        },
+        rooms: [{
+            type: String,
+            require: true
         }],
         active: {
             type: Boolean,
             default: true
-        }
+        },
+        cinemaPicture: [{
+            type: String,
+            require: true
+        }]
     },
     {
         timestamps: true,
     }
 )
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Cinema', cinemaSchema)

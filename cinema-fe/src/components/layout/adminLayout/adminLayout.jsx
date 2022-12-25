@@ -11,14 +11,14 @@ const AdminLayout = memo(() => {
         <>
             <div className="container-admin">
                 <div className="header-admin">
-                    <AdminHeader></AdminHeader>
+                    <AdminHeader />
                 </div>
                 <div className="body-admin">
                     <div className="sidebar-admin">
                         <AdminSidebar></AdminSidebar>
                     </div>
                     <div className="main-admin">
-                        <Outlet/>
+                        <Outlet />
                     </div>
                 </div>
             </div>

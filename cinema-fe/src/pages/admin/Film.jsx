@@ -1,23 +1,65 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, useRef, memo } from 'react'
+import { useState, useRef, memo, useEffect, useCallback } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
-import FormLabel from 'react-bootstrap/esm/FormLabel';
-import FormGroup from 'react-bootstrap/esm/FormGroup';
+import FormLabel from 'react-bootstrap/FormLabel';
+import FormGroup from 'react-bootstrap/FormGroup';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/esm/Button';
-import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+import FormCheckInput from 'react-bootstrap/FormCheckInput';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Modal from 'react-bootstrap/Modal';
+import FilmForm from './filmsApi/Film/FilmForm';
+import { useGetFilmsQuery, useDeleteFilmMutation } from './filmsApi/filmsApiSlice';
+import { selectFilmById } from "./filmsApi/filmsApiSlice"
+import { useSelector } from 'react-redux';
 const FilmMenu = memo(() => {
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const [filmName, setFilmName] = useState('')
+    const [directors, setDirectors] = useState('')
+    const [actors, setActors] = useState('')
+    const [premiereDay, setPremiereDay] = useState('')
+    const [tags, setTags] = useState('')
+    const [readFile, setReadFile] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+    const [editFilmId, setEditFilmId] = useState()
+    let canSave = [filmName, directors, actors, premiereDay, tags].every(item => item !== '') && readFile
+    const {
+        data: films,
+        isSuccess,
+        isLoading,
+        refetch,
+        isError,
+        error
+    } = useGetFilmsQuery("filmsList", {
+        pollingInterval: 60000,
+        refetchOnFocus: true,
+    })
+    let content
+    if (isLoading) content = <tr><td colSpan={100}><Spinner /></td></tr>
+    if (isError) content = <tr><td colSpan={100}>{error?.data?.message}</td></tr>
+    let items = 0
+    const handleShowEdit = useCallback(() => {
+        setShowEdit(true)
+    }, [setShowEdit])
+    if (isSuccess) {
+        const { ids } = films
+        items = ids?.length
+        content = ids?.length
+            ? ids.map((filmId, index) => <Film key={filmId} counter={index + 1} filmId={filmId} handleShowEdit={handleShowEdit} setEditFilmId={setEditFilmId} />)
+            : null
+    }
+    const handleClose = useCallback(() => {
+        setShow(false)
+    }, [setShow])
+    const handleCloseEdit = useCallback(() => {
+        setShowEdit(false)
+    }, [setShowEdit])
     return (
         <>
-            <Form>
+            <div>
                 <FormGroup className='top-main'>
                     <FormLabel className='main-name'>
                         Danh sách phim
@@ -53,97 +95,58 @@ const FilmMenu = memo(() => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Âm lượng hủy diệt</td>
-                                <td>Hwang In-Ho</td>
-                                <td>Kim Rae Won, Lee Jong Suk, Park Byung Eun, Jung Sang Hoon, Cha Eun Woo</td>
-                                <td>Hành Động, Hồi hộp </td>
-                                <td>09/12/2022</td>
-                                <td><FormCheckInput checked='true'></FormCheckInput></td>
-                                <td>
-                                    <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i className="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i className="fa fa-trash"></i>Xóa</Button>
-                                    </FormGroup>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Hung thủ vô hình</td>
-                                <td>Yoon Jong-Seok</td>
-                                <td>So Ji-Sub, Kim Yu- jin, Nana, Choi Kwang-Il</td>
-                                <td>Tâm Lý, Tội phạm</td>
-                                <td>09/12/2022</td>
-                                <td><FormCheckInput checked='true'></FormCheckInput></td>
-                                <td>
-                                    <FormGroup className='btn-action'>
-                                        <Button variant="secondary"><i className="fa fa-pencil"></i>Sửa</Button>
-                                        <Button variant="danger"><i className="fa fa-trash"></i>Xóa</Button>
-                                    </FormGroup>
-                                </td>
-                            </tr>
+                            {content}
                         </tbody>
 
                     </Table>
                     <FormGroup>
-                        <Button variant="secondary"><i class="fa fa-refresh"></i></Button>
+                        <Button variant="secondary" onClick={() => refetch("Film")}><i className="fa fa-refresh"></i></Button>
                         <Form.Label style={{ margin: '10px' }}>1-2 of 2 items</Form.Label>
                     </FormGroup>
                 </FormGroup>
-            </Form>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Thêm phim</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="mb-3 row">
-                        <label style={{ width: '30%' }} for="inputFilmName" className="col-sm-2 col-form-label">Tên phim<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
-                        <div style={{ width: '70%' }} className="col-sm-10">
-                            <input type="text" className="form-control" id="inputFilmName" />
-                        </div>
-                    </div>
-                    <div className="mb-3 row">
-                        <label style={{ width: '30%' }} for="inputDirector" className="col-sm-2 col-form-label">Đạo diễn</label>
-                        <div style={{ width: '70%' }} className="col-sm-10">
-                            <input type="text" className="form-control" id="inputDirector" />
-                        </div>
-                    </div>
-                    <div className="mb-3 row">
-                        <label style={{ width: '30%' }} for="inputActor" className="col-sm-2 col-form-label">Diễn viên</label>
-                        <div style={{ width: '70%' }} className="col-sm-10">
-                            <input type="text" className="form-control" id="inputActor" />
-                        </div>
-                    </div>
-                    <div className="mb-3 row">
-                        <label style={{ width: '30%' }} for="inputTypeFilm" className="col-sm-2 col-form-label">Thể loại</label>
-                        <div style={{ width: '70%' }} className="col-sm-10">
-                            <input type="text" className="form-control" id="inputTypeFilm" />
-                        </div>
-                    </div>
-                    <div className="mb-3 row">
-                        <label style={{ width: '30%' }} for="inputPremere" className="col-sm-2 col-form-label">Ngày công chiếu<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
-                        <div style={{ width: '70%' }} className="col-sm-10">
-                            <input type="text" className="form-control" id="inputPremere" />
-                        </div>
-                    </div>
-                    <div className="mb-3 row">
-                        <label style={{ width: '30%' }} for="inputStatus" className="col-sm-2 col-form-label">Trạng thái kích hoạt</label>
-                        <div style={{ width: '70%' }} className="col-sm-10">
-                            <FormCheckInput checked='true'></FormCheckInput>
-                        </div>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Đóng
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Lưu người dùng
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            </div>
+            {show && <FilmForm handleClose={handleClose} />}
+            {showEdit && <FilmForm handleClose={handleCloseEdit} filmId={editFilmId} />}
         </>
     )
 })
+
+const Film = ({ counter, filmId, handleShowEdit, setEditFilmId }) => {
+    const film = useSelector(state => selectFilmById(state, filmId))
+    const handleEidt = () => {
+        handleShowEdit()
+        setEditFilmId(filmId)
+    }
+    const [deleteFilm, {
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useDeleteFilmMutation()
+    const handleDelete = async () => {
+        try {
+            await deleteFilm({ id: film.id })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    return (
+        <tr>
+            <td>{counter}</td>
+            <td>{film?.filmName}</td>
+            <td>{film?.directors?.join(", ")}</td>
+            <td>{film?.actors?.join(", ")}</td>
+            <td>{film?.tags.join(", ")}</td>
+            <td>{film?.premiereDay}</td>
+            <td><FormCheckInput defaultChecked={film} disabled></FormCheckInput></td>
+            <td>
+                <FormGroup className='btn-action'>
+                    <Button variant="secondary" onClick={() => handleEidt()}><i className="fa fa-pencil"></i>Sửa</Button>
+                    <Button variant="danger" onClick={handleDelete}><i className="fa fa-trash"></i>Xóa</Button>
+                </FormGroup>
+            </td>
+        </tr>
+    )
+}
+
 export default FilmMenu

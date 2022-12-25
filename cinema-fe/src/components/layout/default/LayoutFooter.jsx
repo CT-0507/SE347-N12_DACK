@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import useWindowDimensions from '../../../hook/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import logo from '../../../img/logo.png'
 import certificate from '../../../img/cong-thuong.png'
 const LayoutFooter = memo(() => {

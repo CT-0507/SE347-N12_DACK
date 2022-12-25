@@ -6,7 +6,7 @@ import Spinner from 'react-bootstrap/esm/Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useWindowDimensions from '../../hook/useWindowDimensions';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 import "react-datepicker/dist/react-datepicker.css";
 import "./layout.css"
 import { useEffect } from 'react'
@@ -16,13 +16,15 @@ const SignUp = memo(() => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
     const [passwordRe, setPasswordRe] = useState('')
     const [isValidName, setIsValidName] = useState(true)
+    const [isValidUsername, setIsValidUsername] = useState(true)
     const [isValidPassword, setIsValidPassword] = useState(true)
     const [isValidRePassword, setIsValidRePassword] = useState(true)
     const [isValidEmail, setIsValidEmail] = useState(true)
-    const canRegister = [username, password, email, passwordRe].every(value => value !== '')
-    const usernameInput = useRef()
+    const canRegister = [username, password, name, email, passwordRe].every(value => value !== '')
+    const firstInput = useRef()
     const passwordInput = useRef()
     const passwordReInput = useRef()
     const userEmailInput = useRef()
@@ -34,13 +36,14 @@ const SignUp = memo(() => {
 
     useEffect(() => {
         setIsValidName(username !== "")
+        setIsValidUsername(username !== "")
         setIsValidPassword(password !== "")
         setIsValidEmail(email !== "")
         setIsValidRePassword(passwordRe === password)
         setErrMsg()
     }, [username, password, email, passwordRe])
     useEffect(() => {
-        usernameInput.current.focus()
+        firstInput.current.focus()
     }, [])
     const [signUp, { isLoading }] = useSignUpMutation()
     const [errMsg, setErrMsg] = useState()
@@ -49,7 +52,7 @@ const SignUp = memo(() => {
         e.preventDefault()
         if (canRegister) {
             try {
-                await signUp({ username: username, password: password, roles: ["Employee"] })
+                await signUp({ username: username, email: email, password: password, name: name, roles: ["User"] })
                 navigate('/account/login')
             }
             catch (err) {
@@ -63,7 +66,7 @@ const SignUp = memo(() => {
                 } else {
                     setErrMsg(err.data?.message);
                 }
-                usernameInput.current.focus();
+                firstInput.current.focus();
             }
             toast("Wow so easy!")
         }
@@ -80,17 +83,25 @@ const SignUp = memo(() => {
             {!isPC ?
                 <Form className='p-2'>
                     <ToastContainer />
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>Tên<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
+                    <Form.Group className="mb-3" controlId="formName">
+                        <Form.Label>Họ và tên<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
                         <Form.Control
-                            ref={usernameInput}
+                            ref={firstInput}
+                            type="text"
+                            placeholder="Họ và tên"
+                            onChange={e => setName(e.target.value)}
+                        />
+                        {!isValidName && <Form.Text className="text-danger ms-2">Vui lòng điền tên người dùng</Form.Text>}
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Label>Tên người dùng<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
+                        <Form.Control
                             type="text"
                             placeholder="Tên người dùng"
                             onChange={e => setUsername(e.target.value)}
                         />
-                        {!isValidName && <Form.Text className="text-danger ms-2">Vui lòng điền tên người dùng</Form.Text>}
+                        {!isValidUsername && <Form.Text className="text-danger ms-2">Vui lòng điền tên người dùng</Form.Text>}
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email đăng nhập<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
                         <Form.Control
@@ -154,19 +165,27 @@ const SignUp = memo(() => {
             {isPC ?
                 <Form className='w-pc'>
                     <ToastContainer />
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>Tên<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
+                    <Form.Group className="mb-3" controlId="formName">
+                        <Form.Label>Họ và tên<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
                         <Form.Control
-                            ref={usernameInput}
+                            ref={firstInput}
+                            type="text"
+                            placeholder="Họ và tên"
+                            onChange={e => setName(e.target.value)}
+                        />
+                        {!isValidName && <Form.Text className="text-danger ms-2">Vui lòng điền tên người dùng</Form.Text>}
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Label>Tên người dùng<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
+                        <Form.Control
                             type="text"
                             placeholder="Tên người dùng"
                             onChange={e => setUsername(e.target.value)}
                         />
-                        {!isValidName && <Form.Text className="text-danger ms-2">Vui lòng điền tên người dùng</Form.Text>}
+                        {!isValidUsername && <Form.Text className="text-danger ms-2">Vui lòng điền tên người dùng</Form.Text>}
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email đăng nhập<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
+                        <Form.Label>Email<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></Form.Label>
                         <Form.Control
                             ref={userEmailInput}
                             type="text"
