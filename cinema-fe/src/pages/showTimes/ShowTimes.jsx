@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar } from '@fortawesome/free-regular-svg-icons'
 
 import 'react-calendar/dist/Calendar.css';
-// import filmPoster from '../../img/rasuk_poster_-1080x1350_1_.jpg'
+import Poster from '../../img/poster_avatar2.jpg'
 
 import './showTimes.css'
 
@@ -58,99 +58,106 @@ const ShowTimes = memo(() => {
             </Col>
             
         </Row>
-        <h4 className='px-4 mb-0 mt-4'>Rạp Quận 1</h4>
-        <Row className='row-show-times mx-auto'>
-            <Row>
-                <Col sm={3}>
-                    2D - Phụ đề
-                </Col>
-                <Col sm={9}>
-                    <ul>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                
-                    </ul>
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={3}>
-                    3D - Phụ đề
-                </Col>
-                <Col sm={9}>
-                    <ul>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                
-                    </ul>
-                </Col>
-            </Row>
-        </Row>
-        <h4 className='px-4 mb-0 mt-4'>Rạp Quận 2</h4>
-        <Row className='row-show-times mx-auto'>
-            <Row>
-                <Col sm={3}>
-                    2D - Phụ đề
-                </Col>
-                <Col sm={9}>
-                    <ul>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                
-                    </ul>
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={3}>
-                    3D - Phụ đề
-                </Col>
-                <Col sm={9}>
-                    <ul>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                        <Link>
-                            <li>16:30</li>
-                        </Link>
-                
-                    </ul>
-                </Col>
-            </Row>
+        <Row>
+            <Col sm={3}>
+                <img style={{ width: '18rem'}} src={Poster}></img>
+            </Col>
+            <Col sm={9}>
+                <h4 className='px-4 mb-0 mt-4'>Rạp Quận 1</h4>
+                <Row className='row-show-times mx-auto'>
+                    <Row>
+                        <Col sm={3}>
+                            2D - Phụ đề
+                        </Col>
+                        <Col sm={9}>
+                            <ul>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+            
+                            </ul>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col sm={3}>
+                            3D - Phụ đề
+                        </Col>
+                        <Col sm={9}>
+                            <ul>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+            
+                            </ul>
+                        </Col>
+                    </Row>
+                </Row>
+                <h4 className='px-4 mb-0 mt-4'>Rạp Quận 2</h4>
+                <Row className='row-show-times mx-auto'>
+                    <Row>
+                        <Col sm={3}>
+                            2D - Phụ đề
+                        </Col>
+                        <Col sm={9}>
+                            <ul>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+            
+                            </ul>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col sm={3}>
+                            3D - Phụ đề
+                        </Col>
+                        <Col sm={9}>
+                            <ul>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+                                <Link>
+                                    <li>16:30</li>
+                                </Link>
+            
+                            </ul>
+                        </Col>
+                    </Row>
+                </Row>
+            </Col>
         </Row>
       </Container>
     
