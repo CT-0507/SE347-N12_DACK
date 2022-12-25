@@ -10,6 +10,7 @@ import TermsUse from "../pages/termsUse/TermsUse"
 import Contact from "../pages/contact/Contact"
 import UserMenu from '../pages/admin/User'
 import FilmMenu from "../pages/admin/Film"
+import CinemaMenu from "../pages/admin/Cinema"
 import PaymentPolicy from '../pages/paymentPolicy/PaymentPolicy'
 import FAQ from '../pages/faq/FAQ'
 
@@ -22,6 +23,9 @@ import AdminLayout from '../components/layout/adminLayout/adminLayout'
 import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
 import UserPrefetch from "../components/userPrefetch/UserPrefetch"
+
+import UserLayout from '../components/layout/userLayout/userLayout'
+import Admin from '../pages/admin/Admin'
 const AppRoute = () => {
     return (
         <Routes>
@@ -33,10 +37,18 @@ const AppRoute = () => {
                         <Route element={<AdminLayout />}>
                             <Route path='user' element={<UserMenu />} />
                             <Route path='film' element={<FilmMenu />} />
+                            <Route path='cinema' element={<CinemaMenu />} />
                         </Route>
+                    </Route>
+                    <Route path='userLayout' element={<UserLayout />}>
+                            <Route path='user' element={<UserMenu />} />
+                            <Route path='film' element={<FilmMenu />} />
+                            <Route path='cinema' element={<CinemaMenu />} />
+                            
                     </Route>
                 </Route>
             </Route>
+
             <Route path='/' element={<Layout />}>
                 <Route element={<UserPrefetch />}>
                     <Route index element={<Home />} />

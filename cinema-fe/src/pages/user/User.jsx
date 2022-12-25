@@ -1,21 +1,23 @@
 import React, { useCallback } from 'react'
 import Form from 'react-bootstrap/Form'
 import 'react-toastify/dist/ReactToastify.css';
+import { useState, useRef, memo } from 'react'
+import 'react-toastify/dist/ReactToastify.css';
 import FormLabel from 'react-bootstrap/FormLabel';
 import FormGroup from 'react-bootstrap/FormGroup';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import { useState, useRef, memo } from 'react'
-import Spinner from 'react-bootstrap/Spinner';
-import { selectUserById, useDeleteUserMutation, useGetUsersQuery } from './usersApi/usersApiSlice';
-import { useSelector } from 'react-redux';
 import FormCheckInput from 'react-bootstrap/FormCheckInput';
-const CinemaMenu = memo(() => {
-    const handleShow = () => setShow(true);
+import InputGroup from 'react-bootstrap/InputGroup';
+
+import { selectUserById, useDeleteUserMutation, useGetUsersQuery } from './usersApi/usersApiSlice';
+import Spinner from 'react-bootstrap/Spinner';
+import { useSelector } from 'react-redux';
+import UserForm from './usersApi/User/UserForm';
+const UserMenu = memo(() => {
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false)
-    
+    const handleShow = () => setShow(true);
     const [editUserId, setEditUserId] = useState()
     const {
         data: users,
@@ -50,61 +52,57 @@ const CinemaMenu = memo(() => {
     const handleCloseEdit = useCallback(() => {
         setShowEdit(false)
     }, [setShowEdit])
-
     return (
         <>
-            <div>
             <FormGroup className='top-main'>
-                    <FormLabel className='main-name'>
-                        Danh sách phim
-                    </FormLabel>
-                    <Button className='btn-create' onClick={handleShow}>
-                        <i className="fa fa-plus-square-o" style={{ margin: '5px' }}></i>
-                        Thêm phim
-                    </Button>
+                <FormLabel className='main-name'>
+                    Danh sách người dùng
+                </FormLabel>
+                <Button className='btn-create' onClick={handleShow}>
+                    <i className="fa fa-plus-square-o" style={{ margin: '5px' }}></i>
+                    Thêm
+                </Button>
+            </FormGroup>
+            <FormGroup className='table-main'>
+                <Form className='search-user'>
+                    <InputGroup className="mb-3">
+                        <Button variant="primary" id="button-addon1">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                        </Button>
+                        <Form.Control
+                            aria-label="Example text with button addon"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                </Form>
+                <Table className='user-table' striped bordered hover size="sm">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Tên người dùng</th>
+                            <th>Email</th>
+                            <th>Vai trò</th>
+                            <th>Trạng thái kích hoạt</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {content}
+                    </tbody>
+
+                </Table>
+                <FormGroup>
+                    <Button variant="secondary" onClick={e => refetch('User')} disabled={isLoading}>{isLoading ? <Spinner /> : <i className="fa fa-refresh"></i>}</Button>
+                    <Form.Label style={{ margin: '10px' }}>1-2 of {items} items</Form.Label>
                 </FormGroup>
-
-                
-                <FormGroup className='table-main'>
-                    <Form className='search-user'>
-                        <InputGroup className="mb-3">
-                            <Button variant="primary" id="button-addon1">
-                                <i className="fa fa-search" aria-hidden="true"></i>
-                            </Button>
-                            <Form.Control
-                                aria-label="Example text with button addon"
-                                aria-describedby="basic-addon1"
-                            />
-                        </InputGroup>
-                    </Form>
-                    <Table className='user-table' striped bordered hover size="sm">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên</th>
-                                <th>Tên người dùng</th>
-                                <th>Email</th>
-                                <th>Vai trò</th>
-                                <th>Trạng thái kích hoạt</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             {content}
-                        </tbody>
-
-                    </Table>
-                    
-
-                </FormGroup>
-
-            </div>
+            </FormGroup>
+            {show && <UserForm handleClose={handleClose} />}
+            {showEdit && <UserForm handleClose={handleCloseEdit} userId={editUserId} />}
         </>
-        
     )
-
 })
-
+export default UserMenu
 
 const User = ({ counter, userId, handleShowEdit, setEditUserId }) => {
     const user = useSelector(state => selectUserById(state, userId))
@@ -144,4 +142,3 @@ const User = ({ counter, userId, handleShowEdit, setEditUserId }) => {
         </tr>
     )
 }
-export default CinemaMenu
