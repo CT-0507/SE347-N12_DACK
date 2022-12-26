@@ -1,10 +1,11 @@
-import { memo } from "react";
+import  React, { memo,useState } from "react";
 import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
+
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,11 +14,14 @@ import poster from '../../../img/poster_adam_4_1.jpg'
 import poster1 from '../../../img/violent_night-700x1000px_1_.jpg'
 import poster2 from '../../../img/hpm_poster_2x3_1_.jpg'
 import poster3 from '../../../img/late_shift_-_700x1000.jpg'
+
 import './slick.css'
 import { selectFilmById, useGetFilmsQuery } from "../../admin/filmsApi/filmsApiSlice";
+import PlayTrailer from "../../../components/playTrailer/PlayTrailer";
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 function SlickMovie() {
+    
     let settings = {
         dots: false,
 
@@ -27,7 +31,7 @@ function SlickMovie() {
         slidesToScroll: 1,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1440,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -36,11 +40,20 @@ function SlickMovie() {
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 1000,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
                 }
             },
             {
@@ -77,16 +90,20 @@ function SlickMovie() {
 
         <Slider {...settings}>
             {content}
+            
         </Slider>
+         
     );
 }
 
 export default SlickMovie;
 
 const FilmItem = ({ filmId }) => {
+    const [modalShow, setModalShow] = React.useState(false);
     const film = useSelector(state => selectFilmById(state, filmId))
     console.log(film)
     if (film) {
+        
         return (
             <div className="item">
                 <Card style={{ width: '18rem' }} className="card-film">
@@ -99,11 +116,16 @@ const FilmItem = ({ filmId }) => {
                                 bulk of the card's content.
                                 </Card.Text> */}
                         <Row>
-                            <Col><Link to='movie-description'><Button variant="primary">Xem trailer</Button></Link></Col>
+                            <Col><Button variant="primary" onClick={() => setModalShow(true)}>Xem trailer</Button></Col>
                             <Col><Link to='movie-description'><Button variant="primary">Đặt vé</Button></Link></Col>
                         </Row>
                     </Card.Body>
                 </Card>
+                <PlayTrailer
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                linkTrailer={film.trailerLink}
+                />
             </div >
         )
     } else return null
