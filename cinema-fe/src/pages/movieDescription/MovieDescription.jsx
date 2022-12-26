@@ -8,7 +8,10 @@ import { Link } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import PlayTrailer from '../../components/playTrailer/PlayTrailer';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import ButtonTicket from "../../components/button/ButtonTicket";
+import ButtonLike from "../../components/button/ButtonLike";
 
 import Poster from '../../img/poster_avatar2.jpg'
 
@@ -18,7 +21,7 @@ import { useEffect, memo } from 'react'
 const MoviesDescription = memo(() => {
     useEffect(() => {
     }, [])
-    const [modalShow, setModalShow] = React.useState(false);
+    
     return (
       <Container className="container-movies-description">
         <header>
@@ -63,8 +66,8 @@ const MoviesDescription = memo(() => {
                     <b>Rated: </b> <b className='text-rated'>C13 - PHIM CẤM KHÁN GIẢ DƯỚI 13 TUỔI</b>
                     <br/>
                 </p>
-                <Button className='mx-2' onClick={() => setModalShow(true)}>Like</Button>
-                <Button variant='danger'>Mua vé</Button>
+                <ButtonLike/>
+                <ButtonTicket/>
                 <Row  className='movie-tab my-2 '>
                     <Tabs
                         defaultActiveKey="description"
@@ -78,7 +81,7 @@ const MoviesDescription = memo(() => {
                             </p>
                         </Tab>
                         <Tab eventKey="trailer" title="Xem trailer">
-                        <iframe width="560" height="315" 
+                        <iframe width="100%" height="415" 
                             src="https://www.youtube.com/embed/Ru4Jbmh7bcQ" 
                             title="YouTube video player" 
                             frameBorder="0" 
@@ -95,10 +98,7 @@ const MoviesDescription = memo(() => {
             </Col>
         </Row>
         
-            <PlayTrailer
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+            
       </Container>
     
     )

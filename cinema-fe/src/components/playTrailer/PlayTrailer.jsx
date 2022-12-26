@@ -8,6 +8,7 @@ function PlayTrailer( props ) {
     const opts = {
         height: '400',
         width: '100%',
+        
         playerVars: {
           autoplay: 1,
         }}
@@ -23,7 +24,7 @@ function PlayTrailer( props ) {
             
         </Modal.Header>
         <Modal.Body>
-        <YouTube videoId={linkTrailer} opts={opts} />
+        <YouTube videoId={linkTrailer} opts={opts} style={{minWidth:'250'}} />
             
         </Modal.Body>
         

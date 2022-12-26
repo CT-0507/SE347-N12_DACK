@@ -18,6 +18,8 @@ import poster3 from '../../../img/late_shift_-_700x1000.jpg'
 import './slick.css'
 import { selectFilmById, useGetFilmsQuery } from "../../admin/filmsApi/filmsApiSlice";
 import PlayTrailer from "../../../components/playTrailer/PlayTrailer";
+import ButtonTicket from "../../../components/button/ButtonTicket";
+import ButtonPlay from "../../../components/button/ButtonPlay";
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 function SlickMovie() {
@@ -116,8 +118,8 @@ const FilmItem = ({ filmId }) => {
                                 bulk of the card's content.
                                 </Card.Text> */}
                         <Row>
-                            <Col><Button variant="primary" onClick={() => setModalShow(true)}>Xem trailer</Button></Col>
-                            <Col><Link to='movie-description'><Button variant="primary">Đặt vé</Button></Link></Col>
+                            <Col><ButtonPlay  onClick={() => setModalShow(true)}></ButtonPlay></Col>
+                            <Col><Link to='movie-description'><ButtonTicket ></ButtonTicket></Link></Col>
                         </Row>
                     </Card.Body>
                 </Card>
