@@ -89,9 +89,9 @@ const FilmItem = ({ filmId }) => {
     if (film) {
         return (
             <div className="item">
-                <Card style={{ width: '18rem' }} className="card-film">
+                <Card style={{ width: '18rem', }}  className="card-film">
                     <Link to={`/movie-description/${film.id}`}>
-                        <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+                        <Card.Img variant="top" style={{height: '415px'}}src={`http://localhost:3500/${film.poster}`} />
                     </Link>
 
 
