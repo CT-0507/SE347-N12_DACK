@@ -1,4 +1,4 @@
-import { memo } from "react";
+import  React, { memo,useState } from "react";
 import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -10,6 +10,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import './slick.css'
 import { selectFilmById, useGetFilmsQuery } from "../../admin/filmsApi/filmsApiSlice";
+
+import ButtonTicket from '../../../components/button/ButtonTicket'
+import ButtonPlay from '../../../components/button/ButtonPlay'
+import PlayTrailer from '../../../components/playTrailer/PlayTrailer'
+
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 function SlickMovie() {
@@ -79,6 +84,7 @@ function SlickMovie() {
 export default SlickMovie;
 
 const FilmItem = ({ filmId }) => {
+    const [modalShow, setModalShow] = React.useState(false);
     const film = useSelector(state => selectFilmById(state, filmId))
     if (film) {
         return (
@@ -96,11 +102,16 @@ const FilmItem = ({ filmId }) => {
                                 bulk of the card's content.
                                 </Card.Text> */}
                         <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
+                            <Col><ButtonPlay onClick={() => setModalShow(true)}></ButtonPlay></Col>
+                            <Col><ButtonTicket variant="primary"></ButtonTicket></Col>
                         </Row>
                     </Card.Body>
                 </Card>
+                <PlayTrailer
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                linkTrailer={film.trailerLink}
+                />
             </div >
         )
     } else return null
