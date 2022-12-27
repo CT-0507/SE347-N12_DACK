@@ -62,6 +62,30 @@
     align-items: center;
     justify-content: center;
 }
+.footer-container .fa{
+    font-size:50px;
+}
+.footer-container .fa-facebook-official {
+    color:blue
+
+}
+.footer-container .fa-youtube-square {
+    color:red
+
+}
+.footer-container .fa-instagram{
+    color: #f09433; 
+    color: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    color: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    color: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    
+}
+.footer-container .fa-imdb{
+    color: #f09433;
+}
+.footer-container .fa-heart{
+    color: red
+}
 @media only screen and (max-width: 768px) {
     .d-none-tablet {
         display: none!important;
