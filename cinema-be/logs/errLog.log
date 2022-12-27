@@ -1,2 +1,1 @@
-20221225	10:24:43	828bcaa1-2a60-4812-9649-272607a7b87e	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:5173
-20221225	10:25:01	892a34ea-3f0e-457c-8317-f47e9bd0f79b	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:5173
+20221225	11:21:56	5ab28585-a293-4ca8-a509-6359455eb934	ReferenceError: Cannot access 'path' before initialization	DELETE	/films	http://localhost:5173

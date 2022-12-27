@@ -54,7 +54,9 @@ const AppRoute = () => {
 
                 
 
-                        <Route path='movie-description' element={<MovieDescription />} />
+                        <Route path='movie-description' >
+                            <Route path=':id' element={<MovieDescription />} />
+                        </Route>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />
                             <Route path='about' element={<About />} />
