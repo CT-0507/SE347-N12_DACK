@@ -59,10 +59,10 @@ const ShowTimes = memo(() => {
             
         </Row>
         <Row>
-            <Col sm={3}>
-                <img style={{ width: '18rem'}} src={Poster}></img>
+            <Col sm={3}xs={6}>
+                <img className='img-show-times mt-4'style={{width:'100%'}} src={Poster}></img>
             </Col>
-            <Col sm={9}>
+            <Col sm={9} xs={12}>
                 <h4 className='px-4 mb-0 mt-4'>Rạp Quận 1</h4>
                 <Row className='row-show-times mx-auto'>
                     <Row>

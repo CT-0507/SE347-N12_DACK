@@ -7,7 +7,7 @@ import React from 'react';
 import Tippy from '@tippyjs/react/headless';
 import './layout.css';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
-import logo from '../../../img/logo.png'
+import logo from '../../../img/vktc-new.png'
 import { useState, memo } from 'react'
 import useAuth from '../../../hooks/useAuth';
 import { useSendLogoutMutation } from '../../../pages/account/authApiSlice'
@@ -108,7 +108,7 @@ const LayoutHeader = memo(() => {
             {!isMobile ?
                 <div className='header-banner'>
                     {/* <a href="https://www.flaticon.com/free-icons/cinema" title="cinema icons">Cinema icons created by photo3idea_studio - Flaticon</a> */}
-                    <Link to="/"><img src={logo} alt="" /></Link>
+                    <Link to="/"><img src={logo} alt="" style={{width:'90px'}} className='logo-header' /></Link>
                     {!isTablet && <Navbar>
                         <Nav>
                         <div className="parent">
@@ -171,7 +171,7 @@ const LayoutHeader = memo(() => {
                 </div>
                 :
                 <div className='header-banner__mobile'>
-                    <Link to="/"><img src={logo} alt="" /></Link>
+                    <Link to="/"><img src={logo} alt=""style={{width:'150px'}} className='logo-header' /></Link>
                 </div>
             }
             {isMobile || isTablet ? <Navbar className='w-100 d-block text-center'>

@@ -31,7 +31,12 @@
 }
 .header-banner a img:hover,
 .header-banner__mobile a img:hover {
-    background-color: gray;
+    /* background-color: gray; */
+
+
+}
+.logo-header img :hover {
+    background-color:none;
 }
 .navbar .subnav:hover,
 .navbar .subnav:active {
