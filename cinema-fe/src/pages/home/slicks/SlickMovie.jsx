@@ -94,6 +94,7 @@ export default SlickMovie;
 
 const FilmItem = ({ filmId }) => {
     const [modalShow, setModalShow] = React.useState(false);
+    let idVideo=''
     const film = useSelector(state => selectFilmById(state, filmId))
     if (film) {
         return (
@@ -121,8 +122,8 @@ const FilmItem = ({ filmId }) => {
                 <PlayTrailer
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                linkTrailer={film.trailerLink}
-                />
+                idVideo={film.trailerLink}
+                ></PlayTrailer>
             </div >
         )
     } else return null

@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import YouTube from 'react-youtube';
 import './playTrailer.css'
-function PlayTrailer( props ) {
-    // console.log(props.linkTrailer)
-    let linkTrailer=props.linkTrailer;
+function PlayTrailer( {idVideo,...props }) {
+    
+    // let linktrailer=props.linkTrailer.toString();
+
     const opts = {
         height: '400',
         width: '100%',
         
         playerVars: {
-          autoplay: 1,
+          autoplay: 1
         }}
     return ( 
         
@@ -24,7 +25,7 @@ function PlayTrailer( props ) {
             
         </Modal.Header>
         <Modal.Body>
-        <YouTube videoId={linkTrailer} opts={opts} style={{minWidth:'250'}} />
+        <YouTube videoId={idVideo} opts={opts} style={{minWidth:'250'}} />
             
         </Modal.Body>
         

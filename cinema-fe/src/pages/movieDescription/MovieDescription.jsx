@@ -10,6 +10,9 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
+import ButtonLike from '../../components/button/ButtonLike'
+import ButtonTicket from '../../components/button/ButtonTicket'
+
 import './movieDescription.css'
 
 import { useEffect, memo } from 'react'
@@ -67,8 +70,8 @@ const MoviesDescription = memo(() => {
                         <b>Rated: </b> <b className='text-rated'>{film.rated}</b>
                         <br />
                     </p>
-                    <Button className='mx-2'>Like</Button>
-                    <Button variant='danger'>Mua vé</Button>
+                    <ButtonLike></ButtonLike>
+                    <ButtonTicket></ButtonTicket>
                     <Row className='movie-tab my-2 '>
                         <Tabs
                             defaultActiveKey="description"

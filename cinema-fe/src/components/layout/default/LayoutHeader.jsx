@@ -121,7 +121,7 @@ const LayoutHeader = memo(() => {
                                         </div>
                                       )}
                                 >
-                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Phim</Nav.Link>
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Phim</Nav.Link>
                                 </Tippy>
                         </div>
                             <div  className="parent">
@@ -135,7 +135,7 @@ const LayoutHeader = memo(() => {
                                         </div>
                                       )}
                                 >
-                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Rạp Phim</Nav.Link>
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Rạp Phim</Nav.Link>
                                 </Tippy>
                             </div>
                             <div  className="parent">
@@ -148,7 +148,7 @@ const LayoutHeader = memo(() => {
                                         </div>
                                       )}
                                 >
-                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Thành viên</Nav.Link>
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Thành viên</Nav.Link>
                                 </Tippy>
                             </div>
                             <div  className="parent">
@@ -163,7 +163,7 @@ const LayoutHeader = memo(() => {
                                         </div>
                                       )}
                                 >
-                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Cultureplex</Nav.Link>
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Cultureplex</Nav.Link>
                                 </Tippy>
                             </div>
                         </Nav>

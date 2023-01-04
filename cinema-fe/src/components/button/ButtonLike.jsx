@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button'
 
+
+
 import "./btnLike.css";
 
 function LikeButton(){
@@ -17,7 +19,7 @@ function LikeButton(){
     }
     
     return(
-        <Button className={like} onClick={handleClick} style={{width:'84px'}}>
+        <Button className={like} onClick={handleClick} style={{width:'90px'}}>
              <FontAwesomeIcon icon={faThumbsUp} className='me-1' />
              {like}
         </Button>
