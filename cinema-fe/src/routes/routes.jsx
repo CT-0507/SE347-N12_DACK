@@ -3,6 +3,7 @@ import Layout from "../components/layout/default/Layout"
 import Home from "../pages/home/Home"
 import Movies from "../pages/movies/Movies"
 import MovieDescription from "../pages/movieDescription/MovieDescription"
+import ShowTimes from "../pages/showTimes/ShowTimes"
 import NotFound from "../pages/NotFound/NotFound"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
@@ -22,6 +23,7 @@ import AdminLayout from '../components/layout/adminLayout/adminLayout'
 import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
 import UserPrefetch from "../components/userPrefetch/UserPrefetch"
+import CinemaMenu from "../pages/admin/Cinema"
 const AppRoute = () => {
     return (
         <Routes>
@@ -33,6 +35,7 @@ const AppRoute = () => {
                         <Route element={<AdminLayout />}>
                             <Route path='user' element={<UserMenu />} />
                             <Route path='film' element={<FilmMenu />} />
+                            <Route path='cinema' element={<CinemaMenu/>} />
                         </Route>
                     </Route>
                 </Route>
@@ -47,6 +50,9 @@ const AppRoute = () => {
                     </Route>
                     <Route element={<PersistLogin />}>
                         <Route path='movies' element={<Movies />} />
+                        <Route path='show-times' element={<ShowTimes/>} />
+
+                
 
                         <Route path='movie-description' >
                             <Route path=':id' element={<MovieDescription />} />

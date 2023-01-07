@@ -1,0 +1,27 @@
+.show-calendar{
+    border: 1px solid black;
+    padding:5px;
+    background:white;
+}
+.container-shows-times h4{
+    background:orange;
+    width: fit-content;
+}
+.container-shows-times ul,li {
+    list-style-type:none;
+    display:flex;
+}
+.container-shows-times li{
+    margin-left: 10px;
+    border: 1px solid black;
+    padding:5px;
+    background:white;
+}
+.container-shows-times li:hover{
+    background:blue;
+    color:white;
+}
+.row-show-times{
+    border: 1px solid black;
+    padding-top:5px;
+}
