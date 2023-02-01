@@ -1,3 +1,4 @@
+
 .show-calendar{
     border: 1px solid black;
     padding:5px;
@@ -7,9 +8,11 @@
     background:orange;
     width: fit-content;
 }
+
 .container-shows-times ul,li {
     list-style-type:none;
     display:flex;
+    text-decoration-line: none;
 }
 .container-shows-times li{
     margin-left: 10px;
@@ -18,7 +21,7 @@
     background:white;
 }
 .container-shows-times li:hover{
-    background:blue;
+    background:grey;
     color:white;
 }
 .row-show-times{
