@@ -4,6 +4,7 @@ import Home from "../pages/home/Home"
 import Movies from "../pages/movies/Movies"
 import MovieDescription from "../pages/movieDescription/MovieDescription"
 import ShowTimes from "../pages/showTimes/ShowTimes"
+import BookTicket from "../pages/bookTicket/BookTicket"
 import NotFound from "../pages/NotFound/NotFound"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
@@ -51,7 +52,7 @@ const AppRoute = () => {
                     <Route element={<PersistLogin />}>
                         <Route path='movies' element={<Movies />} />
                         <Route path='show-times' element={<ShowTimes/>} />
-
+                        <Route path='book-ticket' element={<BookTicket/>} />
                 
 
                         <Route path='movie-description' >

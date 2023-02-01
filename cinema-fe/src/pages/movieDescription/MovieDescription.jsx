@@ -71,7 +71,9 @@ const MoviesDescription = memo(() => {
                         <br />
                     </p>
                     <ButtonLike></ButtonLike>
-                    <ButtonTicket></ButtonTicket>
+                    <Link to ='/book-ticket'>
+                        <ButtonTicket></ButtonTicket>
+                    </Link>
                     <Row className='movie-tab my-2 '>
                         <Tabs
                             defaultActiveKey="description"

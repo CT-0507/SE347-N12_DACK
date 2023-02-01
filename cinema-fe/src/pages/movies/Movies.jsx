@@ -42,7 +42,7 @@ const Movies = memo(() => {
                                         </Link>
                                     </Col>
                                     <Col>
-                                        <Link to ='/show-times'>
+                                        <Link to ='/book-ticket'>
                                             <ButtonTicket variant="primary"></ButtonTicket>
                                         </Link>
                                     </Col>
