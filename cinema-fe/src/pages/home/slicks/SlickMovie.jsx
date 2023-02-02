@@ -63,7 +63,6 @@ function SlickMovie() {
     if (isError) content = <div className="w-100 h-100">{error?.data?.message}</div>
     if (isSuccess) {
         const { ids } = films
-        console.log(films)
         content = ids?.length
             ? ids.map(filmId => <FilmItem key={filmId} filmId={filmId} />)
             : null

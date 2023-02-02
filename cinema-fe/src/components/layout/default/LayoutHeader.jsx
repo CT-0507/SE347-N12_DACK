@@ -16,7 +16,6 @@ const LayoutHeader = memo(() => {
     const { height, width } = useWindowDimensions();
     const isMobile = width <= 765
     const isTablet = width < 995 && width > 766
-    console.log(width)
     const [language, setLanguage] = useState('VN')
     const [mobileNavbar, setMobileNavbar] = useState(false)
     const [openFilmNav, setOpenFilmNav] = useState(false)
@@ -111,14 +110,14 @@ const LayoutHeader = memo(() => {
                     <Link to="/"><img src={logo} alt="" /></Link>
                     {!isTablet && <Navbar>
                         <Nav>
-                        <Tippy
+                            <Tippy
                                 interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Phim Đang Chiếu</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Phim sắp Chiếu</div></Link>   
+                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Phim Đang Chiếu</div></Link>
+                                        <Link as={Link} to='nearly-airing-movies' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Phim sắp Chiếu</div></Link>
                                     </div>
-                                  )}
+                                )}
                             >
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Phim</Nav.Link>
                             </Tippy>
@@ -126,11 +125,11 @@ const LayoutHeader = memo(() => {
                                 interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp Đặt Biệt</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp 3D</div></Link>  
+                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
+                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp Đặt Biệt</div></Link>
+                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp 3D</div></Link>
                                     </div>
-                                  )}
+                                )}
                             >
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Rạp Phim</Nav.Link>
                             </Tippy>
@@ -138,10 +137,10 @@ const LayoutHeader = memo(() => {
                                 interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản CGV</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Quyền Lợi</div></Link>   
+                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản CGV</div></Link>
+                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Quyền Lợi</div></Link>
                                     </div>
-                                  )}
+                                )}
                             >
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Thành viên</Nav.Link>
                             </Tippy>
@@ -149,12 +148,12 @@ const LayoutHeader = memo(() => {
                                 interactive
                                 render={attrs => (
                                     <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Quầy Online</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thuê Rạp & Vé Nhóm</div></Link> 
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">e-CGV</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thẻ Quà Tặng</div></Link> 
+                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Quầy Online</div></Link>
+                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thuê Rạp & Vé Nhóm</div></Link>
+                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">e-CGV</div></Link>
+                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thẻ Quà Tặng</div></Link>
                                     </div>
-                                  )}
+                                )}
                             >
                                 <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Cultureplex</Nav.Link>
                             </Tippy>
