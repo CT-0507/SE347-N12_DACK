@@ -8,7 +8,10 @@ import { Link, useParams } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
+import ButtonLike from '../../components/button/ButtonLike'
+import ButtonTicket from '../../components/button/ButtonTicket'
 
 import './movieDescription.css'
 
@@ -19,6 +22,9 @@ const MoviesDescription = memo(() => {
     const { id } = useParams()
     const film = useSelector(state => selectFilmById(state, id))
     console.log(film)
+    const { height, width } = useWindowDimensions();
+    
+    const isTablet = width < 1400  
     return (
         <Container className="container-movies-description">
             <header>
@@ -29,7 +35,7 @@ const MoviesDescription = memo(() => {
                     <ReactImageMagnify {...{
                         smallImage: {
                             alt: 'Wristwatch by Ted Baker London',
-                            isFluidWidth: false,
+                            isFluidWidth: {isTablet},
                             width: 300,
                             height: 450,
                             src: `http://localhost:3500/${film.poster}`
@@ -64,8 +70,8 @@ const MoviesDescription = memo(() => {
                         <b>Rated: </b> <b className='text-rated'>{film.rated}</b>
                         <br />
                     </p>
-                    <Button className='mx-2'>Like</Button>
-                    <Button variant='danger'>Mua vé</Button>
+                    <ButtonLike></ButtonLike>
+                    <ButtonTicket></ButtonTicket>
                     <Row className='movie-tab my-2 '>
                         <Tabs
                             defaultActiveKey="description"
@@ -79,7 +85,7 @@ const MoviesDescription = memo(() => {
                                 </p>
                             </Tab>
                             <Tab eventKey="trailer" title="Xem trailer">
-                                <iframe width="560" height="315" src={`https://www.youtube.com/embed/${film.trailerLink}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="100%" height="415" src={`https://www.youtube.com/embed/${film.trailerLink}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
                             </Tab>
 

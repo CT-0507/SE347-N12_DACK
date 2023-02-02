@@ -27,7 +27,7 @@ const Movies = memo(() => {
                 {AiringFilm.map((item, idx) => (
                     <Col key={idx}>
                         <Card >
-                            <Link to={`/movie-description/${item.id}`}> <Card.Img variant="top" src={`http://localhost:3500/${item.poster}`} /></Link>
+                            <Link to={`/movie-description/${item.id}`}> <Card.Img variant="top" src={`http://localhost:3500/${item.poster}`}style={{width:'100%' , height:'415px'}} /></Link>
                             <Card.Body>
                                 <Card.Title className='word-wrap'>{item.filmName}</Card.Title>
                                 <Card.Text className='word-wrap'>

@@ -1,20 +1,36 @@
-import React from 'react';
-import YouTube, { YouTubeProps } from 'react-youtube';
+import React, { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import YouTube from 'react-youtube';
+import './playTrailer.css'
+function PlayTrailer( {idVideo,...props }) {
+    
+    // let linktrailer=props.linkTrailer.toString();
 
-function Example() {
-  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  }
-
-  const opts: YouTubeProps['opts'] = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
-  return <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onPlayerReady} />;
+    const opts = {
+        height: '400',
+        width: '100%',
+        
+        playerVars: {
+          autoplay: 1
+        }}
+    return ( 
+        
+        <Modal className='modal-trailer'
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+            
+        </Modal.Header>
+        <Modal.Body>
+        <YouTube videoId={idVideo} opts={opts} style={{minWidth:'250'}} />
+            
+        </Modal.Body>
+        
+      </Modal>
+     );
 }
+
+export default PlayTrailer;

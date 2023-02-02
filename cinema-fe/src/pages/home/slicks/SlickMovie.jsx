@@ -1,4 +1,4 @@
-import { memo } from "react";
+import  React, { memo,useState } from "react";
 import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -10,11 +10,16 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import './slick.css'
 import { selectFilmById, useGetFilmsQuery } from "../../admin/filmsApi/filmsApiSlice";
+
+import ButtonTicket from '../../../components/button/ButtonTicket'
+import ButtonPlay from '../../../components/button/ButtonPlay'
+import PlayTrailer from '../../../components/playTrailer/PlayTrailer'
+
 import Spinner from "react-bootstrap/Spinner";
 import { useSelector } from "react-redux";
 function SlickMovie() {
     let settings = {
-        dots: false,
+        dots: true,
 
         speed: 500,
         slidesToShow: 4,
@@ -22,7 +27,7 @@ function SlickMovie() {
         slidesToScroll: 1,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1440,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -31,11 +36,20 @@ function SlickMovie() {
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 1000,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
                 }
             },
             {
@@ -78,13 +92,15 @@ function SlickMovie() {
 export default SlickMovie;
 
 const FilmItem = ({ filmId }) => {
+    const [modalShow, setModalShow] = React.useState(false);
+    let idVideo=''
     const film = useSelector(state => selectFilmById(state, filmId))
     if (film) {
         return (
             <div className="item">
-                <Card style={{ width: '18rem' }} className="card-film">
+                <Card style={{ width: '18rem', }}  className="card-film">
                     <Link to={`/movie-description/${film.id}`}>
-                        <Card.Img variant="top" src={`http://localhost:3500/${film.poster}`} />
+                        <Card.Img variant="top" style={{height: '415px'}}src={`http://localhost:3500/${film.poster}`} />
                     </Link>
 
 
@@ -95,11 +111,18 @@ const FilmItem = ({ filmId }) => {
                                 bulk of the card's content.
                                 </Card.Text> */}
                         <Row>
-                            <Col><Button variant="primary">Xem trailer</Button></Col>
-                            <Col><Button variant="primary">Đặt vé</Button></Col>
+                            <Col><ButtonPlay onClick={() => setModalShow(true)}></ButtonPlay></Col>
+                            <Col><Link to ='/show-times'>
+                                <ButtonTicket variant="primary"></ButtonTicket>
+                            </Link></Col>
                         </Row>
                     </Card.Body>
                 </Card>
+                <PlayTrailer
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                idVideo={film.trailerLink}
+                ></PlayTrailer>
             </div >
         )
     } else return null

@@ -7,7 +7,7 @@ import React from 'react';
 import Tippy from '@tippyjs/react/headless';
 import './layout.css';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
-import logo from '../../../img/logo.png'
+import logo from '../../../img/vktc-new.png'
 import { useState, memo } from 'react'
 import useAuth from '../../../hooks/useAuth';
 import { useSendLogoutMutation } from '../../../pages/account/authApiSlice'
@@ -107,62 +107,70 @@ const LayoutHeader = memo(() => {
             {!isMobile ?
                 <div className='header-banner'>
                     {/* <a href="https://www.flaticon.com/free-icons/cinema" title="cinema icons">Cinema icons created by photo3idea_studio - Flaticon</a> */}
-                    <Link to="/"><img src={logo} alt="" /></Link>
+                    <Link to="/"><img src={logo} alt="" style={{ width: '90px' }} className='logo-header' /></Link>
                     {!isTablet && <Navbar>
                         <Nav>
-                            <Tippy
-                                interactive
-                                render={attrs => (
-                                    <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Phim Đang Chiếu</div></Link>
-                                        <Link as={Link} to='nearly-airing-movies' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Phim sắp Chiếu</div></Link>
-                                    </div>
-                                )}
-                            >
-                                <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Phim</Nav.Link>
-                            </Tippy>
-                            <Tippy
-                                interactive
-                                render={attrs => (
-                                    <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
-                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp Đặt Biệt</div></Link>
-                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp 3D</div></Link>
-                                    </div>
-                                )}
-                            >
-                                <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Rạp Phim</Nav.Link>
-                            </Tippy>
-                            <Tippy
-                                interactive
-                                render={attrs => (
-                                    <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản CGV</div></Link>
-                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Quyền Lợi</div></Link>
-                                    </div>
-                                )}
-                            >
-                                <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Thành viên</Nav.Link>
-                            </Tippy>
-                            <Tippy
-                                interactive
-                                render={attrs => (
-                                    <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                        <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Quầy Online</div></Link>
-                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thuê Rạp & Vé Nhóm</div></Link>
-                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">e-CGV</div></Link>
-                                        <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thẻ Quà Tặng</div></Link>
-                                    </div>
-                                )}
-                            >
-                                <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder px-4">Cultureplex</Nav.Link>
-                            </Tippy>
+                            <div className="parent">
+                                <Tippy
+                                    interactive
+                                    render={attrs => (
+                                        <div className="box p-1 " tabIndex="-1" {...attrs}>
+                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Phim Đang Chiếu</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Phim sắp Chiếu</div></Link>
+                                        </div>
+                                    )}
+                                >
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Phim</Nav.Link>
+                                </Tippy>
+                            </div>
+                            <div className="parent">
+                                <Tippy
+                                    interactive
+                                    render={attrs => (
+                                        <div className="box p-1 " tabIndex="-1" {...attrs}>
+                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp Đặt Biệt</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp 3D</div></Link>
+                                        </div>
+                                    )}
+                                >
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Rạp Phim</Nav.Link>
+                                </Tippy>
+                            </div>
+                            <div className="parent">
+                                <Tippy
+                                    interactive
+                                    render={attrs => (
+                                        <div className="box p-1 " tabIndex="-1" {...attrs}>
+                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản CGV</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Quyền Lợi</div></Link>
+                                        </div>
+                                    )}
+                                >
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Thành viên</Nav.Link>
+                                </Tippy>
+                            </div>
+                            <div className="parent">
+                                <Tippy
+                                    interactive
+                                    render={attrs => (
+                                        <div className="box p-1 " tabIndex="-1" {...attrs}>
+                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Quầy Online</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thuê Rạp & Vé Nhóm</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">e-CGV</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thẻ Quà Tặng</div></Link>
+                                        </div>
+                                    )}
+                                >
+                                    <Nav.Link as={Link} className="text-bolder fs-2 fw-bolder mx-4 py-0 my-2 li-header">Cultureplex</Nav.Link>
+                                </Tippy>
+                            </div>
                         </Nav>
                     </Navbar>}
                 </div>
                 :
                 <div className='header-banner__mobile'>
-                    <Link to="/"><img src={logo} alt="" /></Link>
+                    <Link to="/"><img src={logo} alt="" style={{ width: '150px' }} className='logo-header' /></Link>
                 </div>
             }
             {isMobile || isTablet ? <Navbar className='w-100 d-block text-center'>
