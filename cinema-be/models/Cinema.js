@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
 
+const slug = require('mongoose-slug-generator')
+
+mongoose.plugin(slug)
+
 const cinemaSchema = new mongoose.Schema(
     {
         cinemaName: {
@@ -16,7 +20,8 @@ const cinemaSchema = new mongoose.Schema(
         },
         rooms: [{
             type: String,
-            require: true
+            ref: 'Room'
+            // require: true
         }],
         active: {
             type: Boolean,
@@ -25,7 +30,8 @@ const cinemaSchema = new mongoose.Schema(
         cinemaPicture: [{
             type: String,
             require: true
-        }]
+        }],
+        slug: { type: String, slug: "cinemaName" }
     },
     {
         timestamps: true,

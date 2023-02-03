@@ -22,10 +22,10 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
     const [description, setDescription] = useState(cinema ? cinema.description : "")
     // const [rated, setRated] = useState(cinema ? cinema.rated : "")
     // const [trailerLink, setTrailerLink] = useState(cinema ? cinema.rated : "")
-    const [active, setActive] = useState(cinema ? cinema.active : "")
+    const [active, setActive] = useState(cinema ? cinema.active : true)
     // const [language, setLanguage] = useState(cinema ? cinema.language : "")
     const [readFile, setReadFile] = useState(cinema ? true : false)
-    const canSave = [cinemaName, location, description, rooms,active ].every(item => item !== "") && readFile
+    const canSave = [cinemaName, location, description].every(item => item !== "") && readFile
     const firstInput = useRef()
     const posterInput = useRef()
     useEffect(() => {
@@ -59,7 +59,11 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
             // formData.append('trailerLink', trailerLink)
             // formData.append('time', time)
             // formData.append('language', language)
-            formData.append('cinemaPicture',cinemaPictureInput.current.files[0])
+            const files = posterInput.current.files
+            for (let i = 0; i < files.length; i++) {
+                formData.append(`images[${i}]`, files[i])
+            }
+            formData.append('cinemaPicture', posterInput.current.files)
             await updateCinema(formData)
             if (isUpdateError) console.log(updateError)
         }
@@ -79,7 +83,11 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
                     // formData.append('trailerLink', trailerLink)
                     // formData.append('time', time)
                     // formData.append('language', language)
-                    formData.append('cinemaPicture',cinemaPictureInput.current.files[0])
+                    const files = posterInput.current.files
+                    for (let i = 0; i < files.length; i++) {
+                        formData.append(`images[${i}]`, files[i])
+                    }
+                    formData.append('cinemaPicture', posterInput.current.files)
                     await addNewCinema(formData)
                 }
                 catch (err) {
@@ -127,9 +135,9 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
                         </div>
                     </div>
                     <div className="mb-3 row">
-                        <label style={{ width: '30%' }} htmlFor="inputActive" className="col-sm-2 col-form-label">Hoạt động<span className='text-danger' style={{ position: "relative", top: "-5px" }}>&#8903;</span></label>
+                        <label style={{ width: '30%' }} forhtml="inputStatus" className="col-sm-2 col-form-label">Trạng thái kích hoạt</label>
                         <div style={{ width: '70%' }} className="col-sm-10">
-                            <input type="text" className="form-control" id="inputActive" value={active} onChange={e => setActive(e.target.value)} />
+                            <FormCheckInput checked={active} onChange={e => setActive(e.target.value)}></FormCheckInput>
                         </div>
                     </div>
                     <div className="mb-3 row">
@@ -143,6 +151,7 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
                                 name="inputCinemaPicture"
                                 className='form-control'
                                 uncontrolled="true"
+                                multiple
                                 onClick={(event) => {
                                     event.target.value = null
                                     setReadFile(false)

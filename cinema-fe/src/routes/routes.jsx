@@ -24,21 +24,27 @@ import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
 import UserPrefetch from "../components/userPrefetch/UserPrefetch"
 import CinemaMenu from "../pages/admin/Cinema"
+import { ROLES } from '../config/roles';
+import RequireAuth from "../pages/account/RequireAuth"
 const AppRoute = () => {
     return (
         <Routes>
             <Route path='/admin'>
                 <Route index element={<Login />} />
                 <Route path='login' element={<Login />} />
+                {/* Protected Route */}
                 <Route element={<PersistLogin />} >
-                    <Route element={<AdminPrefetch />}>
-                        <Route element={<AdminLayout />}>
-                            <Route path='user' element={<UserMenu />} />
-                            <Route path='film' element={<FilmMenu />} />
-                            <Route path='cinema' element={<CinemaMenu/>} />
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />} >
+                        <Route element={<AdminPrefetch />}>
+                            <Route element={<AdminLayout />}>
+                                <Route path='user' element={<UserMenu />} />
+                                <Route path='film' element={<FilmMenu />} />
+                                <Route path='cinema' element={<CinemaMenu />} />
+                            </Route>
                         </Route>
                     </Route>
                 </Route>
+                {/* End Protected Route */}
             </Route>
             <Route path='/' element={<Layout />}>
                 <Route element={<UserPrefetch />}>
@@ -48,14 +54,14 @@ const AppRoute = () => {
                         <Route path='login' element={<Login />} />
                         <Route path='register' element={<SignUp />} />
                     </Route>
-                    <Route element={<PersistLogin />}>
+                    <Route element={<PersistLogin publicURL={true} />}>
                         <Route path='movies' element={<Movies />} />
-                        <Route path='show-times' element={<ShowTimes/>} />
+                        <Route path='show-times' element={<ShowTimes />} />
 
-                
+
 
                         <Route path='movie-description' >
-                            <Route path=':id' element={<MovieDescription />} />
+                            <Route path=':slug' element={<MovieDescription />} />
                         </Route>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />

@@ -1,7 +1,7 @@
-import React from 'react'
+
 import Form from 'react-bootstrap/Form'
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, useRef, memo, useEffect, useCallback } from 'react'
+import { useState, memo, useCallback } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import FormLabel from 'react-bootstrap/FormLabel';
 import FormGroup from 'react-bootstrap/FormGroup';
@@ -19,16 +19,9 @@ import { useSelector } from 'react-redux';
 const CinemaMenu = memo(() => {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
-    const [cinemaName, setCinemaName] = useState('')
-    const [location, setLocation] = useState('')
-    const [description, setDescription] = useState('')
-    const [rooms, setRooms] = useState('')
-    const [active, setActive] = useState('')
-    const [cinemaPicture, setCinemaPicture] = useState('')
     const [readFile, setReadFile] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     const [editCinemaId, setEditCinemaId] = useState()
-    let canSave = [cinemaName, location, description, rooms, active].every(item => item !== '')
     const {
         data: cinemas,
         isSuccess,
@@ -91,7 +84,7 @@ const CinemaMenu = memo(() => {
                                 <th style={{ width: '15%' }}>Tên rạp</th>
                                 <th style={{ width: '10%' }}>Địa chỉ</th>
                                 <th style={{ width: '25%' }}>Mô tả</th>
-                                <th style={{ width: '16%' }}>Sức chứa</th>
+                                <th style={{ width: '8%' }}>Phòng</th>
                                 <th style={{ width: '8%' }}>Hình ảnh</th>
                                 <th style={{ width: '8%' }}>Trạng thái</th>
                                 <th style={{ width: '15%' }}>Hành động</th>
@@ -104,7 +97,7 @@ const CinemaMenu = memo(() => {
                     </Table>
                     <FormGroup>
                         <Button variant="secondary" onClick={() => refetch("Cinema")}><i className="fa fa-refresh"></i></Button>
-                        <Form.Label style={{ margin: '10px' }}>1-2 of 2 items</Form.Label>
+                        <Form.Label style={{ margin: '10px' }}>1-2 of {`${items}`} items</Form.Label>
                     </FormGroup>
                 </FormGroup>
             </div>
@@ -128,7 +121,7 @@ const Cinema = ({ counter, cinemaId, handleShowEdit, setEditCinemaId }) => {
     }] = useDeleteCinemaMutation()
     const handleDelete = async () => {
         try {
-            await deleteCinema({ id: cinema.id })
+            await deleteCinema({ id: cinemaId })
         } catch (err) {
             console.log(err)
         }
@@ -137,10 +130,9 @@ const Cinema = ({ counter, cinemaId, handleShowEdit, setEditCinemaId }) => {
         <tr>
             <td>{counter}</td>
             <td>{cinema?.cinemaName}</td>
-            <td>{cinema?.location?.join(", ")}</td>
-            <td>{cinema?.description?.join(", ")}</td>
-            <td>{cinema?.rooms.join(", ")}</td>
-            <td>{cinema?.active}</td>
+            <td>{cinema?.location}</td>
+            <td>{cinema?.description}</td>
+            <td>{cinema?.rooms}</td>
             <td><FormCheckInput defaultChecked={cinema} disabled></FormCheckInput></td>
             <td>
                 <FormGroup className='btn-action'>

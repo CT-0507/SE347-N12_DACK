@@ -108,11 +108,12 @@ export const selectFilmBySlug = createSelector(
     [selectfilmsResult, selectActive],
     (filmsResult, option) => {
         const { ids } = filmsResult.data
-        let result = []
+        let result
         ids.forEach(id => {
             const film = useSelector(state => selectFilmById(state, id))
 
-            if (film.slug === option) result.push(film)
+            if (film.slug === option) result = film
+            console.log(result)
         });
         return result
     }

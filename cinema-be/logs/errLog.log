@@ -1,1 +1,6 @@
 20221225	11:21:56	5ab28585-a293-4ca8-a509-6359455eb934	ReferenceError: Cannot access 'path' before initialization	DELETE	/films	http://localhost:5173
+20230202	17:18:54	e3c737c5-0ada-4018-a3db-e455c0567ec7	undefined: undefined	POST	/cinemas	http://localhost:5173
+20230202	17:19:09	8d9c7f1e-cd16-4c5c-99f6-877b736ee454	undefined: undefined	POST	/cinemas	http://localhost:5173
+20230202	21:15:17	509fb713-51a0-493d-b520-411925a6bc58	ReferenceError: err is not defined	DELETE	/cinemas	http://localhost:5173
+20230202	21:16:33	f4148180-ab7a-4c46-92e6-72d4226551bb	ReferenceError: err is not defined	DELETE	/cinemas	http://localhost:5173
+20230202	21:16:42	1f49e2da-f6b5-4a42-8420-4a1f2f7fb022	ReferenceError: err is not defined	DELETE	/cinemas	http://localhost:5173
