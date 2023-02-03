@@ -20,14 +20,15 @@ import { useSelector } from 'react-redux';
 import { counter } from '@fortawesome/fontawesome-svg-core';
 
 import poster1 from '../../img/happywednesday240x201_1.jpg'
+import Body from './index.jsx'
 
 function BookTicket() {
     console.log(counter)
     return (  
         <Container className='container-book-tickets py-4'>
-            <Row>
+            {/* <Row>
                 <Col md={8} className='col-1'>
-                    <h2 className='p-2'>CHỌN VÉ/THỨC ĂN</h2>
+                    <h2 className='p-2'>CHỌN VÉ/ĐỒ ĂN</h2>
                     <Table   size="md" className='table-1' >
                         <thead className='row-title'>
                             <tr classname='name-table'>
@@ -93,7 +94,7 @@ function BookTicket() {
                     </Table>
 
                 </Col>
-                <Col md={4}>
+                <Col md={4} className='float-end'>
                     <Card style={{ width: '18rem' }} >
                         <Card.Img variant="top" src={poster1}  />
                         <Card.Body>
@@ -115,7 +116,8 @@ function BookTicket() {
                         </Card.Body>
                     </Card>
                 </Col>
-            </Row>
+            </Row> */}
+            <Body/>
         </Container>
     );
 }
