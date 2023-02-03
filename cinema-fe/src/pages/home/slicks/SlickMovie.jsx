@@ -1,4 +1,4 @@
-import  React, { memo,useState } from "react";
+import React, { memo, useState } from "react";
 import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -77,7 +77,6 @@ function SlickMovie() {
     if (isError) content = <div className="w-100 h-100">{error?.data?.message}</div>
     if (isSuccess) {
         const { ids } = films
-        console.log(films)
         content = ids?.length
             ? ids.map(filmId => <FilmItem key={filmId} filmId={filmId} />)
             : null
@@ -94,14 +93,14 @@ export default SlickMovie;
 
 const FilmItem = ({ filmId }) => {
     const [modalShow, setModalShow] = React.useState(false);
-    let idVideo=''
+    let idVideo = ''
     const film = useSelector(state => selectFilmById(state, filmId))
     if (film) {
         return (
             <div className="item">
-                <Card style={{ width: '18rem', }}  className="card-film">
-                    <Link to={`/movie-description/${film.id}`}>
-                        <Card.Img variant="top" style={{height: '415px'}}src={`http://localhost:3500/${film.poster}`} />
+                <Card style={{ width: '18rem', }} className="card-film">
+                    <Link to={`/movie-description/${film.slug}`}>
+                        <Card.Img variant="top" style={{ height: '415px' }} src={`http://localhost:3500/${film.poster}`} />
                     </Link>
 
 
@@ -113,16 +112,16 @@ const FilmItem = ({ filmId }) => {
                                 </Card.Text> */}
                         <Row>
                             <Col><ButtonPlay onClick={() => setModalShow(true)}></ButtonPlay></Col>
-                            <Col><Link to ='/show-times'>
+                            <Col><Link to='/show-times'>
                                 <ButtonTicket variant="primary"></ButtonTicket>
                             </Link></Col>
                         </Row>
                     </Card.Body>
                 </Card>
                 <PlayTrailer
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-                idVideo={film.trailerLink}
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    idVideo={film.trailerLink}
                 ></PlayTrailer>
             </div >
         )

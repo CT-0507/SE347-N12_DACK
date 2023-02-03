@@ -4,9 +4,7 @@ import {
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../../../app/api/apiSlice"
 
-const cinemasAdapter = createEntityAdapter({
-    sortComparer: (a, b) => b.updatedAt.localeCompare(a.updatedAt)
-})
+const cinemasAdapter = createEntityAdapter({})
 
 const initialState = cinemasAdapter.getInitialState()
 
@@ -63,7 +61,7 @@ export const cinemasApiSlice = apiSlice.injectEndpoints({
                 { type: 'Cinema', id: arg.id }
             ]
         }),
-    })
+    }),
 })
 
 export const {

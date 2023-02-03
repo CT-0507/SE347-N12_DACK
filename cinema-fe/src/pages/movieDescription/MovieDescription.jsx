@@ -17,14 +17,14 @@ import './movieDescription.css'
 
 import { useEffect, memo } from 'react'
 import { useSelector } from 'react-redux';
-import { selectFilmById } from '../admin/filmsApi/filmsApiSlice';
+import { selectFilmById, selectFilmBySlug } from '../admin/filmsApi/filmsApiSlice';
 const MoviesDescription = memo(() => {
-    const { id } = useParams()
-    const film = useSelector(state => selectFilmById(state, id))
+    const { slug } = useParams()
+    const film = useSelector(state => selectFilmBySlug(state, slug))
     console.log(film)
     const { height, width } = useWindowDimensions();
-    
-    const isTablet = width < 1400  
+
+    const isTablet = width < 1400
     return (
         <Container className="container-movies-description">
             <header>
@@ -35,7 +35,7 @@ const MoviesDescription = memo(() => {
                     <ReactImageMagnify {...{
                         smallImage: {
                             alt: 'Wristwatch by Ted Baker London',
-                            isFluidWidth: {isTablet},
+                            isFluidWidth: isTablet,
                             width: 300,
                             height: 450,
                             src: `http://localhost:3500/${film.poster}`

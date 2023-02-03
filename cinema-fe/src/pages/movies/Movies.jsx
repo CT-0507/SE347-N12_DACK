@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 import './movies.css'
@@ -17,7 +17,11 @@ import { useEffect, memo } from 'react'
 import { useSelector } from 'react-redux';
 import { selectActiveFilm } from '../admin/filmsApi/filmsApiSlice';
 const Movies = memo(() => {
-    const AiringFilm = useSelector(state => selectActiveFilm(state, "airing"))
+    const { pathname } = useLocation()
+    const option = pathname.includes("nearly") ? "nearly air" : "airing"
+    console.log(pathname)
+    const AiringFilm = useSelector(state => selectActiveFilm(state, option))
+
     return (
         <Container className="container-movies">
             <header>

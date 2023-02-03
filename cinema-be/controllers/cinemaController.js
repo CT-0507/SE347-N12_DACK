@@ -4,6 +4,7 @@ const formidable = require('formidable')
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
+const { isBoolean } = require('util');
 
 // @desc Get all cinema
 // @route GET /cinema
@@ -28,28 +29,40 @@ const createNewCinema = asyncHandler(async (req, res, next) => {
             return
         }
         const { cinemaName, location, description, rooms, active } = fields
-        if (!cinemaName || !location || !description || !rooms) {
+        const isBoolean = val => 'boolean' === typeof val;
+        if (!cinemaName || !location || !description && isBoolean(active)) {
             errMsg = "All field are required"
+            console.log(errMsg)
             next(errMsg)
             return
         }
         const roomsList = rooms.split(",").map((item) => item.trim())
-        files.cinemaPic.forEach((picture, index) => {
+        console.log(typeof files)
+        for (const [key, value] of Object.entries(files)) {
+            console.log(`${value}`);
+        }
+        const filesArray = Object.values(files)
+        console.log(filesArray)
+        let fileNameArray = []
+        filesArray.forEach((picture, index) => {
             var oldpath = picture.filepath
-            var split = picture.originalFilename.Split(".")
+            var split = picture.originalFilename.split(".")
             var fileEx = split[split.length - 1]
-            var fileName = `cinema-picture-${index}-${randomUUID()}.${fileEx}`
+            var fileName = `cinema-picture-${index}-${randomUUID().substring(1, 8)}.${fileEx}`
             var newpath = path.join(__dirname, "..", "public", fileName)
             fs.copyFile(oldpath, newpath, (err) => {
                 if (err || errMsg) {
                     res.status(501).json({ err: "cannot save file" })
                     errMsg = "Error"
+                    return
                 }
-            })
 
+            })
+            fileNameArray.push(fileName)
         })
+
         if (errMsg) return
-        const cinemaObject = { cinemaName, location, description, rooms: roomsList, active, cinemaPicture }
+        const cinemaObject = { cinemaName, location, description, rooms: roomsList, active, cinemaPicture: fileNameArray }
         const cinema = await Cinema.create(cinemaObject)
         if (cinema) {
             res.status(201).json({ message: `New Cinema ${cinema.cinemaName} created` })
@@ -74,7 +87,27 @@ const deleteCinema = asyncHandler(async (req, res) => {
     if (!cinema) {
         return res.status(400).json({ message: 'Ciname not found' })
     }
+    let errMsg
+    cinema.cinemaPicture.forEach((picture, index) => {
+        const filePath = path.join(__dirname, "..", "public", picture)
+        console.log(picture)
+        fs.stat(filePath, function (err, stats) {
+            console.log(stats);//here we got all information of file in stats variable
 
+            if (err) {
+                errMsg = err
+                console.log(err)
+                return console.error(err);
+            }
+
+            fs.unlink(filePath, function (err) {
+                if (err) { errMsg = err; console.log(err) }
+                console.log('file deleted successfully');
+            });
+        });
+    })
+
+    if (errMsg) return
     const result = await cinema.deleteOne()
 
     const reply = `Ciname ${result.cinemaName} with ID ${result._id} deleted`

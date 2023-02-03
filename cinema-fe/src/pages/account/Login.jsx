@@ -123,7 +123,8 @@ const Login = () => {
                         />
                     </Form.Group>
                     {!isValid && <p className="text-danger ms-2">Mật khẩu hoặc tài khoản không đúng</p>}
-                    <Form.Text hidden={Boolean(!errMsg)}>{errMsg}</Form.Text>
+                    <Form.Text hidden={Boolean(!errMsg)} className="text-danger fs-4">{errMsg}</Form.Text>
+                    <br />
                     <Button className="w-100" variant="primary" type="submit" disabled={!canLogin}>
                         {isLoading ? <Spinner /> : 'Đăng nhập'}
                     </Button>
@@ -180,7 +181,8 @@ const Login = () => {
                         />
                     </Form.Group>
                     {!isValid && <p className="text-danger ms-2">Mật khẩu hoặc tài khoản không đúng</p>}
-                    <Form.Text hidden={Boolean(!errMsg)}>{errMsg}</Form.Text>
+                    <Form.Text hidden={Boolean(!errMsg)} className="text-danger fs-4">{errMsg}</Form.Text>
+                    <br />
                     <Button className="w-100" variant="primary" type="submit" disabled={!canLogin}>
                         {isLoading ? <Spinner /> : 'Đăng nhập'}
                     </Button>
