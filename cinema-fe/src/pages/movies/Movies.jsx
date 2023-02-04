@@ -9,6 +9,10 @@ import { Link, useLocation } from 'react-router-dom';
 
 import './movies.css'
 
+import ButtonTicket from '../../components/button/ButtonTicket'
+import ButtonPlay from '../../components/button/ButtonPlay'
+import PlayTrailer from '../../components/playTrailer/PlayTrailer'
+
 import { useEffect, memo } from 'react'
 import { useSelector } from 'react-redux';
 import { selectActiveFilm } from '../admin/filmsApi/filmsApiSlice';
@@ -23,7 +27,7 @@ const Movies = memo(() => {
             <header>
                 <h1 className='tile-movies'>Phim đang chiếu</h1>
             </header>
-            <Row xs={2} md={4} className="g-4">
+            <Row xs={2} lg={4} className="g-4">
                 {AiringFilm.map((item, idx) => (
                     <Col key={idx}>
                         <Card >
@@ -36,8 +40,16 @@ const Movies = memo(() => {
                                     <br /> Khởi chiếu: {item.premiereDay}
                                 </Card.Text>
                                 <Row>
-                                    <Col><Button variant="primary">Xem trailer</Button></Col>
-                                    <Col><Button variant="danger">Đặt vé</Button></Col>
+                                    <Col>
+                                        <Link to={`/movie-description/${item.id}`}>
+                                            <ButtonPlay ></ButtonPlay>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to ='/book-ticket'>
+                                            <ButtonTicket variant="primary"></ButtonTicket>
+                                        </Link>
+                                    </Col>
                                 </Row>
                             </Card.Body>
                         </Card>

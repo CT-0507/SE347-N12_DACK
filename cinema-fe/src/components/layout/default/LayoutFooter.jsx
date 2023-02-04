@@ -20,11 +20,11 @@ const LayoutFooter = memo(() => {
                 {!isMobile ?
                     <Container fluid className='p-0 px-4 footer-container'>
                         <Row className='text-center  border-bottom border-top p-2  border-dark justify-content-md-center'>
-                            <Col  lg="2"><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
-                            <Col  lg="2"><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>
-                            <Col  lg="2"><i className="fa fa-thumbs-up p-2" aria-hidden="true"></i></Col>
-                            <Col  lg="2"><i className="fa fa-camera p-2" aria-hidden="true"></i></Col>
-                            <Col  lg="2"><i className="fa fa-bullhorn p-2" aria-hidden="true"></i></Col>
+                            <Col  md="2"><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
+                            <Col  md="2"><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>
+                            <Col  md="2"><i className="fa fa-thumbs-up p-2" aria-hidden="true"></i></Col>
+                            <Col  md="2"><i className="fa fa-camera p-2" aria-hidden="true"></i></Col>
+                            <Col  md="2"><i className="fa fa-bullhorn p-2" aria-hidden="true"></i></Col>
                         </Row>
                         <Row className=' border-bottom border-dark justify-content-md-center'>
                             <Col  lg="2" className="py-3 ">
@@ -53,7 +53,6 @@ const LayoutFooter = memo(() => {
                                     <li>
                                         <Nav.Link as={Link} >
                                             <i className="fa fa-facebook-official p-3 "  aria-hidden="true">
-
                                             </i>
                                             <i className="fa fa-youtube-square p-3" aria-hidden="true"></i>
                                             <i className="fa fa-instagram p-3" aria-hidden="true"></i>
