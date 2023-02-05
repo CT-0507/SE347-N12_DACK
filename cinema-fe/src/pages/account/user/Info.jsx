@@ -52,11 +52,10 @@ const Info = () => {
                             <Form.Select
                                 style={{
                                     display: "inline-block",
-                                    width: "200px",
+                                    width: "100%",
                                 }}
                             >
-                                <option></option>
-                                <option defaultValue value="1">
+                                <option checked value="1">
                                     Hai Phong
                                 </option>
                                 <option value="2">HCM</option>
@@ -66,22 +65,7 @@ const Info = () => {
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Group className="mb-3 form-group ">
-                        <FloatingLabel label="Địa chỉ" className="mb-3 w-100">
-                            <Form.Control
-                                type="text"
-                                placeholder="text"
-                                value={userInf.address}
-                                onChange={(e) => {
-                                    setUserInf({
-                                        ...userInf,
-                                        address: e.target.value,
-                                    });
-                                }}
-                            />
-                        </FloatingLabel>
-                    </Form.Group>
-                    <Form.Group className="mb-3 form-group ">
-                        <FloatingLabel
+                    <FloatingLabel
                             label="Điện thoại"
                             className="mb-3 w-100"
                         >
@@ -97,6 +81,7 @@ const Info = () => {
                                 }}
                             />
                         </FloatingLabel>
+                        
                         <FloatingLabel
                             label="Mật khẩu cũ"
                             className="mb-3 w-100"
@@ -113,6 +98,22 @@ const Info = () => {
                                 }}
                             />
                         </FloatingLabel>
+                    </Form.Group>
+                    <Form.Group className="mb-3 form-group ">
+                    <FloatingLabel label="Địa chỉ" className="mb-3 w-100">
+                            <Form.Control
+                                type="text"
+                                placeholder="text"
+                                value={userInf.address}
+                                onChange={(e) => {
+                                    setUserInf({
+                                        ...userInf,
+                                        address: e.target.value,
+                                    });
+                                }}
+                            />
+                        </FloatingLabel>
+                        
                     </Form.Group>
                     <div className="group-inf">
                         <div className="inf-title">Ngày Sinh</div>
@@ -181,7 +182,7 @@ const Info = () => {
                     <Form className="form">
                         <FloatingLabel
                             label="Rạp yêu thích"
-                            className="mb-3 w-100"
+                            className="mb-3"
                         >
                             <Form.Select
                                 aria-label="Default select example"
@@ -194,7 +195,7 @@ const Info = () => {
                                 <option defaultValue value="1">
                                     CGV Hai Phong
                                 </option>
-                                <option value="2">CGV HCM</option>
+                                <option value="2" checked>CGV HCM</option>
                                 <option value="3">CGV Da Nang</option>
                                 <option value="4">CGV Ha Noi</option>
                             </Form.Select>

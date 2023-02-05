@@ -25,6 +25,39 @@ const user = () => {
                 Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản
                 của mình.
             </span>
+            <div className="user-table row my-4">
+                <div className="col-2 ">
+                    <div>cấp độ thẻ</div>
+                    <div>tổng chi tiêu</div>
+                    <div className="my-2">điểm CGV</div>
+                </div>
+                <div className="col-2 ">
+                    <div>Vip</div>
+                    <div>0 đ</div>
+                    <div className="my-2">0 P</div>
+                </div>
+                <div className="col-2 left-line text-center text-capitalize">
+                    <div>thể quà tặng</div>
+                    <div>0 đ</div>
+                    <div className="btn-see mx-4 my-2">xem</div>
+                </div>
+
+                <div className="col-2 left-line text-center text-capitalize">
+                    <div>voucher</div>
+                    <div>0</div>
+                    <div className="btn-see mx-4 my-2">xem</div>
+                </div>
+                <div className="col-2 left-line text-center text-capitalize">
+                    <div>coupon</div>
+                    <div>1</div>
+                    <div className="btn-see mx-4 my-2">xem</div>
+                </div>
+                <div className="col-2 left-line text-center text-capitalize">
+                    <div>thẻ thành viên</div>
+                    <div>1</div>
+                    <div className="btn-see mx-4 my-2">xem</div>
+                </div>
+            </div>
             <div className="box-inf">
                 <div className="title">Thông tin tài khoản</div>
                 <hr />
