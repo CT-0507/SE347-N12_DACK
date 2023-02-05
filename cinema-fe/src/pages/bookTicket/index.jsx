@@ -181,7 +181,7 @@ function Body() {
               <div className='mt-4 pb-4'>
                 <button
                   className="continue"
-                  onClick={() => navigate(`/Final/${selected}/${totalprice}`)}
+                  onClick={() => navigate(`/pay/${selected}/${totalprice}`)}
                 >
                   continue
                 </button>

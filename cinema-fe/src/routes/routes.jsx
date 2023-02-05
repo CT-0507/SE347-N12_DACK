@@ -5,6 +5,7 @@ import Movies from "../pages/movies/Movies"
 import MovieDescription from "../pages/movieDescription/MovieDescription"
 import ShowTimes from "../pages/showTimes/ShowTimes"
 import BookTicket from "../pages/bookTicket/BookTicket"
+import Pay from "../pages/bookTicket/Pay"
 import NotFound from "../pages/NotFound/NotFound"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
@@ -25,27 +26,21 @@ import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
 import UserPrefetch from "../components/userPrefetch/UserPrefetch"
 import CinemaMenu from "../pages/admin/Cinema"
-import { ROLES } from '../config/roles';
-import RequireAuth from "../pages/account/RequireAuth"
 const AppRoute = () => {
     return (
         <Routes>
             <Route path='/admin'>
                 <Route index element={<Login />} />
                 <Route path='login' element={<Login />} />
-                {/* Protected Route */}
                 <Route element={<PersistLogin />} >
-                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />} >
-                        <Route element={<AdminPrefetch />}>
-                            <Route element={<AdminLayout />}>
-                                <Route path='user' element={<UserMenu />} />
-                                <Route path='film' element={<FilmMenu />} />
-                                <Route path='cinema' element={<CinemaMenu />} />
-                            </Route>
+                    <Route element={<AdminPrefetch />}>
+                        <Route element={<AdminLayout />}>
+                            <Route path='user' element={<UserMenu />} />
+                            <Route path='film' element={<FilmMenu />} />
+                            <Route path='cinema' element={<CinemaMenu/>} />
                         </Route>
                     </Route>
                 </Route>
-                {/* End Protected Route */}
             </Route>
             <Route path='/' element={<Layout />}>
                 <Route element={<UserPrefetch />}>
@@ -55,14 +50,14 @@ const AppRoute = () => {
                         <Route path='login' element={<Login />} />
                         <Route path='register' element={<SignUp />} />
                     </Route>
-                    <Route element={<PersistLogin publicURL={true} />}>
+                    <Route element={<PersistLogin />}>
                         <Route path='movies' element={<Movies />} />
                         <Route path='show-times' element={<ShowTimes/>} />
                         <Route path='book-ticket' element={<BookTicket/>} />
-                
+                        <Route path='pay/:selected/:totalprice' element={<Pay/>} />
 
                         <Route path='movie-description' >
-                            <Route path=':slug' element={<MovieDescription />} />
+                            <Route path=':id' element={<MovieDescription />} />
                         </Route>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />
