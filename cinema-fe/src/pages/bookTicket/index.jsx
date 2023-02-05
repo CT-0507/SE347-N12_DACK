@@ -4,6 +4,8 @@ import SeatPicker from "react-seat-picker";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import { Link, useParams } from 'react-router-dom';
 // import Final from "./Final";
 import ButtonTicket from '../../components/button/ButtonTicket'
 import "./Seats.css";
@@ -145,7 +147,7 @@ function Body() {
   };
 
   return (
-    <Container className='px-0 container-seats'>
+    <Container className='px-0 pb-4 container-seats'>
         <div className=' ps-2 header-bookticket'>
             <h1>Đặt vé</h1>
         </div>
@@ -155,7 +157,7 @@ function Body() {
         
           </div>
         
-          <SeatPicker
+          <SeatPicker 
             addSeatCallback={addSeatCallback}
             removeSeatCallback={removeSeatCallback}
             rows={rows}
@@ -177,7 +179,12 @@ function Body() {
                 </Col>
               </Row>
               <div className='mt-4 pb-4'>
-                  <ButtonTicket></ButtonTicket>
+                <button
+                  className="continue"
+                  onClick={() => navigate(`/Final/${selected}/${totalprice}`)}
+                >
+                  continue
+                </button>
               </div>
             </>
           ) : null}

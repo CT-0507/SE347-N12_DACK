@@ -71,10 +71,10 @@ const ShowTimes = memo(() => {
                         </Col>
                         <Col sm={9}>
                             <ul>                               
-                                <li ><Link  to='/movies'style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link  to='/book-ticket'style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
                             </ul>
                         </Col>
                     </Row>
@@ -84,10 +84,10 @@ const ShowTimes = memo(() => {
                         </Col>
                         <Col sm={9}>
                             <ul>
-                                <li ><Link  to='/movies'style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link  to='/book-ticket'style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link  to='/book-ticket'style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
                             </ul>
                         </Col>
                     </Row>
@@ -100,10 +100,10 @@ const ShowTimes = memo(() => {
                         </Col>
                         <Col sm={9}>
                             <ul>
-                                <li ><Link  to='/movies'style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket'style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
             
                             </ul>
                         </Col>
@@ -114,10 +114,10 @@ const ShowTimes = memo(() => {
                         </Col>
                         <Col sm={9}>
                             <ul>
-                                <li ><Link  to='/movies'style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
-                                <li ><Link style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link  to='/book-ticket'style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
+                                <li ><Link to='/book-ticket' style={{ textDecoration: 'none' }}>16:30</Link></li>
                             </ul>
                         </Col>
                     </Row>
