@@ -5,19 +5,29 @@ import Movies from "../pages/movies/Movies"
 import MovieDescription from "../pages/movieDescription/MovieDescription"
 import ShowTimes from "../pages/showTimes/ShowTimes"
 import BookTicket from "../pages/bookTicket/BookTicket"
-import NotFound from "../pages/NotFound/NotFound"
+import NotFound from "../pages/notFound/NotFound"
 import About from "../pages/about/About"
-import Term from "../pages/term/Term"
+import Term from "../pages/term/term"
 import TermsUse from "../pages/termsUse/TermsUse"
 import Contact from "../pages/contact/Contact"
 import UserMenu from '../pages/admin/User'
 import FilmMenu from "../pages/admin/Film"
 import PaymentPolicy from '../pages/paymentPolicy/PaymentPolicy'
-import FAQ from '../pages/faq/FAQ'
+import FAQ from '../pages/faq/faq'
 
 import ListLayout from "../components/layout/ListLayout/ListLayout"
 import Login from '../pages/account/Login'
 import SignUp from '../pages/account/SignUp'
+
+import LayoutUser from "../pages/account/user/Layout";
+import User from "../pages/account/user/User";
+import Point from "../pages/account/user/Point";
+import Card from "../pages/account/user/Card";
+import Gift from "../pages/account/user/Gift";
+import Voucher from "../pages/account/user/Voucher";
+import Coupon from "../pages/account/user/Coupon";
+import Info from "../pages/account/user/Info";
+
 // import Admin from '../pages/admin/Admin'
 import AccountLayout from '../components/layout/accountLayout/AccountLayout'
 import AdminLayout from '../components/layout/adminLayout/adminLayout'
@@ -54,6 +64,15 @@ const AppRoute = () => {
                         <Route index element={<Login />} />
                         <Route path='login' element={<Login />} />
                         <Route path='register' element={<SignUp />} />
+                    </Route>
+                    <Route path="user" element={<LayoutUser />}>
+                        <Route index element={<User />} />
+                        <Route path="point" element={<Point />} />
+                        <Route path="card" element={<Card />} />
+                        <Route path="gift" element={<Gift />} />
+                        <Route path="voucher" element={<Voucher />} />
+                        <Route path="coupon" element={<Coupon />} />
+                        <Route path="edit" element={<Info />} />
                     </Route>
                     <Route element={<PersistLogin publicURL={true} />}>
                         <Route path='movies' element={<Movies />} />
