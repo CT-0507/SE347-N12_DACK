@@ -121,7 +121,7 @@ function Pay() {
                     <h5 className='title-total-price py-1 px-1'>Tổng số tiền cần thanh toán</h5>
                     <h4>{TongGia}</h4>
                     <div className='my-4'>
-                        <Link to='#'>
+                        <Link to='/mo-mo'>
                             <ButtonPay></ButtonPay>
                         </Link>
                     </div>
