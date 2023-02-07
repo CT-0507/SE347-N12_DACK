@@ -180,10 +180,10 @@ function Body() {
               </Row>
               <div className='mt-4 pb-4'>
                 <button
-                  className="continue"
+                  className="seat-continue p-2"
                   onClick={() => navigate(`/pay/${selected}/${totalprice}`)}
                 >
-                  continue
+                  Tiếp tục
                 </button>
               </div>
             </>

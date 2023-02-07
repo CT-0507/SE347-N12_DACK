@@ -128,9 +128,9 @@ const LayoutHeader = memo(() => {
                                     interactive
                                     render={attrs => (
                                         <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp Đặt Biệt</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp 3D</div></Link>
+                                            <Link as={Link} to='cinema' style={{ textDecoration: 'none' }}><div className="  text-nav">tất Cả Các Rạp</div></Link>
+                                            <Link as={Link} to='cinema' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp Đặt Biệt</div></Link>
+                                            <Link as={Link} to='cinema' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Rạp 3D</div></Link>
                                         </div>
                                     )}
                                 >
