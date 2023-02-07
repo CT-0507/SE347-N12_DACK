@@ -7,7 +7,7 @@ import ShowTimes from "../pages/showTimes/ShowTimes"
 import BookTicket from "../pages/bookTicket/BookTicket"
 import Pay from "../pages/bookTicket/Pay"
 import MoMo from "../pages/bookTicket/MoMo"
-
+import Cinema from '../pages/cinema/Cinema'
 import NotFound from "../pages/NotFound/NotFound"
 import About from "../pages/about/About"
 import Term from "../pages/term/Term"
@@ -66,6 +66,7 @@ const AppRoute = () => {
                             <Route path='pay/:selected/:totalprice' element={<Pay />} />
                         </Route>
                         <Route path='mo-mo' element={<MoMo />} ></Route>
+                        <Route path='cinema' element={<Cinema />} ></Route>
 
                         <Route path='movie-description' >
                             <Route path=':slug' element={<MovieDescription />} />

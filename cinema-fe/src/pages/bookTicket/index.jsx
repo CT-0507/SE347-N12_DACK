@@ -148,46 +148,46 @@ function Body() {
 
   return (
     <Container className='px-0 pb-4 container-seats'>
-      <div className=' ps-2 header-bookticket'>
-        <h1>Đặt vé</h1>
-      </div>
-      <div className="seats">
-        <div className="my-4">
-          <h2>-----Màn Hình----</h2>
-
+        <div className=' ps-2 header-bookticket'>
+            <h1>Đặt vé</h1>
         </div>
-
-        <SeatPicker
-          addSeatCallback={addSeatCallback}
-          removeSeatCallback={removeSeatCallback}
-          rows={rows}
-          alpha
-          maxReservableSeats={10}
-          visible
-        />
-        {selected.length !== 0 ? (
-          <>
-            <Row className="mt-4 pt-2 show-price">
-              <Col md={8} className="">
-                <h3 className="">Ghế đã chọn:{selected.toString()}</h3>
-              </Col>
-              <Col md={4} className="">
-                <h3 className="">
-                  Tổng tiền:
-                  {TongGia}
-                </h3>
-              </Col>
-            </Row>
-            <div className='mt-4 pb-4'>
-              <button
-                className="continue"
-                onClick={() => navigate(`/pay/${selected}/${totalprice}`)}
-              >
-                continue
-              </button>
-            </div>
-          </>
-        ) : null}
+        <div className="seats">
+          <div className="my-4">
+            <h2>-----Màn Hình----</h2>
+        
+          </div>
+        
+          <SeatPicker 
+            addSeatCallback={addSeatCallback}
+            removeSeatCallback={removeSeatCallback}
+            rows={rows}
+            alpha
+            maxReservableSeats={10}
+            visible
+          />
+          {selected.length !== 0 ? (
+            <>
+              <Row className="mt-4 pt-2 show-price">
+                <Col md={8} className="">
+                  <h3 className="">Ghế đã chọn:{selected.toString()}</h3>
+                </Col>
+                <Col md={4} className="">
+                  <h3 className="">
+                    Tổng tiền:
+                    {TongGia}
+                  </h3>
+                </Col>
+              </Row>
+              <div className='mt-4 pb-4'>
+                <button
+                  className="seat-continue p-2"
+                  onClick={() => navigate(`/pay/${selected}/${totalprice}`)}
+                >
+                  Tiếp tục
+                </button>
+              </div>
+            </>
+          ) : null}
       </div>
     </Container>
   );
