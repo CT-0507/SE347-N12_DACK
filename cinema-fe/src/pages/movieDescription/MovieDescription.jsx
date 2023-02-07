@@ -2,7 +2,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import React from "react";
 import Button from 'react-bootstrap/Button';
 import { Link, useParams } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
@@ -71,7 +70,7 @@ const MoviesDescription = memo(() => {
                         <br />
                     </p>
                     <ButtonLike></ButtonLike>
-                    <Link to ='/book-ticket'>
+                    <Link to='/book-ticket'>
                         <ButtonTicket></ButtonTicket>
                     </Link>
                     <Row className='movie-tab my-2 '>

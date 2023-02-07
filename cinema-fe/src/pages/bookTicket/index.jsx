@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import SeatPicker from "react-seat-picker";
 import Container from 'react-bootstrap/Container';
@@ -146,44 +146,44 @@ function Body() {
 
   return (
     <Container className='px-0 container-seats'>
-        <div className=' ps-2 header-bookticket'>
-            <h1>Đặt vé</h1>
+      <div className=' ps-2 header-bookticket'>
+        <h1>Đặt vé</h1>
+      </div>
+      <div className="seats">
+        <div className="my-4">
+          <h2>-----Màn Hình----</h2>
+
         </div>
-        <div className="seats">
-          <div className="my-4">
-            <h2>-----Màn Hình----</h2>
-        
-          </div>
-        
-          <SeatPicker
-            addSeatCallback={addSeatCallback}
-            removeSeatCallback={removeSeatCallback}
-            rows={rows}
-            alpha
-            maxReservableSeats={10}
-            visible
-          />
-          {selected.length !== 0 ? (
-            <>
-              <Row className="mt-4 pt-2 show-price">
-                <Col md={8} className="">
-                  <h3 className="">Ghế đã chọn:{selected.toString()}</h3>
-                </Col>
-                <Col md={4} className="">
-                  <h3 className="">
-                    Tổng tiền:
-                    {TongGia}
-                  </h3>
-                </Col>
-              </Row>
-              <div className='mt-4 pb-4'>
-                  <ButtonTicket></ButtonTicket>
-              </div>
-            </>
-          ) : null}
-        </div>
+
+        <SeatPicker
+          addSeatCallback={addSeatCallback}
+          removeSeatCallback={removeSeatCallback}
+          rows={rows}
+          alpha
+          maxReservableSeats={10}
+          visible
+        />
+        {selected.length !== 0 ? (
+          <>
+            <Row className="mt-4 pt-2 show-price">
+              <Col md={8} className="">
+                <h3 className="">Ghế đã chọn:{selected.toString()}</h3>
+              </Col>
+              <Col md={4} className="">
+                <h3 className="">
+                  Tổng tiền:
+                  {TongGia}
+                </h3>
+              </Col>
+            </Row>
+            <div className='mt-4 pb-4'>
+              <ButtonTicket></ButtonTicket>
+            </div>
+          </>
+        ) : null}
+      </div>
     </Container>
   );
 }
 
-export default Body;
+export default memo(Body);
