@@ -170,7 +170,7 @@ const LayoutHeader = memo(() => {
                 </div>
                 :
                 <div className='header-banner__mobile'>
-                    <Link to="/"><img src={logo} alt="" style={{ width: '150px' }} className='logo-header' /></Link>
+                    <Link to="/"><img src={logo} alt="" style={{ width: '90px' }} className='logo-header' /></Link>
                 </div>
             }
             {isMobile || isTablet ? <Navbar className='w-100 d-block text-center'>
