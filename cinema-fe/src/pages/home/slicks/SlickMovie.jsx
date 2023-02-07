@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import Slider from "react-slick";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -89,10 +89,10 @@ function SlickMovie() {
     );
 }
 
-export default SlickMovie;
+export default memo(SlickMovie);
 
 const FilmItem = ({ filmId }) => {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
     let idVideo = ''
     const film = useSelector(state => selectFilmById(state, filmId))
     if (film) {

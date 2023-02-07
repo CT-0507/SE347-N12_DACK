@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import SeatPicker from "react-seat-picker";
 import Container from 'react-bootstrap/Container';
@@ -188,9 +188,9 @@ function Body() {
               </div>
             </>
           ) : null}
-        </div>
+      </div>
     </Container>
   );
 }
 
-export default Body;
+export default memo(Body);

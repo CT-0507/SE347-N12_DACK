@@ -4,7 +4,6 @@ const formidable = require('formidable')
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
-const { isBoolean } = require('util');
 
 // @desc Get all cinema
 // @route GET /cinema
