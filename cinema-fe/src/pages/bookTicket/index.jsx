@@ -4,6 +4,8 @@ import SeatPicker from "react-seat-picker";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import { Link, useParams } from 'react-router-dom';
 // import Final from "./Final";
 import ButtonTicket from '../../components/button/ButtonTicket'
 import "./Seats.css";
@@ -17,16 +19,16 @@ function Body() {
       { id: 2, number: "A2" },
       { id: 3, number: "A3" },
       { id: 4, number: "A4" },
-      { id: 24, number: "A5" },
-      { id: 34, number: "A5" },
-      { id: 44, number: "A6" },
-      { id: 54, number: "A7" },
+      { id: 5, number: "A5" },
+      { id: 6, number: "A6" },
+      { id: 7, number: "A7" },
+      { id: 8, number: "A8" },
       null,
-      { id: 5, number: "A8" },
-      { id: 6, number: "A9" },
-      { id: 7, number: "A10" },
-      { id: 8, number: "A11" },
-      { id: 9, number: "A12", isReserved: true }
+      { id: 9, number: "A9" },
+      { id: 10, number: "A10" },
+      { id: 11, number: "A11" },
+      { id: 12, number: "A12" },
+      { id: 13, number: "A13", isReserved: true }
     ],
     [
       { id: 11, number: "B1" },
@@ -145,7 +147,7 @@ function Body() {
   };
 
   return (
-    <Container className='px-0 container-seats'>
+    <Container className='px-0 pb-4 container-seats'>
       <div className=' ps-2 header-bookticket'>
         <h1>Đặt vé</h1>
       </div>
@@ -177,7 +179,12 @@ function Body() {
               </Col>
             </Row>
             <div className='mt-4 pb-4'>
-              <ButtonTicket></ButtonTicket>
+              <button
+                className="continue"
+                onClick={() => navigate(`/pay/${selected}/${totalprice}`)}
+              >
+                continue
+              </button>
             </div>
           </>
         ) : null}
