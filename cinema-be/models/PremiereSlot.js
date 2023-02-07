@@ -11,18 +11,24 @@ const premiereSlotSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        time: {
+            type: String,
+            required: true
+        },
         cinema: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: 'Cinema'
         },
         rooms: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
-            ref: 'Rooms'
         },
         seatStatus: [
-
+            {
+                type: String,
+                required: true,
+            }
         ],
     },
     {
