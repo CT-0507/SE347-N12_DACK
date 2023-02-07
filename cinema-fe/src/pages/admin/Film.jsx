@@ -81,24 +81,28 @@ const FilmMenu = memo(() => {
                             />
                         </InputGroup>
                     </Form>
-                    <Table className='user-table' striped bordered hover size="sm">
-                        <thead>
-                            <tr>
-                                <th style={{ width: '3%' }}>STT</th>
-                                <th style={{ width: '15%' }}>Tên phim</th>
-                                <th style={{ width: '10%' }}>Đạo diễn</th>
-                                <th style={{ width: '25%' }}>Diễn viên</th>
-                                <th style={{ width: '16%' }}>Thể loại</th>
-                                <th style={{ width: '8%' }}>Khởi chiếu</th>
-                                <th style={{ width: '8%' }}>Trạng thái</th>
-                                <th style={{ width: '15%' }}>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {content}
-                        </tbody>
+                    <div style={{ width: "100%", overflowX: "auto" }}>
+                        <Table className='user-table' striped bordered hover size="sm">
+                            <thead>
+                                <tr>
+                                    <th style={{ width: '3%' }}>STT</th>
+                                    <th >ID</th>
+                                    <th style={{ width: '15%' }}>Tên phim</th>
+                                    <th style={{ width: '10%' }}>Đạo diễn</th>
+                                    <th style={{ width: '25%' }}>Diễn viên</th>
+                                    <th style={{ width: '16%' }}>Thể loại</th>
+                                    <th style={{ width: '8%' }}>Khởi chiếu</th>
+                                    <th style={{ width: '8%' }}>Trạng thái</th>
+                                    <th style={{ width: '15%' }}>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {content}
+                            </tbody>
 
-                    </Table>
+                        </Table>
+                    </div>
+
                     <FormGroup>
                         <Button variant="secondary" onClick={() => refetch("Film")}><i className="fa fa-refresh"></i></Button>
                         <Form.Label style={{ margin: '10px' }}>1-2 of 2 items</Form.Label>
@@ -133,6 +137,7 @@ const Film = ({ counter, filmId, handleShowEdit, setEditFilmId }) => {
     return (
         <tr>
             <td>{counter}</td>
+            <td>{film?.id}</td>
             <td>{film?.filmName}</td>
             <td>{film?.directors?.join(", ")}</td>
             <td>{film?.actors?.join(", ")}</td>

@@ -28,6 +28,9 @@ import AdminPrefetch from "../pages/admin/adminPrefetch"
 import PersistLogin from "../pages/account/PersistLogin"
 import UserPrefetch from "../components/userPrefetch/UserPrefetch"
 import CinemaMenu from "../pages/admin/Cinema"
+import PremiereSlotMenu from "../pages/admin/PremiereSlot"
+import RequireAuth from "../pages/account/RequireAuth"
+import { ROLES } from "../config/roles"
 const AppRoute = () => {
     return (
         <Routes>
@@ -35,11 +38,14 @@ const AppRoute = () => {
                 <Route index element={<Login />} />
                 <Route path='login' element={<Login />} />
                 <Route element={<PersistLogin />} >
-                    <Route element={<AdminPrefetch />}>
-                        <Route element={<AdminLayout />}>
-                            <Route path='user' element={<UserMenu />} />
-                            <Route path='film' element={<FilmMenu />} />
-                            <Route path='cinema' element={<CinemaMenu/>} />
+                    <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                        <Route element={<AdminPrefetch />}>
+                            <Route element={<AdminLayout />}>
+                                <Route path='user' element={<UserMenu />} />
+                                <Route path='film' element={<FilmMenu />} />
+                                <Route path='cinema' element={<CinemaMenu />} />
+                                <Route path='premiere-slot' element={<PremiereSlotMenu />} />
+                            </Route>
                         </Route>
                     </Route>
                 </Route>
@@ -52,16 +58,17 @@ const AppRoute = () => {
                         <Route path='login' element={<Login />} />
                         <Route path='register' element={<SignUp />} />
                     </Route>
-                    <Route element={<PersistLogin />}>
+                    <Route element={<PersistLogin publicURL={true} />}>
                         <Route path='movies' element={<Movies />} />
-                        <Route path='show-times' element={<ShowTimes/>} />
-                        <Route path='book-ticket' element={<BookTicket/>} />
-                        <Route path='pay/:selected/:totalprice' element={<Pay/>} >
+                        <Route path='show-times' element={<ShowTimes />} />
+                        <Route path='book-ticket' element={<BookTicket />} />
+                        <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+                            <Route path='pay/:selected/:totalprice' element={<Pay />} />
                         </Route>
-                        <Route path='mo-mo' element={<MoMo/>} ></Route>
+                        <Route path='mo-mo' element={<MoMo />} ></Route>
 
                         <Route path='movie-description' >
-                            <Route path=':id' element={<MovieDescription />} />
+                            <Route path=':slug' element={<MovieDescription />} />
                         </Route>
                         <Route path='default' element={<ListLayout />}>
                             <Route index element={<About />} />

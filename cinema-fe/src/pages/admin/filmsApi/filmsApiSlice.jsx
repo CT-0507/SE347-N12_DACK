@@ -111,9 +111,7 @@ export const selectFilmBySlug = createSelector(
         let result
         ids.forEach(id => {
             const film = useSelector(state => selectFilmById(state, id))
-
             if (film.slug === option) result = film
-            console.log(result)
         });
         return result
     }

@@ -112,7 +112,7 @@ const FilmItem = ({ filmId }) => {
                                 </Card.Text> */}
                         <Row>
                             <Col><ButtonPlay onClick={() => setModalShow(true)}></ButtonPlay></Col>
-                            <Col><Link to='/show-times'>
+                            <Col><Link to={`/show-times?film=${film.slug}&abc=123`}>
                                 <ButtonTicket variant="primary"></ButtonTicket>
                             </Link></Col>
                         </Row>

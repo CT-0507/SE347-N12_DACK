@@ -1,50 +1,45 @@
-import Form from 'react-bootstrap/Form'
-import 'react-toastify/dist/ReactToastify.css';
-import { useState, memo, useCallback } from 'react'
-import 'react-toastify/dist/ReactToastify.css';
+import { memo, useCallback, useState } from 'react'
+import { selectPremiereSlotById, useDeletePremiereSlotMutation, useGetPremiereSlotsQuery } from './premiereSlotsApi/premiereSlotsApiSlice';
+import Spinner from 'react-bootstrap/Spinner';
+import { useSelector } from 'react-redux';
 import FormLabel from 'react-bootstrap/FormLabel';
 import FormGroup from 'react-bootstrap/FormGroup';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import FormCheckInput from 'react-bootstrap/FormCheckInput';
+// import FormCheckInput from 'react-bootstrap/FormCheckInput';
 import InputGroup from 'react-bootstrap/InputGroup';
-
-import { selectUserById, useDeleteUserMutation, useGetUsersQuery } from './usersApi/usersApiSlice';
-import Spinner from 'react-bootstrap/Spinner';
-import { useSelector } from 'react-redux';
-import UserForm from './usersApi/User/UserForm';
-const UserMenu = memo(() => {
+import Form from 'react-bootstrap/Form'
+import PremiereSlotForm from './premiereSlotsApi/PremiereSlot/PremiereForm';
+const PremiereSlotMenu = memo(() => {
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false)
-    const handleShow = () => setShow(true);
-    const [editUserId, setEditUserId] = useState()
+    const handleShow = () => setShow(true)
+    const [editSlotId, setEditSlotId] = useState()
     const {
-        data: users,
+        data: premiereSlots,
         isSuccess,
         isLoading,
         refetch,
         isError,
         error
-    } = useGetUsersQuery("usersList", {
+    } = useGetPremiereSlotsQuery("premiereSlotsList", {
         pollingInterval: 60000,
         refetchOnFocus: true,
-
     })
     const handleShowEdit = useCallback(() => {
         setShowEdit(true)
     }, [setShowEdit])
     let content
     if (isLoading) content = <tr><td colSpan={100}><Spinner /></td></tr>
-    if (isError) content = <tr><td colSpan={100}>{error?.data?.message}</td></tr>
+    if (isError) content = <tr><td colSpan={100} className="text-center">{error?.data?.message}</td></tr>
     let items = 0
     if (isSuccess) {
-        const { ids } = users
+        const { ids } = premiereSlots
         items = ids?.length
         content = ids?.length
-            ? ids.map((userId, index) => <User key={userId} counter={index + 1} userId={userId} handleShowEdit={handleShowEdit} setEditUserId={setEditUserId} />)
+            ? ids.map((premiereSlotId, index) => <PremiereSlot key={premiereSlotId} counter={index + 1} premiereSlotId={premiereSlotId} handleShowEdit={handleShowEdit} setEditSlotId={setEditSlotId} />)
             : null
     }
-
     const handleClose = useCallback(() => {
         setShow(false)
     }, [setShow])
@@ -74,19 +69,16 @@ const UserMenu = memo(() => {
                         />
                     </InputGroup>
                 </Form>
-                <br />
                 <div style={{ width: "100%", overflowX: "auto" }}>
                     <Table className='user-table' striped bordered hover size="sm">
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>ID</th>
-                                <th>Tên</th>
-                                <th>Tên người dùng</th>
-                                <th>Email</th>
-                                <th>Vai trò</th>
-                                <th>Trạng thái kích hoạt</th>
-                                <th>Hành động</th>
+                                <th>Tên Phim</th>
+                                <th>Ngày</th>
+                                <th>Thời gian</th>
+                                <th>Tên rạp</th>
+                                <th>Mã phòng</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,34 +87,34 @@ const UserMenu = memo(() => {
 
                     </Table>
                 </div>
-
                 <FormGroup>
                     <Button variant="secondary" onClick={e => refetch('User')} disabled={isLoading}>{isLoading ? <Spinner /> : <i className="fa fa-refresh"></i>}</Button>
                     <Form.Label style={{ margin: '10px' }}>1-2 of {items} items</Form.Label>
                 </FormGroup>
             </FormGroup>
-            {show && <UserForm handleClose={handleClose} />}
-            {showEdit && <UserForm handleClose={handleCloseEdit} userId={editUserId} />}
+            {show && <PremiereSlotForm handleClose={handleClose} />}
+            {showEdit && <PremiereSlotForm handleClose={handleCloseEdit} userId={editUserId} />}
         </>
     )
 })
-export default UserMenu
+export default PremiereSlotMenu
 
-const User = ({ counter, userId, handleShowEdit, setEditUserId }) => {
-    const user = useSelector(state => selectUserById(state, userId))
-    const handleEidt = () => {
+const PremiereSlot = memo(({ counter, premiereSlotId, handleShowEdit, setEditSlotId }) => {
+    const premiereSlot = useSelector(state => selectPremiereSlotById(state, premiereSlotId))
+    const handleEdit = () => {
         handleShowEdit()
-        setEditUserId(userId)
+        setEditSlotId(premiereSlotId)
     }
-    const [deleteUser, {
+    console.log(premiereSlot)
+    const [deletePremiereSlot, {
         isLoading,
         isSuccess,
         isError,
         error
-    }] = useDeleteUserMutation()
+    }] = useDeletePremiereSlotMutation()
     const handleDelete = async () => {
         try {
-            await deleteUser({ id: user.id })
+            await deletePremiereSlot({ id: premiereSlot.id })
         } catch (err) {
             console.log(err)
         }
@@ -130,20 +122,17 @@ const User = ({ counter, userId, handleShowEdit, setEditUserId }) => {
     return (
         <tr>
             <td>{counter}</td>
-            <td>{user?.id}</td>
-            <td>{user?.name}</td>
-            <td>{user?.username}</td>
-            <td>{user?.email}</td>
-            <td>{user?.roles.toString().replaceAll(',', ', ')}</td>
-            <td>
-                <FormCheckInput defaultChecked={user?.active} disabled={true}></FormCheckInput>
-            </td>
+            <td>{premiereSlot?.filmId?.filmName}</td>
+            <td>{premiereSlot?.date}</td>
+            <td>{premiereSlot?.time}</td>
+            <td>{premiereSlot?.cinema?.cinemaName}</td>
+            <td>{premiereSlot?.room}</td>
             <td>
                 <FormGroup className='btn-action'>
-                    <Button variant="secondary" onClick={handleEidt}><i className="fa fa-pencil"></i>Sửa</Button>
+                    <Button variant="secondary" onClick={handleEdit}><i className="fa fa-pencil"></i>Sửa</Button>
                     <Button variant="danger" onClick={handleDelete}><i className="fa fa-trash"></i>Xóa</Button>
                 </FormGroup>
             </td>
         </tr>
     )
-}
+})

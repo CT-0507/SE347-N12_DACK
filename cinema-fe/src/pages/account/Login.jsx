@@ -55,7 +55,7 @@ const Login = () => {
                 setUsername('')
                 setPassword('')
                 if (pathname.includes('admin')) navigate('user')
-                else navigate('/')
+                else navigate(-1)
                 toast("Wow so easy!")
             } catch (err) {
                 console.log(err)

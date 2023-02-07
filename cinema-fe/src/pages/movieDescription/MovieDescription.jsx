@@ -16,11 +16,10 @@ import './movieDescription.css'
 
 import { useEffect, memo } from 'react'
 import { useSelector } from 'react-redux';
-import { selectFilmById, selectFilmBySlug } from '../admin/filmsApi/filmsApiSlice';
+import { selectFilmBySlug } from '../admin/filmsApi/filmsApiSlice';
 const MoviesDescription = memo(() => {
     const { slug } = useParams()
     const film = useSelector(state => selectFilmBySlug(state, slug))
-    console.log(film)
     const { height, width } = useWindowDimensions();
 
     const isTablet = width < 1400
@@ -70,7 +69,7 @@ const MoviesDescription = memo(() => {
                         <br />
                     </p>
                     <ButtonLike></ButtonLike>
-                    <Link to='/show-times'>
+                    <Link to={`/show-times?film=${film.slug}&abc=123`}>
                         <ButtonTicket></ButtonTicket>
                     </Link>
                     <Row className='movie-tab my-2 '>
