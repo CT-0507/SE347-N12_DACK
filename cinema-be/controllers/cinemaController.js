@@ -71,6 +71,13 @@ const createNewCinema = asyncHandler(async (req, res, next) => {
         }
     })
 })
+// @desc Update cinema
+// @route PATCH /cinema
+// @access Private
+const updateCinema = asyncHandler(async (req, res) => {
+    const form = formidable()
+    form.parse()
+})
 // @desc Delete a cinema
 // @route DELETE /cinemas
 // @access Private

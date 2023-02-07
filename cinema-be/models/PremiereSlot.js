@@ -20,15 +20,24 @@ const premiereSlotSchema = new mongoose.Schema(
             required: true,
             ref: 'Cinema'
         },
-        rooms: {
+        room: {
             type: String,
             required: true,
         },
         seatStatus: [
-            {
-                type: String,
-                required: true,
-            }
+            [
+                {
+                    id: {
+                        type: Number,
+                    },
+                    number: {
+                        type: String,
+                    },
+                    isReserved: {
+                        type: Boolean,
+                    }
+                }
+            ]
         ],
     },
     {
