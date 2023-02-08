@@ -9,13 +9,14 @@ import { selectPremiereSlotById, useAddNewPremiereSlotMutation, useUpdatePremier
 
 const PremiereSlotForm = ({ premiereSlotId, handleClose }) => {
     let premiereSlot
-    if (premiereSlot) {
-        premiereSlot = useSelector(state => selectPremiereSlotById(state, premiereSlot))
+    if (premiereSlotId) {
+        premiereSlot = useSelector(state => selectPremiereSlotById(state, premiereSlotId))
+        console.log(premiereSlot)
     }
-    const [filmId, setFilmId] = useState(premiereSlot ? premiereSlot.filmId : "")
+    const [filmId, setFilmId] = useState(premiereSlot ? premiereSlot.filmId._id : "")
     const [date, setDate] = useState(premiereSlot ? premiereSlot.date : "")
     const [time, setTime] = useState(premiereSlot ? premiereSlot.time : "")
-    const [cinema, setCinema] = useState(premiereSlot ? premiereSlot.cinema : "")
+    const [cinema, setCinema] = useState(premiereSlot ? premiereSlot.cinema._id : "")
     const [room, setRoom] = useState(premiereSlot ? premiereSlot.room : "")
     const firstInput = useRef()
     const canSave = [filmId, date, time, cinema, room].every(item => item !== "" && typeof item !== "undefined")
@@ -36,7 +37,9 @@ const PremiereSlotForm = ({ premiereSlotId, handleClose }) => {
     }] = useUpdatePremiereSlotMutation()
     const handleConfirm = premiereSlotId
         ? async (premiereSlotId) => {
-            await updatePremiereSlot({ id: premiereSlotId, filmId, date, time, cinema, room })
+            const Object = { id: premiereSlot.id, filmId: filmId, date: date, time: time, cinema: cinema, room: room }
+            console.log(Object)
+            await updatePremiereSlot(Object)
             if (isUpdateError) console.log(updateError)
         }
         : async () => {

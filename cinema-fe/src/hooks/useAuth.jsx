@@ -11,13 +11,13 @@ const useAuth = () => {
 
     if (token) {
         const decoded = jwtDecode(token)
-        const { username, roles, name } = decoded.UserInfo
+        const { id, username, roles, name } = decoded.UserInfo
 
         isAdmin = roles.includes('Admin')
         isUser = roles.includes('User')
         if (isUser) status = "User"
         if (isAdmin) status = "Admin"
-        return { username, roles, name, status, isAdmin, isUser }
+        return { id, username, roles, name, status, isAdmin, isUser }
 
     }
 

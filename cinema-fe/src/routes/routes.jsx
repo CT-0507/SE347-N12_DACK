@@ -31,6 +31,7 @@ import CinemaMenu from "../pages/admin/Cinema"
 import PremiereSlotMenu from "../pages/admin/PremiereSlot"
 import RequireAuth from "../pages/account/RequireAuth"
 import { ROLES } from "../config/roles"
+import TicketMenu from "../pages/admin/Ticket"
 const AppRoute = () => {
     return (
         <Routes>
@@ -45,6 +46,7 @@ const AppRoute = () => {
                                 <Route path='film' element={<FilmMenu />} />
                                 <Route path='cinema' element={<CinemaMenu />} />
                                 <Route path='premiere-slot' element={<PremiereSlotMenu />} />
+                                <Route path='ticket' element={<TicketMenu />} />
                             </Route>
                         </Route>
                     </Route>
@@ -63,9 +65,9 @@ const AppRoute = () => {
                         <Route path='show-times' element={<ShowTimes />} />
                         <Route path='book-ticket' element={<BookTicket />} />
                         <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-                            <Route path='pay/:selected/:totalprice' element={<Pay />} />
+                            <Route path='pay' element={<Pay />} />
+                            <Route path='mo-mo' element={<MoMo />} ></Route>
                         </Route>
-                        <Route path='mo-mo' element={<MoMo />} ></Route>
                         <Route path='cinema' element={<Cinema />} ></Route>
 
                         <Route path='movie-description' >

@@ -1,30 +1,17 @@
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Table from 'react-bootstrap/Table';
 import React from "react";
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 
 
 import './bookTicket.css'
-
-// import ButtonTicket from '../../components/button/ButtonTicket'
-// import ButtonPlay from '../../components/button/ButtonPlay'
-import ButtonCounter from '../../components/button/ButtonCounter'
-
-import { useEffect, memo } from 'react'
-import { useSelector } from 'react-redux';
 import { counter } from '@fortawesome/fontawesome-svg-core';
-
-import poster1 from '../../img/happywednesday240x201_1.jpg'
 import Body from './index.jsx'
 
 function BookTicket() {
+    const [searchParams] = useSearchParams();
     console.log(counter)
-    return (  
+    return (
         <Container className='container-book-tickets py-4'>
             {/* <Row>
                 <Col md={8} className='col-1'>
@@ -117,7 +104,7 @@ function BookTicket() {
                     </Card>
                 </Col>
             </Row> */}
-            <Body/>
+            <Body slotId={searchParams.get("slotId")} />
         </Container>
     );
 }

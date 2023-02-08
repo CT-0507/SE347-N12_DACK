@@ -85,3 +85,25 @@ export const {
     selectById: selectPremiereSlotById,
     selectIds: selectPremiereSlotIds,
 } = premiereSlotsAdapter.getSelectors(state => selectPremiereSlotsData(state) ?? initialState)
+
+const selectOptions = (state, option) => option
+export const selectSlotsOption = (state, value1, value2) => {
+    const data = selectPremiereSlotsData(state) ?? initialState
+    let result = []
+    if (data) {
+        const { ids, entities } = data
+        ids.forEach(id => {
+            console.log(entities[id])
+            console.log(entities[id]["date"])
+            console.log(entities[id]["cinema"]["_id"])
+            console.log(value1)
+            console.log(entities[id]["cinema"]["_id"] === value1)
+            console.log(entities[id]["date"] === value2)
+            if (entities[id]["cinema"]["_id"] === value1 && entities[id]["date"] === value2) {
+                result.push(entities[id])
+            }
+
+        })
+    }
+    return result
+}
