@@ -4,7 +4,6 @@ const formidable = require('formidable')
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
-const { isBoolean } = require('util');
 
 // @desc Get all cinema
 // @route GET /cinema
@@ -71,6 +70,13 @@ const createNewCinema = asyncHandler(async (req, res, next) => {
             res.status(400).json({ message: 'Invalid Cinema data received' })
         }
     })
+})
+// @desc Update cinema
+// @route PATCH /cinema
+// @access Private
+const updateCinema = asyncHandler(async (req, res) => {
+    const form = formidable()
+    form.parse()
 })
 // @desc Delete a cinema
 // @route DELETE /cinemas

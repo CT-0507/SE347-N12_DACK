@@ -15,15 +15,10 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
         console.log(cinema)
     }
     const [cinemaName, setCinemaName] = useState(cinema ? cinema.cinemaName : "")
-    const [location, setLocation] = useState(cinema ? cinema.location.join(", ") : "")
-    // const [description, setDescription] = useState(cinema ? cinema.description.join(", ") : "")
-    // const [premiereDay, setPremiereDay] = useState(cinema ? cinema.premiereDay : "")
+    const [location, setLocation] = useState(cinema ? cinema.location : "")
     const [rooms, setRooms] = useState(cinema ? cinema.rooms.join(", ") : "")
     const [description, setDescription] = useState(cinema ? cinema.description : "")
-    // const [rated, setRated] = useState(cinema ? cinema.rated : "")
-    // const [trailerLink, setTrailerLink] = useState(cinema ? cinema.rated : "")
     const [active, setActive] = useState(cinema ? cinema.active : true)
-    // const [language, setLanguage] = useState(cinema ? cinema.language : "")
     const [readFile, setReadFile] = useState(cinema ? true : false)
     const canSave = [cinemaName, location, description].every(item => item !== "") && readFile
     const firstInput = useRef()
@@ -53,12 +48,6 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
             formData.append('description', description)
             formData.append('rooms', rooms)
             formData.append('active', active)
-            // formData.append('tags', tags)
-            // formData.append('description', description)
-            // formData.append('rated', rated)
-            // formData.append('trailerLink', trailerLink)
-            // formData.append('time', time)
-            // formData.append('language', language)
             const files = posterInput.current.files
             for (let i = 0; i < files.length; i++) {
                 formData.append(`images[${i}]`, files[i])
@@ -77,12 +66,6 @@ const CinemaForm = memo(({ cinemaId, handleClose }) => {
                     formData.append('description', description)
                     formData.append('rooms', rooms)
                     formData.append('active', active)
-                    // formData.append('rooms', rooms)
-                    // formData.append('description', description)
-                    // formData.append('rated', rated)
-                    // formData.append('trailerLink', trailerLink)
-                    // formData.append('time', time)
-                    // formData.append('language', language)
                     const files = posterInput.current.files
                     for (let i = 0; i < files.length; i++) {
                         formData.append(`images[${i}]`, files[i])

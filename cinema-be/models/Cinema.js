@@ -20,8 +20,6 @@ const cinemaSchema = new mongoose.Schema(
         },
         rooms: [{
             type: String,
-            ref: 'Room'
-            // require: true
         }],
         active: {
             type: Boolean,

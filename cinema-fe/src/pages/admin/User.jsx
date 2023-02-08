@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react'
 import Form from 'react-bootstrap/Form'
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, useRef, memo } from 'react'
+import { useState, memo, useCallback } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import FormLabel from 'react-bootstrap/FormLabel';
 import FormGroup from 'react-bootstrap/FormGroup';
@@ -75,23 +74,28 @@ const UserMenu = memo(() => {
                         />
                     </InputGroup>
                 </Form>
-                <Table className='user-table' striped bordered hover size="sm">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên</th>
-                            <th>Tên người dùng</th>
-                            <th>Email</th>
-                            <th>Vai trò</th>
-                            <th>Trạng thái kích hoạt</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {content}
-                    </tbody>
+                <br />
+                <div style={{ width: "100%", overflowX: "auto" }}>
+                    <Table className='user-table' striped bordered hover size="sm">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Tên người dùng</th>
+                                <th>Email</th>
+                                <th>Vai trò</th>
+                                <th>Trạng thái kích hoạt</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {content}
+                        </tbody>
 
-                </Table>
+                    </Table>
+                </div>
+
                 <FormGroup>
                     <Button variant="secondary" onClick={e => refetch('User')} disabled={isLoading}>{isLoading ? <Spinner /> : <i className="fa fa-refresh"></i>}</Button>
                     <Form.Label style={{ margin: '10px' }}>1-2 of {items} items</Form.Label>
@@ -126,6 +130,7 @@ const User = ({ counter, userId, handleShowEdit, setEditUserId }) => {
     return (
         <tr>
             <td>{counter}</td>
+            <td>{user?.id}</td>
             <td>{user?.name}</td>
             <td>{user?.username}</td>
             <td>{user?.email}</td>

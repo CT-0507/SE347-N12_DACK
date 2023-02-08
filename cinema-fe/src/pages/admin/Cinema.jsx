@@ -77,24 +77,27 @@ const CinemaMenu = memo(() => {
                             />
                         </InputGroup>
                     </Form>
-                    <Table className='user-table' striped bordered hover size="sm">
-                        <thead>
-                            <tr>
-                                <th style={{ width: '3%' }}>STT</th>
-                                <th style={{ width: '15%' }}>Tên rạp</th>
-                                <th style={{ width: '10%' }}>Địa chỉ</th>
-                                <th style={{ width: '25%' }}>Mô tả</th>
-                                <th style={{ width: '8%' }}>Phòng</th>
-                                <th style={{ width: '8%' }}>Hình ảnh</th>
-                                <th style={{ width: '8%' }}>Trạng thái</th>
-                                <th style={{ width: '15%' }}>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {content}
-                        </tbody>
+                    <div style={{ width: "100%", overflowX: "auto" }}>
+                        <Table className='user-table' striped bordered hover size="sm">
+                            <thead>
+                                <tr>
+                                    <th style={{ width: '3%' }}>STT</th>
+                                    <th style={{ width: '3%' }}>ID</th>
+                                    <th style={{ width: '15%' }}>Tên rạp</th>
+                                    <th style={{ width: '10%' }}>Địa chỉ</th>
+                                    <th style={{ width: '25%' }}>Mô tả</th>
+                                    <th style={{ width: '8%' }}>Phòng</th>
+                                    <th style={{ width: '8%' }}>Hình ảnh</th>
+                                    <th style={{ width: '8%' }}>Trạng thái</th>
+                                    <th style={{ width: '15%' }}>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {content}
+                            </tbody>
 
-                    </Table>
+                        </Table>
+                    </div>
                     <FormGroup>
                         <Button variant="secondary" onClick={() => refetch("Cinema")}><i className="fa fa-refresh"></i></Button>
                         <Form.Label style={{ margin: '10px' }}>1-2 of {`${items}`} items</Form.Label>
@@ -129,10 +132,12 @@ const Cinema = ({ counter, cinemaId, handleShowEdit, setEditCinemaId }) => {
     return (
         <tr>
             <td>{counter}</td>
+            <td>{cinema?.id}</td>
             <td>{cinema?.cinemaName}</td>
             <td>{cinema?.location}</td>
             <td>{cinema?.description}</td>
             <td>{cinema?.rooms}</td>
+            <td>{cinema?.cinemaPicture.join(" ")}</td>
             <td><FormCheckInput defaultChecked={cinema} disabled></FormCheckInput></td>
             <td>
                 <FormGroup className='btn-action'>

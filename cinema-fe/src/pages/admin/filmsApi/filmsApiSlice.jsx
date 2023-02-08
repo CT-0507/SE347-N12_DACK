@@ -94,30 +94,74 @@ const selectActive = (state, option) => option
 export const selectActiveFilm = createSelector(
     [selectfilmsResult, selectActive],
     (filmsResult, option) => {
-        const { ids } = filmsResult.data
-        let result = []
-        ids.forEach(id => {
-            const film = useSelector(state => selectFilmById(state, id))
+        if (filmsResult?.data) {
+            const { ids } = filmsResult.data
+            let result = []
+            ids.forEach(id => {
+                const film = useSelector(state => selectFilmById(state, id))
 
-            if (film.filmStatus === option) result.push(film)
-        });
-        return result
+                if (film.filmStatus === option) result.push(film)
+            });
+            return result
+        }
     }
 )
-export const selectFilmBySlug = createSelector(
-    [selectfilmsResult, selectActive],
-    (filmsResult, option) => {
-        const { ids } = filmsResult.data
+// export const selectFilmBySlug = createSelector(
+//     [selectfilmsResult, selectActive],
+//     (filmsResult, option) => {
+//         if (filmsResult?.data) {
+//             const { ids } = filmsResult.data
+//             let result
+//             ids?.forEach(id => {
+//                 const film = useSelector(state => selectFilmById(state, id))
+//                 if (film.slug === option) result = film
+//             });
+//             return result
+//         }
+//     }
+// )
+export const selectFilmBySlug = (state, option) => {
+    const data = selectfilmsData(state) ?? initialState
+    // console.log(data)
+    let result
+    if (data) {
+        const { ids, entities } = data
+        ids.forEach(id => {
+            if (entities[id].slug === option)
+                result = entities[id]
+        })
+        return result
+        // data?.find(film => console.log(film))
+    }
+    // if (data) {
+    //     // const { ids } = data
+    //     let result
+    //     // data?.find((film) => {
+    //     //     console.log(film)
+    //     // })
+    //     // if (Array.isArray(ids) && ids.length > 0) {
+    //     //     ids.forEach(id => {
+    //     //         const film = useSelector(state => selectFilmById(state, id))
+    //     //         if (film.slug === option) result = film
+    //     //     });
+    //     // }
+    //     return result
+    // }
+}
+export const selectFilmOption = (state, option) => {
+    const data = selectfilmsData(state) ?? initialState
+    console.log(data)
+    if (data) {
+        const { ids } = data
         let result
-        ids.forEach(id => {
+        ids?.forEach(id => {
             const film = useSelector(state => selectFilmById(state, id))
-
-            if (film.slug === option) result = film
-            console.log(result)
+            console.log(film)
+            // if (film.slug === option) result = film
         });
         return result
     }
-)
+}
 
 
 

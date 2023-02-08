@@ -1,0 +1,21 @@
+.container-pay{
+    border: 2px solid black;
+}
+.head-pay{
+    background:black;
+    font-weight: bold;
+    color:white;
+}
+.form-promo-code{
+    width:40%;
+
+}
+.head-pay-1{
+    background:grey;
+    font-weight: bold;
+    color:black;
+}
+.title-total-price{
+    background:red;
+    color:white;
+}
