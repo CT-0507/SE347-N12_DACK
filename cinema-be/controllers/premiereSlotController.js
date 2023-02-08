@@ -52,10 +52,10 @@ const createNewPremiereSlot = asyncHandler(async (req, res) => {
 // @route PATCH /premiere-slot
 // @access Private
 const updatePremiereSlot = asyncHandler(async (req, res) => {
-    const { id, filmId, date, time, cinema, room, seatStatus } = req.body
+    const { id, filmId, date, time, cinema, room } = req.body
     console.log(req.body)
     //Confirm data
-    if (!filmId || !date || !cinema || !room || !time || seatStatus || !Array.isArray(seatStatus) || !seatStatus.length) {
+    if (!filmId || !date || !cinema || !room || !time) {
         return res.status(400).json({ message: 'Missing required fields' })
     }
 
@@ -75,12 +75,12 @@ const updatePremiereSlot = asyncHandler(async (req, res) => {
     premiereSlot.time = time
     premiereSlot.cinema = cinema
     premiereSlot.room = room
-    premiereSlot.seatStatus = seatStatus
 
     const updatePremiereSlot = await premiereSlot.save()
 
     res.json({ message: `${updatePremiereSlot._id} updated` })
 })
+
 // @desc Delete a premiere-slot
 // @route DELETE /premiere-slot
 // @access Private
