@@ -31,6 +31,7 @@ app.use('/users', require('./routes/userRoutes'))
 app.use('/films', require('./routes/filmRoutes'))
 app.use('/cinemas', require('./routes/cinemaRoutes'))
 app.use('/premiere-slot', require('./routes/premiereSlotRoutes'))
+app.use('/tickets', require('./routes/ticketRoutes'))
 
 app.all('*', (req, res) => {
     res.status(404)

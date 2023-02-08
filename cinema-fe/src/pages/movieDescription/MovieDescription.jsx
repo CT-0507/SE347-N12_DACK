@@ -36,10 +36,10 @@ const MoviesDescription = memo(() => {
                             isFluidWidth: isTablet,
                             width: 300,
                             height: 450,
-                            src: `http://localhost:3500/${film.poster}`
+                            src: `http://localhost:3500/${film?.poster}`
                         },
                         largeImage: {
-                            src: `http://localhost:3500/${film.poster}`,
+                            src: `http://localhost:3500/${film?.poster}`,
                             width: 1200,
                             height: 1800,
 
@@ -51,25 +51,25 @@ const MoviesDescription = memo(() => {
                     }} />
                 </Col>
                 <Col sm={9}>
-                    <h1>{film.filmName}</h1>
+                    <h1>{film?.filmName}</h1>
                     <p>
-                        <b>Đạo diễn: </b>{film.directors.join(", ")}
+                        <b>Đạo diễn: </b>{film?.directors.join(", ")}
                         <br />
-                        <b>Diễn Viên: </b>{film.actors.join(", ")}
+                        <b>Diễn Viên: </b>{film?.actors.join(", ")}
                         <br />
-                        <b>Thể loại: </b>{film.tags.join(", ")}
+                        <b>Thể loại: </b>{film?.tags.join(", ")}
                         <br />
-                        <b>Khởi chiếu: </b>{film.premiereDay}
+                        <b>Khởi chiếu: </b>{film?.premiereDay}
                         <br />
-                        <b>Thời lượng: </b>{film.time} phút
+                        <b>Thời lượng: </b>{film?.time} phút
                         <br />
-                        <b>Ngôn ngữ: </b>{film.language}
+                        <b>Ngôn ngữ: </b>{film?.language}
                         <br />
-                        <b>Rated: </b> <b className='text-rated'>{film.rated}</b>
+                        <b>Rated: </b> <b className='text-rated'>{film?.rated}</b>
                         <br />
                     </p>
                     <ButtonLike></ButtonLike>
-                    <Link to={`/show-times?film=${film.slug}&abc=123`}>
+                    <Link to={`/show-times?film=${film?.slug}&abc=123`}>
                         <ButtonTicket></ButtonTicket>
                     </Link>
                     <Row className='movie-tab my-2 '>
@@ -81,11 +81,11 @@ const MoviesDescription = memo(() => {
                         >
                             <Tab eventKey="description" title="Chi tiêt" className='button-tab'>
                                 <p>
-                                    {film.description}
+                                    {film?.description}
                                 </p>
                             </Tab>
                             <Tab eventKey="trailer" title="Xem trailer">
-                                <iframe width="100%" height="415" src={`https://www.youtube.com/embed/${film.trailerLink}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <iframe width="100%" height="415" src={`https://www.youtube.com/embed/${film?.trailerLink}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
                             </Tab>
 

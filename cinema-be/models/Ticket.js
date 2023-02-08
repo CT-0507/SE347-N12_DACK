@@ -6,22 +6,29 @@ const ticketSchema = new mongoose.Schema(
             required: true,
             ref: 'User'
         },
-        issuesBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'User',
-        },
         slotId: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: 'PremiereSlot',
         },
-        seatType: {
-            type: String,
+        filmId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Film',
         },
+        cinema: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Cinema',
+        },
+        seats: [
+            {
+                type: String,
+                required: true
+            }
+        ],
         discountCode: {
             type: String,
-            required: true,
         },
         total: {
             type: Number,

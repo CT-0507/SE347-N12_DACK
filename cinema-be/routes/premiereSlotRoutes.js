@@ -7,5 +7,4 @@ router.route('/')
     .post(verifyJWT, premiereSlotController.createNewPremiereSlot)
     .patch(verifyJWT, premiereSlotController.updatePremiereSlot)
     .delete(verifyJWT, premiereSlotController.deletePremiereSlot)
-
 module.exports = router
