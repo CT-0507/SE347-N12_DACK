@@ -75,3 +75,19 @@ export const {
     selectById: selectTicketById,
     selectIds: selectTicketByIds,
 } = ticketsAdapter.getSelectors(state => selectTicketsData(state) ?? initialState)
+
+export const selectTicketByUserId = (state, userId) => {
+    const data = selectTicketsData(state) ?? initialState
+    let result = []
+    if (data) {
+        const { ids, entities } = data
+        console.log(data)
+        ids.forEach(id => {
+            if (entities[id]["userId"]["_id"] === userId) {
+                result.push(entities[id])
+            }
+
+        })
+    }
+    return result
+}

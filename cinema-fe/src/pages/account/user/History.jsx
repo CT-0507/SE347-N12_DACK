@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
+import { useSelector } from "react-redux";
+import useAuth from "../../../hooks/useAuth";
+import { selectTicketByUserId, useGetTicketsQuery } from "../../admin/ticket/ticketsApiSlice";
 
 const History = () => {
   const arrayHistory = [
@@ -22,31 +26,59 @@ const History = () => {
       total: 90,
     },
   ];
-  const [listHistory, setListHistory] = useState(arrayHistory);
+  // const {
+  //   data: tickets,
+  //   isLoading,
+  //   isSuccess,
+  //   isError,
+  //   refetch,
+  //   error
+  // } = useGetTicketsQuery("ticketsList", {
+  //   pollingInterval: 60000,
+  //   refetchOnFocus: true
+  // })
+  const user = useAuth()
+  const userTicket = useSelector(state => selectTicketByUserId(state, user.id))
+  const total = useMemo(() => {
+    let price = 0
+    userTicket.forEach((ticket) => {
+      price += ticket.total
+    })
+    return price
+  })
+  console.log(userTicket)
   return (
     <div className="history-container">
       <div className="heading">LỊCH SỬ GIAO DỊCH</div>
 
-      {listHistory && listHistory.length > 0 ? (
+      {userTicket && userTicket.length > 0 ? (
         <Table bordered hover size="sm">
           <thead>
             <tr>
-              <th>mã vé</th>
-              <th>tên phim</th>
-              <th>thời gian chiếu</th>
-              <th>tổng tiền</th>
+              <th>Mã vé</th>
+              <th>Tên phim</th>
+              <th>Rạp</th>
+              <th>Mã ghế</th>
+              <th>Tổng tiền</th>
             </tr>
           </thead>
           <tbody>
-            {listHistory.map((history) => (
-              <tr key={history.id}>
-                <td>{history.id}</td>
-                <td>{history.firmName}</td>
-                <td>{history.time}</td>
-                <td>{history.total}</td>
+            {userTicket.map((ticket) => (
+              <tr key={ticket._id}>
+                <td>{ticket._id}</td>
+                <td>{ticket?.filmId?.filmName}</td>
+                <td>{ticket?.cinema?.cinemaName}</td>
+                <td>{ticket?.seats}</td>
+                <td>{ticket?.total}   VND</td>
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <td>Tổng cộng:</td>
+              <td colSpan={4} style={{ textAlign: "end" }}>{total}  VND</td>
+            </tr>
+          </tfoot>
         </Table>
       ) : (
         <div>Bạn chưa có giao dịch (đơn hàng) nào.</div>

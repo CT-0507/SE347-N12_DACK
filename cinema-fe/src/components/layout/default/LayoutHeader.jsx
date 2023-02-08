@@ -74,7 +74,7 @@ const LayoutHeader = memo(() => {
                         <Nav className='ms-auto'>
                             {name
                                 ? <>
-                                    <Nav.Link as={Link} style={{ paddingLeft: 0, paddingRight: 0 }} className="me-2" to="account/login">
+                                    <Nav.Link as={Link} style={{ paddingLeft: 0, paddingRight: 0 }} className="me-2" to="user">
                                         <i className="fa fa-user" aria-hidden="true"></i>
                                         {name}
                                     </Nav.Link>

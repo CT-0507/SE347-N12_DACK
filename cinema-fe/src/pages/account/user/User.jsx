@@ -1,4 +1,7 @@
+import useAuth from "../../../hooks/useAuth";
+
 const user = () => {
+  const user = useAuth()
   return (
     <div className="user-container">
       <div className="heading">TÀI KHOẢN CGV</div>
@@ -22,7 +25,7 @@ const user = () => {
           />
         </div>
       </div>
-      <div>Xin chào Khang,</div>
+      <div>Xin chào {user?.username},</div>
       <span style={{ color: "#7f7f7f" }}>
         Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.
       </span>
@@ -63,9 +66,9 @@ const user = () => {
         <div className="title">Thông tin tài khoản</div>
         <hr />
 
-        <span>Tên : Khang</span>
+        <span>Tên : {user?.username}</span>
         <span>Email : abc@gmail.com</span>
-        <span>Tên đăng nhập : username</span>
+        <span>Tên đăng nhập : {user?.username}</span>
         <span>Điện thoại : 0123345</span>
       </div>
     </div>

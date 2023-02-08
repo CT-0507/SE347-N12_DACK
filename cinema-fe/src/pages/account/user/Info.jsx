@@ -2,15 +2,17 @@ import { useEffect } from "react";
 import { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
+import useAuth from "../../../hooks/useAuth";
 const Info = () => {
+  const user = useAuth()
   const userId = 1;
   const userInfFake = {
-    name: "abc",
+    name: user?.username,
     city: "Hai Phong",
     address: "Thu duc",
     phone: "09xxxx",
     brith: "12/12/2022",
-    email: "abc@gmail.com",
+    email: `${user?.username}@gmail.com`,
     codeMember: "abc",
     prefersite: "thu duc",
   };
