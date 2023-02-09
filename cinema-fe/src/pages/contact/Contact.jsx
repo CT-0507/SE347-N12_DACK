@@ -20,6 +20,7 @@ const Contact = memo(() => {
                     height="350"
                     allowFullScreen=""
                     loading="lazy"
+                    frameBorder="true"
                     referrerPolicy="no-referrer-when-downgrade">
                 </iframe>
             </Row>

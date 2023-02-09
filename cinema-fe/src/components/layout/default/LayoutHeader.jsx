@@ -142,7 +142,7 @@ const LayoutHeader = memo(() => {
                                     interactive
                                     render={attrs => (
                                         <div className="box p-1 " tabIndex="-1" {...attrs}>
-                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản CGV</div></Link>
+                                            <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Tài Khoản VKTC</div></Link>
                                             <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Quyền Lợi</div></Link>
                                         </div>
                                     )}
@@ -157,7 +157,7 @@ const LayoutHeader = memo(() => {
                                         <div className="box p-1 " tabIndex="-1" {...attrs}>
                                             <Link as={Link} to='movies' style={{ textDecoration: 'none' }}><div className="  text-nav">Quầy Online</div></Link>
                                             <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thuê Rạp & Vé Nhóm</div></Link>
-                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">e-CGV</div></Link>
+                                            <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">e-VKTC</div></Link>
                                             <Link as={Link} to='about' style={{ textDecoration: 'none' }}> <div className=" text-nav ">Thẻ Quà Tặng</div></Link>
                                         </div>
                                     )}
@@ -211,7 +211,7 @@ const LayoutHeader = memo(() => {
                     <Navbar className="flex-column align-items-start">
                         <Nav className="p-2 border-bottom w-100" onClick={() => setOpenTheater(prev => !prev)}>
                             <i className={"me-2 " + (openTheater ? "fa fa-caret-down" : "fa fa-caret-right")} aria-hidden="true"></i>
-                            RẠP CGV
+                            RẠP VKTC
                         </Nav>
                         {openTheater &&
                             <>
@@ -236,7 +236,7 @@ const LayoutHeader = memo(() => {
                         {openMember &&
                             <>
                                 <Nav.Link as={Link} to='/account/login' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
-                                    Tài Khoản CGV
+                                    Tài Khoản VKTC
                                 </Nav.Link>
                                 <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Quyền Lợi
@@ -258,7 +258,7 @@ const LayoutHeader = memo(() => {
                                     Thuê Rạp & Vé Nhóm
                                 </Nav.Link>
                                 <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
-                                    e-CGV
+                                    e-VKTC
                                 </Nav.Link>
                                 <Nav.Link as={Link} to='/' className="ms-3 ps-4 py-1 border-bottom w-100 subnav" onClick={onNavigate}>
                                     Thẻ Quà Tặng

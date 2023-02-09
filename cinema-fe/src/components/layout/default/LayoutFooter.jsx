@@ -20,14 +20,14 @@ const LayoutFooter = memo(() => {
                 {!isMobile ?
                     <Container fluid className='p-0 px-4 footer-container'>
                         <Row className='text-center  border-bottom border-top p-2  border-dark justify-content-md-center'>
-                            <Col  md="2"><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
-                            <Col  md="2"><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>
-                            <Col  md="2"><i className="fa fa-thumbs-up p-2" aria-hidden="true"></i></Col>
-                            <Col  md="2"><i className="fa fa-camera p-2" aria-hidden="true"></i></Col>
-                            <Col  md="2"><i className="fa fa-bullhorn p-2" aria-hidden="true"></i></Col>
+                            <Col md="2"><i className="fa fa-imdb p-2" aria-hidden="true"></i></Col>
+                            <Col md="2"><i className="fa fa-heart p-2" aria-hidden="true"></i></Col>
+                            <Col md="2"><i className="fa fa-thumbs-up p-2" aria-hidden="true"></i></Col>
+                            <Col md="2"><i className="fa fa-camera p-2" aria-hidden="true"></i></Col>
+                            <Col md="2"><i className="fa fa-bullhorn p-2" aria-hidden="true"></i></Col>
                         </Row>
                         <Row className=' border-bottom border-dark justify-content-md-center'>
-                            <Col  lg="2" className="py-3 ">
+                            <Col lg="2" className="py-3 ">
                                 <h5>PopCorn Couch</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li><Nav.Link as={Link} to="default/about">Giới Thiệu</Nav.Link></li>
@@ -37,7 +37,7 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="default/contact">Liên Hệ Quảng Cáo</Nav.Link></li>
                                 </ul>
                             </Col>
-                            <Col  lg="2" className="py-3">
+                            <Col lg="2" className="py-3">
                                 <h5>Điều khoản sử dụng</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li><Nav.Link as={Link} to="default/terms-conditions">Điều Khoảng Chung</Nav.Link></li>
@@ -47,12 +47,12 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="default/faq">Câu Hỏi Thường Gặp</Nav.Link></li>
                                 </ul>
                             </Col>
-                            <Col  lg="2" className="py-3">
+                            <Col lg="2" className="py-3">
                                 <h5>Kết nối với chúng tôi</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li>
                                         <Nav.Link as={Link} >
-                                            <i className="fa fa-facebook-official p-3 "  aria-hidden="true">
+                                            <i className="fa fa-facebook-official p-3 " aria-hidden="true">
                                             </i>
                                             <i className="fa fa-youtube-square p-3" aria-hidden="true"></i>
                                             <i className="fa fa-instagram p-3" aria-hidden="true"></i>
@@ -61,7 +61,7 @@ const LayoutFooter = memo(() => {
                                     <li><Nav.Link as={Link} to="about"><img src={certificate} alt="" /></Nav.Link></li>
                                 </ul>
                             </Col>
-                            {!isTablet && <Col  lg="2" className="py-3 ">
+                            {!isTablet && <Col lg="2" className="py-3 ">
                                 <h5>Chăm sóc khách hàng</h5>
                                 <ul className="ul-nav m-0 p-0 py-3">
                                     <li>Hotline: 1900 0000</li>
@@ -109,7 +109,7 @@ const LayoutFooter = memo(() => {
                             </Navbar>
                             <Navbar>
                                 <Nav.Link as={Link} className="p-2 w-100">
-                                    Liên Hệ Quảng Cáo CGV
+                                    Liên Hệ Quảng Cáo VKTC
                                 </Nav.Link>
                             </Navbar>
                             <Navbar>
